@@ -251,6 +251,7 @@ public class BeatUnit
     public int BeatId;
     public List<string> SceneObjects;
     public List<string> AnimList;
+    public bool IsHit;
 }
 
 

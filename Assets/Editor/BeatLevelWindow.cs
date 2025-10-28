@@ -199,17 +199,27 @@ public class BeatLevelWindow : EditorWindow
                     PlaySegment(clip, start, end);
                 }
             }
+            string second = m_RowSecond[i];
+            if (m_Data.BeatUnits != null)
+            {
+                BeatUnit unitS = m_Data.BeatUnits.Find(u => u.BeatId == i);
+                if (unitS != null && unitS.IsHit) second = "Hit";
+            }
             EditorGUI.BeginDisabledGroup(true);
-            EditorGUILayout.TextField(m_RowSecond[i], GUILayout.Width(40));
+            EditorGUILayout.TextField(second, GUILayout.Width(120));
             EditorGUI.EndDisabledGroup();
             Rect last = GUILayoutUtility.GetLastRect();
             if (GUI.Button(last, GUIContent.none, GUIStyle.none))
             {
-                if (m_Data.BeatUnits != null)
+                if (m_Data.BeatUnits == null) m_Data.BeatUnits = new List<BeatUnit>();
+                BeatUnit unit = m_Data.BeatUnits.Find(u => u.BeatId == i);
+                if (unit == null)
                 {
-                    BeatUnit unit = m_Data.BeatUnits.Find(u => u.BeatId == i);
-                    if (unit != null) BeatUnitEditor.Open(this, unit);
+                    unit = new BeatUnit { BeatId = i, SceneObjects = new List<string>(), AnimList = new List<string>(), IsHit = false };
+                    m_Data.BeatUnits.Add(unit);
+                    if (m_RowSecond != null && i >= 0 && i < m_RowSecond.Count) m_RowSecond[i] = "S";
                 }
+                BeatUnitEditor.Open(this, unit);
             }
             if (m_RowSecond[i] == "O")
             {
@@ -217,7 +227,7 @@ public class BeatLevelWindow : EditorWindow
                 {
                     m_RowSecond[i] = "S";
                     if (m_Data.BeatUnits == null) m_Data.BeatUnits = new List<BeatUnit>();
-                    BeatUnit unit = new BeatUnit { BeatId = i, SceneObjects = new List<string>(), AnimList = new List<string>() };
+                    BeatUnit unit = new BeatUnit { BeatId = i, SceneObjects = new List<string>(), AnimList = new List<string>(), IsHit = false };
                     m_Data.BeatUnits.Add(unit);
                     BeatUnitEditor.Open(this, unit);
                 }

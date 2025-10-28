@@ -32,6 +32,7 @@ public class BeatUnitEditor : EditorWindow
         m_SceneObjects.Clear();
         m_Anims.Clear();
         m_AnimCandidates.Clear();
+        m_QuickDict.Clear();
         m_SelectedIndex = -1;
         if (m_Unit != null)
         {
@@ -48,7 +49,27 @@ public class BeatUnitEditor : EditorWindow
                 for (int i = 0; i < m_Unit.AnimList.Count; i++) m_Anims.Add(m_Unit.AnimList[i]);
             }
         }
+        BuildQuickTemplatesFromScene();
         NormalizeCounts();
+    }
+
+    void BuildQuickTemplatesFromScene()
+    {
+        m_QuickDict.Clear();
+        Animator[] animators = Resources.FindObjectsOfTypeAll<Animator>();
+        for (int i = 0; i < animators.Length; i++)
+        {
+            Animator a = animators[i];
+            if (a == null) continue;
+            GameObject go = a.gameObject;
+            if (!go.scene.IsValid()) continue;
+            List<string> names = GatherAnimNames(go);
+            for (int n = 0; n < names.Count; n++)
+            {
+                string an = names[n];
+                if (!string.IsNullOrEmpty(an)) m_QuickDict[an] = go;
+            }
+        }
     }
 
     void NormalizeCounts()
@@ -98,6 +119,7 @@ public class BeatUnitEditor : EditorWindow
         }
 
         EditorGUILayout.LabelField("Beat Id", m_Unit.BeatId.ToString());
+        m_Unit.IsHit = EditorGUILayout.Toggle("Is Hit", m_Unit.IsHit);
 
         m_Scroll = EditorGUILayout.BeginScrollView(m_Scroll);
         int removeIndex = -1;
@@ -105,10 +127,12 @@ public class BeatUnitEditor : EditorWindow
         {
             int row = i;
             EditorGUILayout.BeginHorizontal();
+            Animator currentAnim = m_SceneObjects[row] != null ? m_SceneObjects[row].GetComponent<Animator>() : null;
             EditorGUI.BeginChangeCheck();
-            GameObject newGo = (GameObject)EditorGUILayout.ObjectField(m_SceneObjects[row], typeof(GameObject), true);
+            Animator newAnim = (Animator)EditorGUILayout.ObjectField(currentAnim, typeof(Animator), true);
             if (EditorGUI.EndChangeCheck())
             {
+                GameObject newGo = newAnim != null ? newAnim.gameObject : null;
                 m_SceneObjects[row] = newGo;
                 m_SelectedIndex = row;
                 m_AnimCandidates = GatherAnimNames(newGo);
@@ -117,24 +141,16 @@ public class BeatUnitEditor : EditorWindow
                     if (m_Unit.SceneObjects == null) m_Unit.SceneObjects = new List<string>();
                     while (m_Unit.SceneObjects.Count <= row) m_Unit.SceneObjects.Add(string.Empty);
                     m_Unit.SceneObjects[row] = newGo.name;
+                    for (int c = 0; c < m_AnimCandidates.Count; c++)
+                    {
+                        string an = m_AnimCandidates[c];
+                        if (!string.IsNullOrEmpty(an)) m_QuickDict[an] = newGo;
+                    }
                 }
             }
             m_Anims[row] = EditorGUILayout.TextField(m_Anims[row]);
             if (GUILayout.Button("X", GUILayout.Width(24))) removeIndex = row;
             EditorGUILayout.EndHorizontal();
-
-            if (m_SelectedIndex == row && m_AnimCandidates.Count > 0)
-            {
-                EditorGUILayout.BeginHorizontal();
-                for (int c = 0; c < m_AnimCandidates.Count; c++)
-                {
-                    if (GUILayout.Button(m_AnimCandidates[c], GUI.skin.button, GUILayout.Width(160)))
-                    {
-                        m_Anims[row] = m_AnimCandidates[c];
-                    }
-                }
-                EditorGUILayout.EndHorizontal();
-            }
         }
         if (removeIndex >= 0)
         {
@@ -159,12 +175,9 @@ public class BeatUnitEditor : EditorWindow
         }
 
         EditorGUILayout.BeginHorizontal();
-        if (GUILayout.Button("Add Slot"))
-        {
-            m_SceneObjects.Add(null);
-            m_Anims.Add(string.Empty);
-        }
-        if (GUILayout.Button("Apply"))
+        Color old = GUI.backgroundColor;
+        GUI.backgroundColor = new Color(0.25f, 0.8f, 0.35f);
+        if (GUILayout.Button("Apply and Save", GUILayout.Height(26)))
         {
             if (m_Unit.SceneObjects == null) m_Unit.SceneObjects = new List<string>();
             if (m_Unit.AnimList == null) m_Unit.AnimList = new List<string>();
@@ -184,6 +197,7 @@ public class BeatUnitEditor : EditorWindow
                 m_Owner.SaveJson();
             }
         }
+        GUI.backgroundColor = old;
         EditorGUILayout.EndHorizontal();
     }
 }
