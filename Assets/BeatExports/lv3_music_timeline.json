@@ -231,7 +231,7 @@
                 "Level3FlySuccess",
                 "Level3FlyFail"
             ],
-            "IsHit": false
+            "IsHit": true
         }
     ]
 }

@@ -203,7 +203,20 @@ public class BeatLevelWindow : EditorWindow
             if (m_Data.BeatUnits != null)
             {
                 BeatUnit unitS = m_Data.BeatUnits.Find(u => u.BeatId == i);
-                if (unitS != null && unitS.IsHit) second = "Hit";
+                if (unitS != null)
+                {
+                    if (unitS.IsHit)
+                    {
+                        second = "Hit";
+                    }
+                    else
+                    {
+                        bool emptyAnim = (unitS.AnimList == null || unitS.AnimList.Count == 0);
+                        if (emptyAnim) second = "O";
+                        else if (unitS.IsHit) second = "Hit";
+                    }
+
+                }
             }
             EditorGUI.BeginDisabledGroup(true);
             EditorGUILayout.TextField(second, GUILayout.Width(120));

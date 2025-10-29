@@ -39,18 +39,25 @@ public class BeatAnalyzerWindow : EditorWindow
             BeatTimelineJson dto = BeatUtility.BuildJson(t, m_Clip != null ? m_Clip.name : string.Empty);
             BeatLevelWindow.Open(dto, m_Clip);
         }
-        GUI.enabled = m_Timeline.HasValue;
-        if (GUILayout.Button("Export JSON", GUILayout.Height(28)))
+        GUI.enabled = m_Clip != null;
+        if (GUILayout.Button("Load JSON File", GUILayout.Height(28)))
         {
-            BeatUtility.BeatTimeline t = m_Timeline.Value;
-            string json = BeatUtility.ToJson(t, m_Clip != null ? m_Clip.name : string.Empty, true);
-            string defaultName = (m_Clip != null ? m_Clip.name : "Beat") + "_timeline.json";
-            string path = EditorUtility.SaveFilePanel("Export Beat JSON", Application.dataPath, defaultName, "json");
-            if (!string.IsNullOrEmpty(path))
+            string audioName = m_Clip != null ? m_Clip.name : string.Empty;
+            if (!string.IsNullOrEmpty(audioName))
             {
-                File.WriteAllText(path, json);
-                AssetDatabase.Refresh();
-                EditorUtility.RevealInFinder(path);
+                string folder = Path.Combine(Application.dataPath, "BeatExports");
+                string file = audioName + "_timeline.json";
+                string path = Path.Combine(folder, file);
+                if (File.Exists(path))
+                {
+                    string json = File.ReadAllText(path);
+                    BeatTimelineJson dto = JsonUtility.FromJson<BeatTimelineJson>(json);
+                    BeatLevelWindow.Open(dto, m_Clip);
+                }
+                else
+                {
+                    Debug.LogWarning("Beat json not found: " + path);
+                }
             }
         }
         GUI.enabled = true;
