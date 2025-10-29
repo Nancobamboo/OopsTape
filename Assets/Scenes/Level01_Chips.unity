@@ -213,10 +213,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 772610749}
+  - {fileID: 1101395599}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &772610748
+--- !u!1001 &1101395598
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -226,11 +226,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1731464209422608883, guid: 58ce07354eb1d7740946489ccf1edd96, type: 3}
       propertyPath: m_Name
-      value: UIMainGame
-      objectReference: {fileID: 0}
-    - target: {fileID: 4515949798519932347, guid: 58ce07354eb1d7740946489ccf1edd96, type: 3}
-      propertyPath: m_TagString
-      value: MainCamera
+      value: Level1Template
       objectReference: {fileID: 0}
     - target: {fileID: 7131017374180349965, guid: 58ce07354eb1d7740946489ccf1edd96, type: 3}
       propertyPath: m_LocalPosition.x
@@ -250,15 +246,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7131017374180349965, guid: 58ce07354eb1d7740946489ccf1edd96, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7131017374180349965, guid: 58ce07354eb1d7740946489ccf1edd96, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7131017374180349965, guid: 58ce07354eb1d7740946489ccf1edd96, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7131017374180349965, guid: 58ce07354eb1d7740946489ccf1edd96, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -272,19 +268,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8045381420745629085, guid: 58ce07354eb1d7740946489ccf1edd96, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58ce07354eb1d7740946489ccf1edd96, type: 3}
---- !u!4 &772610749 stripped
+--- !u!4 &1101395599 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7131017374180349965, guid: 58ce07354eb1d7740946489ccf1edd96, type: 3}
-  m_PrefabInstance: {fileID: 772610748}
+  m_PrefabInstance: {fileID: 1101395598}
   m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
