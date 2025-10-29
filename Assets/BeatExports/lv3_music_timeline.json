@@ -208,52 +208,30 @@
     "AudioName": "lv3_music",
     "BeatUnits": [
         {
-            "BeatId": 7,
+            "BeatId": 12,
             "SceneObjects": [
-                "Canvas"
-            ],
-            "AnimList": []
-        },
-        {
-            "BeatId": 4,
-            "SceneObjects": [
-                "Canvas"
+                "Fly"
             ],
             "AnimList": [
-                "Normal"
-            ]
+                "Level3FlyCome"
+            ],
+            "IsHit": false
         },
         {
-            "BeatId": 5,
+            "BeatId": 14,
             "SceneObjects": [
-                "Canvas"
+                "Canvas",
+                "Canvas",
+                "Fly",
+                "Fly"
             ],
             "AnimList": [
-                "Level2Success"
-            ]
-        },
-        {
-            "BeatId": 16,
-            "SceneObjects": [
-                "Canvas"
+                "Level3Success",
+                "Level3Fail",
+                "Level3FlySuccess",
+                "Level3FlyFail"
             ],
-            "AnimList": [
-                "Level2Turn"
-            ]
-        },
-        {
-            "BeatId": 20,
-            "SceneObjects": [],
-            "AnimList": []
-        },
-        {
-            "BeatId": 25,
-            "SceneObjects": [
-                "Canvas"
-            ],
-            "AnimList": [
-                "Level2Success"
-            ]
+            "IsHit": false
         }
     ]
 }
