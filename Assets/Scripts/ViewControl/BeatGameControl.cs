@@ -15,11 +15,10 @@ public class BeatGameControl : YViewControl
 	private double m_SecondsPerBeat;
 	private double m_SongOffsetSeconds;
 	private bool m_IsScheduled;
-	private float m_PerfectWindowBeats = 1f / 24f;
-	private float m_GreatWindowBeats = 1f / 12f;
 	private float m_GoodWindowBeats = 1f / 6f;
 	public static BeatGameControl Instance { get; private set; }
 	public int CurrentBeat = -1;
+	private UIBeatGuideControl m_BeatGuide;
 
 	public AudioSource m_BeatSource;
 
@@ -33,6 +32,7 @@ public class BeatGameControl : YViewControl
 		base.OnInit();
 		m_View = CreateView<BeatGameView>();
 		Instance = this;
+		if (m_View != null) m_View.Asset = this.Asset;
 	}
 
 	private void Start()
@@ -90,6 +90,15 @@ public class BeatGameControl : YViewControl
 				m_BeatSource.PlayScheduled(m_SongStartDsp);
 				m_IsScheduled = true;
 				CurrentBeat = -1;
+
+				if (m_BeatGuide == null)
+				{
+					m_BeatGuide = Asset.OpenUI<UIBeatGuideControl>();
+				}
+				if (m_BeatGuide != null)
+				{
+					m_BeatGuide.SetData(m_BeatUnitById);
+				}
 			}
 			else
 			{
@@ -108,22 +117,48 @@ public class BeatGameControl : YViewControl
 		if (newBeat != CurrentBeat)
 		{
 			CurrentBeat = newBeat;
+			if (m_BeatGuide != null) m_BeatGuide.UpdateBeatTip(CurrentBeat);
 			BeatUnit unit = GetBeatUnit(CurrentBeat);
 			if (unit != null)
 			{
-				if (unit.IsHit && Input.GetKeyDown(KeyCode.Space))
+				bool pressed = Input.GetKeyDown(KeyCode.Space);
+				bool hit = false;
+				if (unit.IsHit && pressed)
 				{
-					double deltaBeats = System.Math.Abs(playerBeat - CurrentBeat);
-					bool hit = deltaBeats <= m_GoodWindowBeats;
+					double clipTime = dsp - m_SongStartDsp - m_PausedDspDuration;
+					double beatTime = m_Timeline.GetTimeOfBeat(CurrentBeat);
+					double delta = System.Math.Abs(clipTime - beatTime);
+					double windowSeconds = m_SecondsPerBeat * m_GoodWindowBeats;
+					hit = delta <= windowSeconds;
 				}
-				for (int i = 0; i < unit.SceneObjects.Count; i++)
+
+				if (unit.IsHit)
 				{
-					string goName = unit.SceneObjects[i];
-					string anim = unit.AnimList[i];
-					Animator a = GetAnimator(goName);
-					if (a != null)
+					for (int i = 0; i < unit.SceneObjects.Count; i++)
 					{
-						a.CrossFade(anim, 0, 0);
+						bool play = hit ? (i % 2 == 0) : (i % 2 == 1);
+						if (!play) continue;
+						string goName = unit.SceneObjects[i];
+						string anim = unit.AnimList[i];
+						Animator a = GetAnimator(goName);
+						if (a != null)
+						{
+							a.CrossFade(anim, 0, 0);
+						}
+					}
+				}
+				else
+				{
+					for (int i = 0; i < unit.SceneObjects.Count; i++)
+					{
+						string goName = unit.SceneObjects[i];
+						string anim = unit.AnimList[i];
+						Animator a = GetAnimator(goName);
+						if (a != null)
+						{
+							Debug.Log("CrossFade: " + goName + " " + anim);
+							a.CrossFade(anim, 0, 0);
+						}
 					}
 				}
 			}

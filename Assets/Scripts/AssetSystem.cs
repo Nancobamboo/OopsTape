@@ -14,10 +14,6 @@ public partial class AssetSystem : MonoBehaviour
 	public Transform DynamicRoot;
 	public Dictionary<int, List<YViewControl>> m_PoolItemDict = new Dictionary<int, List<YViewControl>>();
 
-	public Font GameDefaultFont;
-	public bool IsAIGame;
-	public bool IsManualMode = true;
-	public bool IsSimpleMode = true;
 
 	public AnimationCurve TweenTextAnimCurve;
 	public void InitSystem()

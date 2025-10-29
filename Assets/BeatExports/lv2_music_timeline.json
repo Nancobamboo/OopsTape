@@ -245,8 +245,12 @@
         },
         {
             "BeatId": 2,
-            "SceneObjects": [],
-            "AnimList": [],
+            "SceneObjects": [
+                "Canvas"
+            ],
+            "AnimList": [
+                "Level2Turn"
+            ],
             "IsHit": false
         },
         {
@@ -257,8 +261,72 @@
         },
         {
             "BeatId": 22,
+            "SceneObjects": [
+                "Canvas",
+                "Canvas"
+            ],
+            "AnimList": [
+                "Level2Success",
+                "Level2Fall"
+            ],
+            "IsHit": true
+        },
+        {
+            "BeatId": 21,
+            "SceneObjects": [
+                "Canvas"
+            ],
+            "AnimList": [
+                "Level2Turn"
+            ],
+            "IsHit": false
+        },
+        {
+            "BeatId": 42,
+            "SceneObjects": [
+                "Canvas"
+            ],
+            "AnimList": [
+                "Level2Turn"
+            ],
+            "IsHit": false
+        },
+        {
+            "BeatId": 44,
             "SceneObjects": [],
             "AnimList": [],
+            "IsHit": false
+        },
+        {
+            "BeatId": 50,
+            "SceneObjects": [
+                "Canvas"
+            ],
+            "AnimList": [
+                "Level2Turn"
+            ],
+            "IsHit": false
+        },
+        {
+            "BeatId": 71,
+            "SceneObjects": [
+                "Canvas"
+            ],
+            "AnimList": [
+                "Level2Turn"
+            ],
+            "IsHit": false
+        },
+        {
+            "BeatId": 43,
+            "SceneObjects": [
+                "Canvas",
+                "Canvas"
+            ],
+            "AnimList": [
+                "Level2Success",
+                "Level2Fall"
+            ],
             "IsHit": true
         }
     ]

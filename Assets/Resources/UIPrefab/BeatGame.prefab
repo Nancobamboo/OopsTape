@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5437538506837003440}
   - component: {fileID: 864044161626499270}
   - component: {fileID: 8676277321384582894}
+  - component: {fileID: 1553022062512536634}
   m_Layer: 0
   m_Name: BeatGame
   m_TagString: Untagged
@@ -51,6 +52,11 @@ MonoBehaviour:
     Components:
     - {fileID: 7564156734216022874}
     VarNameArray: []
+  - Target: {fileID: 5437538506837003440}
+    Components:
+    - {fileID: 1553022062512536634}
+    VarNameArray:
+    - Asset
 --- !u!114 &8676277321384582894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,6 +70,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsDirty: 0
+  CurrentBeat: -1
+  m_BeatSource: {fileID: 0}
+--- !u!114 &1553022062512536634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830302523170780152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dee456345eb907745b887870763f88c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIRoot: {fileID: 0}
+  SceneRoot: {fileID: 0}
+  PoolRoot: {fileID: 0}
+  UnitRoot: {fileID: 0}
+  StaticRoot: {fileID: 0}
+  DynamicRoot: {fileID: 0}
+  GameDefaultFont: {fileID: 0}
+  IsAIGame: 0
+  IsManualMode: 1
+  IsSimpleMode: 1
+  TweenTextAnimCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6177312773380746177
 GameObject:
   m_ObjectHideFlags: 0

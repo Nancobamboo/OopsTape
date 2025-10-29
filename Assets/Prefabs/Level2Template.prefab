@@ -1186,7 +1186,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1333143290169029464}
-  - component: {fileID: 3317798639725112094}
   m_Layer: 5
   m_Name: Level2Template
   m_TagString: MainCamera
@@ -1210,29 +1209,6 @@ Transform:
   - {fileID: 7324154422673576699}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!320 &3317798639725112094
-PlayableDirector:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5593578263251667038}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: bae8db7db0ae29545ac52cee799767d3, type: 2}
-  m_InitialState: 1
-  m_WrapMode: 2
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: 0}
-    value: {fileID: 0}
-  - key: {fileID: 0}
-    value: {fileID: 0}
-  - key: {fileID: -7171900637411738892, guid: bae8db7db0ae29545ac52cee799767d3, type: 2}
-    value: {fileID: 94374175795728845}
-  m_ExposedReferences:
-    m_References: []
 --- !u!1 &6103307329772860680
 GameObject:
   m_ObjectHideFlags: 0
