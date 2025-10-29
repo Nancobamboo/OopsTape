@@ -140,7 +140,13 @@ public class BeatUnitEditor : EditorWindow
         }
 
         EditorGUILayout.LabelField("Beat Id", m_Unit.BeatId.ToString());
-        m_Unit.IsHit = EditorGUILayout.Toggle("Is Hit", m_Unit.IsHit);
+        EditorGUI.BeginChangeCheck();
+        bool newIsHit = EditorGUILayout.Toggle("Is Hit", m_Unit.IsHit);
+        if (EditorGUI.EndChangeCheck())
+        {
+            m_Unit.IsHit = newIsHit;
+            ApplyAndSave();
+        }
 
         m_Scroll = EditorGUILayout.BeginScrollView(m_Scroll);
         int removeIndex = -1;
@@ -184,6 +190,7 @@ public class BeatUnitEditor : EditorWindow
             m_SceneObjects.RemoveAt(removeIndex);
             m_Anims.RemoveAt(removeIndex);
             if (m_SelectedIndex == removeIndex) { m_SelectedIndex = -1; m_AnimCandidates.Clear(); }
+            ApplyAndSave();
         }
         EditorGUILayout.EndScrollView();
 

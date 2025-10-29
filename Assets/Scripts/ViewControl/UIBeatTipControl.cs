@@ -24,15 +24,22 @@ public class UIBeatTipControl : YViewControl
 
 	public void SetData(bool isHit, bool isTip)
 	{
-		if (m_View == null || m_View.ImgBeat == null) return;
-		if (isHit) m_View.ImgBeat.color = Color.red;
-		else if (isTip) m_View.ImgBeat.color = Color.yellow;
-		else m_View.ImgBeat.color = Color.white;
+		if (isHit)
+		{
+			m_View.ImgBeat.color = Color.red;
+		}
+		else if (isTip)
+		{
+			m_View.ImgBeat.color = Color.yellow;
+		}
+		else
+		{
+			m_View.ImgBeat.color = Color.white;
+		}
 	}
 
 	public void SetData(int beatIndex)
 	{
-		if (m_View == null || m_View.TxtTip == null) return;
 		m_View.TxtTip.text = beatIndex.ToString();
 	}
 

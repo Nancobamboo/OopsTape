@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
+using Unity.VisualScripting;
 
 public class BeatGameControl : YViewControl
 {
@@ -19,8 +20,11 @@ public class BeatGameControl : YViewControl
 	public static BeatGameControl Instance { get; private set; }
 	public int CurrentBeat = -1;
 	private UIBeatGuideControl m_BeatGuide;
+	public bool IsCurBeatPressed = false;
 
 	public AudioSource m_BeatSource;
+
+	bool IsPlayedHit = false;
 
 	public static EResType GetResType()
 	{
@@ -109,57 +113,96 @@ public class BeatGameControl : YViewControl
 
 	private void Update()
 	{
+		bool press = Input.GetKeyDown(KeyCode.Space);
+		if (press)
+		{
+			IsCurBeatPressed = true;
+		}
+
 		if (m_BeatSource == null || m_TimelineData == null || !m_IsScheduled) return;
 		if (AudioSettings.dspTime < m_SongStartDsp) return;
 		double dsp = AudioSettings.dspTime;
 		double playerBeat = (dsp - m_SongStartDsp - m_PausedDspDuration - m_SongOffsetSeconds) / m_SecondsPerBeat;
 		int newBeat = (int)System.Math.Round(playerBeat);
+		var curBeatUnit = GetBeatUnit(CurrentBeat);
 		if (newBeat != CurrentBeat)
 		{
+			IsPlayedHit = false;
+			var newBeatUnit = GetBeatUnit(newBeat);
 			CurrentBeat = newBeat;
-			if (m_BeatGuide != null) m_BeatGuide.UpdateBeatTip(CurrentBeat);
-			BeatUnit unit = GetBeatUnit(CurrentBeat);
-			if (unit != null)
+			m_BeatGuide.UpdateBeatTip(CurrentBeat);
+
+			// Pressed Too Late
+			if (curBeatUnit != null && curBeatUnit.IsHit && IsCurBeatPressed == false)
 			{
-				bool pressed = Input.GetKeyDown(KeyCode.Space);
-				bool hit = false;
-				if (unit.IsHit && pressed)
+				ExecuteUnit(curBeatUnit, false);
+			}
+
+			// Pressed Too Quick
+			if (newBeatUnit != null && newBeatUnit.IsHit && IsCurBeatPressed == true)
+			{
+				IsPlayedHit = true;
+				ExecuteUnit(newBeatUnit, false);
+			}
+			else
+			{
+				IsCurBeatPressed = false;
+			}
+
+			CurrentBeat = newBeat;
+			curBeatUnit = newBeatUnit;
+			if (curBeatUnit != null && curBeatUnit.IsHit == false && curBeatUnit.AnimList != null && curBeatUnit.AnimList.Count != 0)
+			{
+				for (int i = 0; i < newBeatUnit.SceneObjects.Count; i++)
 				{
+					string goName = newBeatUnit.SceneObjects[i];
+					string anim = newBeatUnit.AnimList[i];
+					Animator a = GetAnimator(goName);
+					if (a != null)
+					{
+						Debug.Log("CrossFade: " + goName + " " + anim);
+						a.CrossFade(anim, 0, 0);
+					}
+				}
+			}
+		}
+
+
+		if (curBeatUnit != null && curBeatUnit.IsHit)
+		{
+			if (IsCurBeatPressed)
+			{
+				if (IsPlayedHit == false)
+				{
+					IsPlayedHit = true;
 					double clipTime = dsp - m_SongStartDsp - m_PausedDspDuration;
 					double beatTime = m_Timeline.GetTimeOfBeat(CurrentBeat);
-					double delta = System.Math.Abs(clipTime - beatTime);
-					double windowSeconds = m_SecondsPerBeat * m_GoodWindowBeats;
-					hit = delta <= windowSeconds;
+					bool hit = clipTime < beatTime;
+					ExecuteUnit(curBeatUnit, hit);
 				}
+			}
+		}
 
-				if (unit.IsHit)
+	}
+
+
+	private void ExecuteUnit(BeatUnit unit, bool hit)
+	{
+		if (unit == null) return;
+		if (unit.IsHit)
+		{
+			for (int i = 0; i < unit.SceneObjects.Count; i++)
+			{
+				bool play = hit ? (i % 2 == 0) : (i % 2 == 1);
+				if (!play) continue;
+				string goName = unit.SceneObjects[i];
+				string anim = unit.AnimList[i];
+				Animator a = GetAnimator(goName);
+				if (a != null)
 				{
-					for (int i = 0; i < unit.SceneObjects.Count; i++)
-					{
-						bool play = hit ? (i % 2 == 0) : (i % 2 == 1);
-						if (!play) continue;
-						string goName = unit.SceneObjects[i];
-						string anim = unit.AnimList[i];
-						Animator a = GetAnimator(goName);
-						if (a != null)
-						{
-							a.CrossFade(anim, 0, 0);
-						}
-					}
-				}
-				else
-				{
-					for (int i = 0; i < unit.SceneObjects.Count; i++)
-					{
-						string goName = unit.SceneObjects[i];
-						string anim = unit.AnimList[i];
-						Animator a = GetAnimator(goName);
-						if (a != null)
-						{
-							Debug.Log("CrossFade: " + goName + " " + anim);
-							a.CrossFade(anim, 0, 0);
-						}
-					}
+					a.CrossFade(anim, 0, 0);
+					Debug.Log("CrossFade: " + goName + " " + anim);
+
 				}
 			}
 		}
