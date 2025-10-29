@@ -105,6 +105,27 @@ public class BeatUnitEditor : EditorWindow
         return list;
     }
 
+    void ApplyAndSave()
+    {
+        if (m_Unit.SceneObjects == null) m_Unit.SceneObjects = new List<string>();
+        if (m_Unit.AnimList == null) m_Unit.AnimList = new List<string>();
+        m_Unit.SceneObjects.Clear();
+        m_Unit.AnimList.Clear();
+        for (int i = 0; i < m_SceneObjects.Count; i++)
+        {
+            GameObject go = m_SceneObjects[i];
+            string anim = i < m_Anims.Count ? (m_Anims[i] ?? string.Empty) : string.Empty;
+            if (go != null) m_Unit.SceneObjects.Add(go.name); else m_Unit.SceneObjects.Add(string.Empty);
+            m_Unit.AnimList.Add(anim);
+            if (go != null && !string.IsNullOrEmpty(anim)) m_QuickDict[anim] = go;
+        }
+        if (m_Owner != null)
+        {
+            m_Owner.UpdateUnit(m_Unit);
+            m_Owner.SaveJson();
+        }
+    }
+
     void OnDestroy()
     {
         if (s_Instance == this) s_Instance = null;
@@ -148,7 +169,13 @@ public class BeatUnitEditor : EditorWindow
                     }
                 }
             }
-            m_Anims[row] = EditorGUILayout.TextField(m_Anims[row]);
+            EditorGUI.BeginChangeCheck();
+            string newAnimTxt = EditorGUILayout.TextField(m_Anims[row]);
+            if (EditorGUI.EndChangeCheck())
+            {
+                m_Anims[row] = newAnimTxt;
+                ApplyAndSave();
+            }
             if (GUILayout.Button("X", GUILayout.Width(24))) removeIndex = row;
             EditorGUILayout.EndHorizontal();
         }
@@ -161,7 +188,8 @@ public class BeatUnitEditor : EditorWindow
         EditorGUILayout.EndScrollView();
 
         EditorGUILayout.LabelField("Quick Templates");
-        foreach (KeyValuePair<string, GameObject> kv in m_QuickDict)
+        var quickList = new List<KeyValuePair<string, GameObject>>(m_QuickDict);
+        foreach (KeyValuePair<string, GameObject> kv in quickList)
         {
             string disp = (kv.Value != null ? kv.Value.name : "null") + " _ " + kv.Key;
             if (GUILayout.Button(disp, GUI.skin.button))
@@ -171,6 +199,7 @@ public class BeatUnitEditor : EditorWindow
                 m_Anims.Add(kv.Key);
                 m_SelectedIndex = newIndex;
                 m_AnimCandidates = GatherAnimNames(kv.Value);
+                ApplyAndSave();
             }
         }
 
@@ -179,23 +208,7 @@ public class BeatUnitEditor : EditorWindow
         GUI.backgroundColor = new Color(0.25f, 0.8f, 0.35f);
         if (GUILayout.Button("Apply and Save", GUILayout.Height(26)))
         {
-            if (m_Unit.SceneObjects == null) m_Unit.SceneObjects = new List<string>();
-            if (m_Unit.AnimList == null) m_Unit.AnimList = new List<string>();
-            m_Unit.SceneObjects.Clear();
-            m_Unit.AnimList.Clear();
-            for (int i = 0; i < m_SceneObjects.Count; i++)
-            {
-                GameObject go = m_SceneObjects[i];
-                string anim = i < m_Anims.Count ? (m_Anims[i] ?? string.Empty) : string.Empty;
-                if (go != null) m_Unit.SceneObjects.Add(go.name); else m_Unit.SceneObjects.Add(string.Empty);
-                m_Unit.AnimList.Add(anim);
-                if (go != null && !string.IsNullOrEmpty(anim)) m_QuickDict[anim] = go;
-            }
-            if (m_Owner != null)
-            {
-                m_Owner.UpdateUnit(m_Unit);
-                m_Owner.SaveJson();
-            }
+            ApplyAndSave();
         }
         GUI.backgroundColor = old;
         EditorGUILayout.EndHorizontal();

@@ -221,8 +221,19 @@ public class BeatLevelWindow : EditorWindow
             EditorGUI.BeginDisabledGroup(true);
             EditorGUILayout.TextField(second, GUILayout.Width(120));
             EditorGUI.EndDisabledGroup();
-            Rect last = GUILayoutUtility.GetLastRect();
-            if (GUI.Button(last, GUIContent.none, GUIStyle.none))
+            Rect secondRect = GUILayoutUtility.GetLastRect();
+
+            float bt = (m_Data.BeatTimes != null && i < m_Data.BeatTimes.Count) ? m_Data.BeatTimes[i] : 0f;
+            EditorGUI.BeginChangeCheck();
+            float newBt = EditorGUILayout.FloatField(bt, GUILayout.Width(100));
+            if (EditorGUI.EndChangeCheck())
+            {
+                if (m_Data.BeatTimes == null) m_Data.BeatTimes = new List<float>();
+                while (m_Data.BeatTimes.Count <= i) m_Data.BeatTimes.Add(0f);
+                m_Data.BeatTimes[i] = newBt;
+                SaveJson();
+            }
+            if (GUI.Button(secondRect, GUIContent.none, GUIStyle.none))
             {
                 if (m_Data.BeatUnits == null) m_Data.BeatUnits = new List<BeatUnit>();
                 BeatUnit unit = m_Data.BeatUnits.Find(u => u.BeatId == i);
