@@ -22,7 +22,7 @@ public class SceneUtil : EditorWindow
         Level01_Chips,
         Level02_Koala,
         Level03_Fly,
-
+        Level04_Sing,
         Upper
     }
 
@@ -78,8 +78,8 @@ public class SceneUtil : EditorWindow
         BatchSpriteSize = int.Parse(EditorGUI.TextField(GetGUIRect(120, 60, 18, false), BatchSpriteSize.ToString()));
 
         //_heightLeft += 20;
-       // EditorGUI.LabelField(GetGUIRect(20, 200, 18, false), "AtlasContainName: ");
-       // AtlasContainName = EditorGUI.TextField(GetGUIRect(120, 60, 18, false), AtlasContainName);
+        // EditorGUI.LabelField(GetGUIRect(20, 200, 18, false), "AtlasContainName: ");
+        // AtlasContainName = EditorGUI.TextField(GetGUIRect(120, 60, 18, false), AtlasContainName);
 
         _heightLeft += 20;
         EditorGUI.LabelField(GetGUIRect(20, 200, 18, false), "CurSelectArtId: ");
@@ -100,7 +100,7 @@ public class SceneUtil : EditorWindow
                     m_CurArtKey = key;
 
                     m_ConfigArtDict.TryGetValue(key, out artId);
-                    if(artId != m_CurSelectArtId)
+                    if (artId != m_CurSelectArtId)
                     {
                         m_CurSelectArtId = artId;
                     }
@@ -125,7 +125,7 @@ public class SceneUtil : EditorWindow
         //    Debug.Log("Load Art Config Succeed");
         //}
 
-      _heightLeft = 0;
+        _heightLeft = 0;
         EditorGUI.LabelField(GetGUIRect(20, 200, 18, false), "PerColumnNum: ");
         PerColumnNum = int.Parse(EditorGUI.TextField(GetGUIRect(120, 60, 18, false), PerColumnNum.ToString()));
 
@@ -144,7 +144,7 @@ public class SceneUtil : EditorWindow
             {
                 int offset = j / PerColumnNum;
                 _heightLeft = startHeight + j % PerColumnNum * 30 - 30;
-                if (GUI.Button(GetGUIRect( 190 + offset * 120, 120, 30), prefabName.Substring(2)))
+                if (GUI.Button(GetGUIRect(190 + offset * 120, 120, 30), prefabName.Substring(2)))
                 {
                     if (!EditorApplication.isPlaying)
                     {
@@ -188,12 +188,12 @@ public class SceneUtil : EditorWindow
                 var dir = allDirs[i];
                 var childDirs = dir.GetDirectories();
 
-                foreach(var childDir in childDirs)
+                foreach (var childDir in childDirs)
                 {
                     var index = childDir.FullName.LastIndexOf(resStr);
                     var path = childDir.FullName.Substring(index + resStr.Length + 1);
                     var files = Resources.LoadAll(path);
-                    foreach(var file in files)
+                    foreach (var file in files)
                     {
                         SetTexturePropty(AssetDatabase.GetAssetPath(file));
                     }
@@ -220,7 +220,7 @@ public class SceneUtil : EditorWindow
         AssetDatabase.ImportAsset(selectionPath);
     }
 
-    static void SetTexturePropty(string selectionPath) 
+    static void SetTexturePropty(string selectionPath)
     {
         TextureImporter textureIm = AssetImporter.GetAtPath(selectionPath) as TextureImporter;
         textureIm.spritePixelsPerUnit = 72;
@@ -264,7 +264,7 @@ public class SceneUtil : EditorWindow
         {
             string selectPath = AssetDatabase.GetAssetPath(Selection.objects[0]);
             var dir = selectPath.Split('/');
-         
+
 
             SpriteAtlas altas = GetAtlas();
             altas.Add(Selection.objects);
@@ -291,7 +291,7 @@ public class SceneUtil : EditorWindow
         {
             var dir = allDirs[i];
 
-            var atlasName = atlasRoot + "/"  + dir.Name + ".spriteatlas";
+            var atlasName = atlasRoot + "/" + dir.Name + ".spriteatlas";
 
             //if(!atlasName.Contains(AtlasContainName))
             //{
