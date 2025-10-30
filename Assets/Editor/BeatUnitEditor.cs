@@ -10,9 +10,9 @@ public class BeatUnitEditor : EditorWindow
     BeatLevelWindow m_Owner;
     List<GameObject> m_SceneObjects = new List<GameObject>();
     List<string> m_Anims = new List<string>();
-    List<string> m_AnimCandidates = new List<string>();
     int m_SelectedIndex = -1;
     Dictionary<string, GameObject> m_QuickDict = new Dictionary<string, GameObject>();
+    Dictionary<string, string> m_QuickAnimDict = new Dictionary<string, string>();
     Vector2 m_Scroll;
 
     public static void Open(BeatLevelWindow owner, BeatUnit unit)
@@ -31,8 +31,8 @@ public class BeatUnitEditor : EditorWindow
     {
         m_SceneObjects.Clear();
         m_Anims.Clear();
-        m_AnimCandidates.Clear();
         m_QuickDict.Clear();
+        m_QuickAnimDict.Clear();
         m_SelectedIndex = -1;
         if (m_Unit != null)
         {
@@ -56,6 +56,7 @@ public class BeatUnitEditor : EditorWindow
     void BuildQuickTemplatesFromScene()
     {
         m_QuickDict.Clear();
+        m_QuickAnimDict.Clear();
         Animator[] animators = Resources.FindObjectsOfTypeAll<Animator>();
         for (int i = 0; i < animators.Length; i++)
         {
@@ -63,12 +64,8 @@ public class BeatUnitEditor : EditorWindow
             if (a == null) continue;
             GameObject go = a.gameObject;
             if (!go.scene.IsValid()) continue;
-            List<string> names = GatherAnimNames(go);
-            for (int n = 0; n < names.Count; n++)
-            {
-                string an = names[n];
-                if (!string.IsNullOrEmpty(an)) m_QuickDict[an] = go;
-            }
+            // Populate dictionaries inside GatherAnimNames
+            GatherAnimNames(go);
         }
     }
 
@@ -99,7 +96,14 @@ public class BeatUnitEditor : EditorWindow
             ChildAnimatorState[] states = sm.states;
             for (int s = 0; s < states.Length; s++)
             {
-                if (states[s].state != null) list.Add(states[s].state.name);
+                if (states[s].state != null)
+                {
+                    string stateName = states[s].state.name;
+                    string key = go.name + "_" + stateName;
+                    list.Add(key);
+                    m_QuickDict[key] = go;
+                    m_QuickAnimDict[key] = stateName;
+                }
             }
         }
         return list;
@@ -107,17 +111,29 @@ public class BeatUnitEditor : EditorWindow
 
     void ApplyAndSave()
     {
-        if (m_Unit.SceneObjects == null) m_Unit.SceneObjects = new List<string>();
-        if (m_Unit.AnimList == null) m_Unit.AnimList = new List<string>();
+        if (m_Unit.SceneObjects == null)
+        {
+            m_Unit.SceneObjects = new List<string>();
+        }
+        if (m_Unit.AnimList == null)
+        {
+            m_Unit.AnimList = new List<string>();
+        }
         m_Unit.SceneObjects.Clear();
         m_Unit.AnimList.Clear();
         for (int i = 0; i < m_SceneObjects.Count; i++)
         {
             GameObject go = m_SceneObjects[i];
+            if (go != null)
+            {
+                m_Unit.SceneObjects.Add(go.name);
+            }
+            else
+            {
+                m_Unit.SceneObjects.Add(string.Empty);
+            }
             string anim = i < m_Anims.Count ? (m_Anims[i] ?? string.Empty) : string.Empty;
-            if (go != null) m_Unit.SceneObjects.Add(go.name); else m_Unit.SceneObjects.Add(string.Empty);
             m_Unit.AnimList.Add(anim);
-            if (go != null && !string.IsNullOrEmpty(anim)) m_QuickDict[anim] = go;
         }
         if (m_Owner != null)
         {
@@ -162,17 +178,12 @@ public class BeatUnitEditor : EditorWindow
                 GameObject newGo = newAnim != null ? newAnim.gameObject : null;
                 m_SceneObjects[row] = newGo;
                 m_SelectedIndex = row;
-                m_AnimCandidates = GatherAnimNames(newGo);
                 if (newGo != null)
                 {
                     if (m_Unit.SceneObjects == null) m_Unit.SceneObjects = new List<string>();
                     while (m_Unit.SceneObjects.Count <= row) m_Unit.SceneObjects.Add(string.Empty);
                     m_Unit.SceneObjects[row] = newGo.name;
-                    for (int c = 0; c < m_AnimCandidates.Count; c++)
-                    {
-                        string an = m_AnimCandidates[c];
-                        if (!string.IsNullOrEmpty(an)) m_QuickDict[an] = newGo;
-                    }
+                    // removed m_AnimCandidates usage
                 }
             }
             EditorGUI.BeginChangeCheck();
@@ -189,7 +200,7 @@ public class BeatUnitEditor : EditorWindow
         {
             m_SceneObjects.RemoveAt(removeIndex);
             m_Anims.RemoveAt(removeIndex);
-            if (m_SelectedIndex == removeIndex) { m_SelectedIndex = -1; m_AnimCandidates.Clear(); }
+            if (m_SelectedIndex == removeIndex) { m_SelectedIndex = -1; }
             ApplyAndSave();
         }
         EditorGUILayout.EndScrollView();
@@ -198,14 +209,16 @@ public class BeatUnitEditor : EditorWindow
         var quickList = new List<KeyValuePair<string, GameObject>>(m_QuickDict);
         foreach (KeyValuePair<string, GameObject> kv in quickList)
         {
-            string disp = (kv.Value != null ? kv.Value.name : "null") + " _ " + kv.Key;
+            string disp = kv.Key;
             if (GUILayout.Button(disp, GUI.skin.button))
             {
                 int newIndex = m_SceneObjects.Count;
                 m_SceneObjects.Add(kv.Value);
-                m_Anims.Add(kv.Key);
+                string animName;
+                if (!m_QuickAnimDict.TryGetValue(kv.Key, out animName)) animName = kv.Key;
+                m_Anims.Add(animName);
                 m_SelectedIndex = newIndex;
-                m_AnimCandidates = GatherAnimNames(kv.Value);
+                // removed m_AnimCandidates usage
                 ApplyAndSave();
             }
         }

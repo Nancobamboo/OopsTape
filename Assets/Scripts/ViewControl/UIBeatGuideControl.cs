@@ -44,7 +44,7 @@ public class UIBeatGuideControl : YViewControl
 			if (m_Units != null) m_Units.TryGetValue(idx, out u);
 			bool isHit = false;
 			bool isTip = false;
-			if (u != null)
+			if (u != null && u.AnimList != null && u.AnimList.Count != 0)
 			{
 				isHit = u.IsHit;
 				isTip = true;

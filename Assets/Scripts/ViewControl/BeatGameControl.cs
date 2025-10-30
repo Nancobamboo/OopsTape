@@ -217,6 +217,7 @@ public class BeatGameControl : YViewControl
 			{
 				IsPlayedHit = true;
 				YActionSystem.Instance.DispatchAction(EActionId.FailKeepAnim);
+				PlayHitCheckBeat(curBeatUnit, false);
 			}
 			// pressed: no-op
 		}
@@ -225,10 +226,14 @@ public class BeatGameControl : YViewControl
 		{
 			if (!IsKeepPressSpace && IsPlayedHit == false)
 			{
+				IsPlayedHit = true;
 				YActionSystem.Instance.DispatchAction(EActionId.FailKeepAnim);
+				PlayHitCheckBeat(curBeatUnit, false);
 			}
 			else if (IsPlayedHit == false)
 			{
+				IsPlayedHit = true;
+				PlayHitCheckBeat(curBeatUnit, true);
 				YActionSystem.Instance.DispatchAction(EActionId.SucceedKeepAnim);
 			}
 		}
@@ -236,7 +241,11 @@ public class BeatGameControl : YViewControl
 
 		m_BeatGuide.UpdateBeatTip(CurrentBeat);
 		var newBeatUnit = GetBeatUnit(CurrentBeat);
-		PlayNormalBeat(newBeatUnit);
+		if (newBeatUnit != null && newBeatUnit.IsHit == false && newBeatUnit.AnimList != null && newBeatUnit.AnimList.Count != 0)
+		{
+			PlayNormalBeat(newBeatUnit);
+		}
+
 
 	}
 
