@@ -405,6 +405,7 @@ public class BeatLevelWindow : EditorWindow
                     if (m_Data.BeatUnits == null) m_Data.BeatUnits = new List<BeatUnit>();
                     BeatUnit unit = new BeatUnit { BeatId = i, SceneObjects = new List<string>(), AnimList = new List<string>(), IsHit = false };
                     m_Data.BeatUnits.Add(unit);
+                    SaveJson();
                     BeatUnitEditor.Open(this, unit);
                 }
             }
@@ -415,6 +416,7 @@ public class BeatLevelWindow : EditorWindow
                     m_RowSecond[i] = "O";
                     if (m_Data.BeatUnits != null)
                         m_Data.BeatUnits.RemoveAll(u => u.BeatId == i);
+                    SaveJson();
                 }
             }
             GUILayout.FlexibleSpace();

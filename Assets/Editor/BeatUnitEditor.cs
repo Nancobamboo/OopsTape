@@ -14,6 +14,18 @@ public class BeatUnitEditor : EditorWindow
     Dictionary<string, GameObject> m_QuickDict = new Dictionary<string, GameObject>();
     Dictionary<string, string> m_QuickAnimDict = new Dictionary<string, string>();
     Vector2 m_Scroll;
+    List<BeatUnit> m_UnitTemplates = new List<BeatUnit>();
+    Color[] m_TemplateColors = new Color[]
+    {
+        new Color(0.8f, 0.4f, 0.4f),  // 红色
+        new Color(0.4f, 0.8f, 0.4f),  // 绿色
+        new Color(0.4f, 0.4f, 0.8f),  // 蓝色
+        new Color(0.8f, 0.8f, 0.4f),  // 黄色
+        new Color(0.8f, 0.4f, 0.8f),  // 紫色
+        new Color(0.4f, 0.8f, 0.8f),  // 青色
+        new Color(0.8f, 0.6f, 0.4f),  // 橙色
+        new Color(0.6f, 0.4f, 0.8f),  // 紫罗兰色
+    };
 
     public static void Open(BeatLevelWindow owner, BeatUnit unit)
     {
@@ -111,6 +123,17 @@ public class BeatUnitEditor : EditorWindow
 
     void ApplyAndSave()
     {
+        SyncUIToUnit();
+        if (m_Owner != null)
+        {
+            m_Owner.UpdateUnit(m_Unit);
+            m_Owner.SaveJson();
+        }
+    }
+
+    void SyncUIToUnit()
+    {
+        if (m_Unit == null) return;
         if (m_Unit.SceneObjects == null)
         {
             m_Unit.SceneObjects = new List<string>();
@@ -135,11 +158,80 @@ public class BeatUnitEditor : EditorWindow
             string anim = i < m_Anims.Count ? (m_Anims[i] ?? string.Empty) : string.Empty;
             m_Unit.AnimList.Add(anim);
         }
-        if (m_Owner != null)
+    }
+
+    void QuickSaveUnitTemplate()
+    {
+        if (m_Unit == null) return;
+        // 先同步UI数据到m_Unit
+        SyncUIToUnit();
+        // 深拷贝当前的BeatUnit作为模板
+        BeatUnit template = new BeatUnit
         {
-            m_Owner.UpdateUnit(m_Unit);
-            m_Owner.SaveJson();
+            BeatId = m_Unit.BeatId,
+            IsHit = m_Unit.IsHit,
+            SceneObjects = new List<string>(),
+            AnimList = new List<string>()
+        };
+        if (m_Unit.SceneObjects != null)
+        {
+            foreach (string obj in m_Unit.SceneObjects)
+            {
+                template.SceneObjects.Add(obj);
+            }
         }
+        if (m_Unit.AnimList != null)
+        {
+            foreach (string anim in m_Unit.AnimList)
+            {
+                template.AnimList.Add(anim);
+            }
+        }
+        m_UnitTemplates.Add(template);
+        Repaint(); // 刷新界面以显示新添加的模板
+    }
+
+    void ApplyTemplateToCurrentUnit(BeatUnit template)
+    {
+        if (m_Unit == null || template == null) return;
+        // 应用模板的除BeatId外的所有值到当前unit
+        m_Unit.IsHit = template.IsHit;
+
+        // 复制SceneObjects和AnimList
+        if (template.SceneObjects != null)
+        {
+            if (m_Unit.SceneObjects == null) m_Unit.SceneObjects = new List<string>();
+            m_Unit.SceneObjects.Clear();
+            foreach (string obj in template.SceneObjects)
+            {
+                m_Unit.SceneObjects.Add(obj);
+            }
+        }
+        else
+        {
+            if (m_Unit.SceneObjects == null) m_Unit.SceneObjects = new List<string>();
+            m_Unit.SceneObjects.Clear();
+        }
+
+        if (template.AnimList != null)
+        {
+            if (m_Unit.AnimList == null) m_Unit.AnimList = new List<string>();
+            m_Unit.AnimList.Clear();
+            foreach (string anim in template.AnimList)
+            {
+                m_Unit.AnimList.Add(anim);
+            }
+        }
+        else
+        {
+            if (m_Unit.AnimList == null) m_Unit.AnimList = new List<string>();
+            m_Unit.AnimList.Clear();
+        }
+
+        // 重新加载UI显示
+        ReloadFromUnit();
+        // 保存更改
+        ApplyAndSave();
     }
 
     void OnDestroy()
@@ -223,15 +315,38 @@ public class BeatUnitEditor : EditorWindow
             }
         }
 
+        EditorGUILayout.Space(10); // 添加间距，让按钮往下一点
+
         EditorGUILayout.BeginHorizontal();
         Color old = GUI.backgroundColor;
         GUI.backgroundColor = new Color(0.25f, 0.8f, 0.35f);
-        if (GUILayout.Button("Apply and Save", GUILayout.Height(26)))
+        if (GUILayout.Button("QuickSaveUnitTemplate", GUILayout.Height(26)))
         {
-            ApplyAndSave();
+            QuickSaveUnitTemplate();
         }
         GUI.backgroundColor = old;
         EditorGUILayout.EndHorizontal();
+
+        // 显示模板列表
+        if (m_UnitTemplates.Count > 0)
+        {
+            EditorGUILayout.Space(10);
+            EditorGUILayout.LabelField("Unit Templates", EditorStyles.boldLabel);
+            EditorGUILayout.BeginHorizontal();
+            for (int i = 0; i < m_UnitTemplates.Count; i++)
+            {
+                BeatUnit template = m_UnitTemplates[i];
+                Color templateColor = m_TemplateColors[i % m_TemplateColors.Length];
+                Color oldBg = GUI.backgroundColor;
+                GUI.backgroundColor = templateColor;
+                if (GUILayout.Button(template.BeatId.ToString(), GUILayout.Width(60)))
+                {
+                    ApplyTemplateToCurrentUnit(template);
+                }
+                GUI.backgroundColor = oldBg;
+            }
+            EditorGUILayout.EndHorizontal();
+        }
     }
 }
 
