@@ -2,7 +2,6 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
-using Unity.VisualScripting;
 
 public class BeatGameControl : YViewControl
 {
@@ -128,6 +127,12 @@ public class BeatGameControl : YViewControl
 			var newBeatUnit = GetBeatUnit(newBeat);
 			CurrentBeat = newBeat;
 			m_BeatGuide.UpdateBeatTip(CurrentBeat);
+
+			// 播放音效
+			if (newBeatUnit != null && !string.IsNullOrEmpty(newBeatUnit.SoundName))
+			{
+				PlaySound(newBeatUnit.SoundName);
+			}
 
 			// Pressed Too Late
 			if (curBeatUnit != null && curBeatUnit.IsHit && IsCurBeatPressed == false)
@@ -303,5 +308,20 @@ public class BeatGameControl : YViewControl
 		BeatUnit u;
 		if (m_BeatUnitById.TryGetValue(beatId, out u)) return u;
 		return null;
+	}
+
+	private void PlaySound(string soundName)
+	{
+		if (m_BeatSource == null || string.IsNullOrEmpty(soundName)) return;
+
+		AudioClip clip = Resources.Load<AudioClip>("Sound/" + soundName);
+		if (clip != null)
+		{
+			m_BeatSource.PlayOneShot(clip);
+		}
+		else
+		{
+			Debug.LogWarning("Sound clip not found: Sound/" + soundName);
+		}
 	}
 }

@@ -15,6 +15,7 @@ public class BeatUnitEditor : EditorWindow
     Dictionary<string, string> m_QuickAnimDict = new Dictionary<string, string>();
     Vector2 m_Scroll;
     List<BeatUnit> m_UnitTemplates = new List<BeatUnit>();
+    AudioClip m_AudioClip;
     Color[] m_TemplateColors = new Color[]
     {
         new Color(0.8f, 0.4f, 0.4f),  // 红色
@@ -46,6 +47,7 @@ public class BeatUnitEditor : EditorWindow
         m_QuickDict.Clear();
         m_QuickAnimDict.Clear();
         m_SelectedIndex = -1;
+        m_AudioClip = null;
         if (m_Unit != null)
         {
             if (m_Unit.SceneObjects != null)
@@ -59,6 +61,21 @@ public class BeatUnitEditor : EditorWindow
             if (m_Unit.AnimList != null)
             {
                 for (int i = 0; i < m_Unit.AnimList.Count; i++) m_Anims.Add(m_Unit.AnimList[i]);
+            }
+            // 加载 AudioClip
+            if (!string.IsNullOrEmpty(m_Unit.SoundName))
+            {
+                string[] guids = AssetDatabase.FindAssets(m_Unit.SoundName + " t:AudioClip");
+                for (int i = 0; i < guids.Length; i++)
+                {
+                    string path = AssetDatabase.GUIDToAssetPath(guids[i]);
+                    AudioClip clip = AssetDatabase.LoadAssetAtPath<AudioClip>(path);
+                    if (clip != null && clip.name == m_Unit.SoundName)
+                    {
+                        m_AudioClip = clip;
+                        break;
+                    }
+                }
             }
         }
         BuildQuickTemplatesFromScene();
@@ -158,6 +175,15 @@ public class BeatUnitEditor : EditorWindow
             string anim = i < m_Anims.Count ? (m_Anims[i] ?? string.Empty) : string.Empty;
             m_Unit.AnimList.Add(anim);
         }
+        // 同步 AudioClip 到 SoundName
+        if (m_AudioClip != null)
+        {
+            m_Unit.SoundName = m_AudioClip.name;
+        }
+        else
+        {
+            m_Unit.SoundName = string.Empty;
+        }
     }
 
     void QuickSaveUnitTemplate()
@@ -170,6 +196,7 @@ public class BeatUnitEditor : EditorWindow
         {
             BeatId = m_Unit.BeatId,
             IsHit = m_Unit.IsHit,
+            SoundName = m_Unit.SoundName,
             SceneObjects = new List<string>(),
             AnimList = new List<string>()
         };
@@ -196,6 +223,7 @@ public class BeatUnitEditor : EditorWindow
         if (m_Unit == null || template == null) return;
         // 应用模板的除BeatId外的所有值到当前unit
         m_Unit.IsHit = template.IsHit;
+        m_Unit.SoundName = template.SoundName;
 
         // 复制SceneObjects和AnimList
         if (template.SceneObjects != null)
@@ -248,6 +276,7 @@ public class BeatUnitEditor : EditorWindow
         }
 
         EditorGUILayout.LabelField("Beat Id", m_Unit.BeatId.ToString());
+        EditorGUILayout.BeginHorizontal();
         EditorGUI.BeginChangeCheck();
         bool newIsHit = EditorGUILayout.Toggle("Is Hit", m_Unit.IsHit);
         if (EditorGUI.EndChangeCheck())
@@ -255,6 +284,22 @@ public class BeatUnitEditor : EditorWindow
             m_Unit.IsHit = newIsHit;
             ApplyAndSave();
         }
+        EditorGUI.BeginChangeCheck();
+        AudioClip newAudioClip = (AudioClip)EditorGUILayout.ObjectField("Sound", m_AudioClip, typeof(AudioClip), false);
+        if (EditorGUI.EndChangeCheck())
+        {
+            m_AudioClip = newAudioClip;
+            if (m_AudioClip != null)
+            {
+                m_Unit.SoundName = m_AudioClip.name;
+            }
+            else
+            {
+                m_Unit.SoundName = string.Empty;
+            }
+            ApplyAndSave();
+        }
+        EditorGUILayout.EndHorizontal();
 
         m_Scroll = EditorGUILayout.BeginScrollView(m_Scroll);
         int removeIndex = -1;

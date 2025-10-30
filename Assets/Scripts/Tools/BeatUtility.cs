@@ -252,6 +252,7 @@ public class BeatUnit
     public List<string> SceneObjects;
     public List<string> AnimList;
     public bool IsHit;
+    public string SoundName;
 }
 
 
