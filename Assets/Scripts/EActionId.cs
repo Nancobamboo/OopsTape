@@ -57,5 +57,9 @@ public enum EActionId
 	// Custom: desktop icons
 	RefreshDesktopIcons,
 
+	// Beat keep-press game
+	SucceedKeepAnim,
+	FailKeepAnim,
+
 	Upper
 }

@@ -26,6 +26,8 @@ public class BeatGameControl : YViewControl
 
 	bool IsPlayedHit = false;
 
+	public bool IsKeepPressGame = false;
+
 	public static EResType GetResType()
 	{
 		return EResType.None;
@@ -111,7 +113,7 @@ public class BeatGameControl : YViewControl
 		}
 	}
 
-	private void Update()
+	void PressGameCheck(int newBeat)
 	{
 		bool press = Input.GetKeyDown(KeyCode.Space);
 		if (press)
@@ -119,11 +121,6 @@ public class BeatGameControl : YViewControl
 			IsCurBeatPressed = true;
 		}
 
-		if (m_BeatSource == null || m_TimelineData == null || !m_IsScheduled) return;
-		if (AudioSettings.dspTime < m_SongStartDsp) return;
-		double dsp = AudioSettings.dspTime;
-		double playerBeat = (dsp - m_SongStartDsp - m_PausedDspDuration - m_SongOffsetSeconds) / m_SecondsPerBeat;
-		int newBeat = (int)System.Math.Round(playerBeat);
 		var curBeatUnit = GetBeatUnit(CurrentBeat);
 		if (newBeat != CurrentBeat)
 		{
@@ -135,14 +132,14 @@ public class BeatGameControl : YViewControl
 			// Pressed Too Late
 			if (curBeatUnit != null && curBeatUnit.IsHit && IsCurBeatPressed == false)
 			{
-				ExecuteUnit(curBeatUnit, false);
+				PlayHitCheckBeat(curBeatUnit, false);
 			}
 
 			// Pressed Too Quick
 			if (newBeatUnit != null && newBeatUnit.IsHit && IsCurBeatPressed == true)
 			{
 				IsPlayedHit = true;
-				ExecuteUnit(newBeatUnit, false);
+				PlayHitCheckBeat(newBeatUnit, false);
 			}
 			else
 			{
@@ -151,22 +148,8 @@ public class BeatGameControl : YViewControl
 
 			CurrentBeat = newBeat;
 			curBeatUnit = newBeatUnit;
-			if (curBeatUnit != null && curBeatUnit.IsHit == false && curBeatUnit.AnimList != null && curBeatUnit.AnimList.Count != 0)
-			{
-				for (int i = 0; i < newBeatUnit.SceneObjects.Count; i++)
-				{
-					string goName = newBeatUnit.SceneObjects[i];
-					string anim = newBeatUnit.AnimList[i];
-					Animator a = GetAnimator(goName);
-					if (a != null)
-					{
-						Debug.Log("CrossFade: " + goName + " " + anim);
-						a.CrossFade(anim, 0, 0);
-					}
-				}
-			}
+			PlayNormalBeat(curBeatUnit);
 		}
-
 
 		if (curBeatUnit != null && curBeatUnit.IsHit)
 		{
@@ -175,18 +158,108 @@ public class BeatGameControl : YViewControl
 				if (IsPlayedHit == false)
 				{
 					IsPlayedHit = true;
-					double clipTime = dsp - m_SongStartDsp - m_PausedDspDuration;
+					double clipTime = AudioSettings.dspTime - m_SongStartDsp - m_PausedDspDuration;
 					double beatTime = m_Timeline.GetTimeOfBeat(CurrentBeat);
 					bool hit = clipTime < beatTime;
-					ExecuteUnit(curBeatUnit, hit);
+					PlayHitCheckBeat(curBeatUnit, hit);
 				}
 			}
 		}
+	}
+
+	private void Update()
+	{
+		if (m_BeatSource == null || m_TimelineData == null || !m_IsScheduled)
+		{
+			return;
+		}
+		if (AudioSettings.dspTime < m_SongStartDsp)
+		{
+			return;
+		}
+		double dsp = AudioSettings.dspTime;
+		double playerBeat = (dsp - m_SongStartDsp - m_PausedDspDuration - m_SongOffsetSeconds) / m_SecondsPerBeat;
+		int newBeat = (int)System.Math.Round(playerBeat);
+
+		if (IsKeepPressGame == false)
+		{
+			PressGameCheck(newBeat);
+		}
+		else
+		{
+			KeepPressGameCheck(newBeat);
+		}
+	}
+
+	public bool IsKeepPressSpace;
+
+	void KeepPressGameCheck(int newBeat)
+	{
+		if (newBeat != CurrentBeat)
+		{
+			CurrentBeat = newBeat;
+			IsKeepPressSpace = true;
+			IsPlayedHit = false;
+		}
+
+		bool isSpacePressed = Input.GetKey(KeyCode.Space);
+
+		if (isSpacePressed == true)
+		{
+			IsKeepPressSpace = false;
+		}
+
+		var curBeatUnit = GetBeatUnit(CurrentBeat);
+		// Case 1: no beat data or no anims on the current beat
+		if (curBeatUnit == null || curBeatUnit.AnimList == null || curBeatUnit.AnimList.Count == 0)
+		{
+			if (!IsKeepPressSpace && IsPlayedHit == false)
+			{
+				IsPlayedHit = true;
+				YActionSystem.Instance.DispatchAction(EActionId.FailKeepAnim);
+			}
+			// pressed: no-op
+		}
+		// Case 2: hit beat logic
+		else if (curBeatUnit.IsHit)
+		{
+			if (!IsKeepPressSpace && IsPlayedHit == false)
+			{
+				YActionSystem.Instance.DispatchAction(EActionId.FailKeepAnim);
+			}
+			else if (IsPlayedHit == false)
+			{
+				YActionSystem.Instance.DispatchAction(EActionId.SucceedKeepAnim);
+			}
+		}
+
+
+		m_BeatGuide.UpdateBeatTip(CurrentBeat);
+		var newBeatUnit = GetBeatUnit(CurrentBeat);
+		PlayNormalBeat(newBeatUnit);
 
 	}
 
 
-	private void ExecuteUnit(BeatUnit unit, bool hit)
+	void PlayNormalBeat(BeatUnit newBeatUnit)
+	{
+		if (newBeatUnit != null && newBeatUnit.IsHit == false && newBeatUnit.AnimList != null && newBeatUnit.AnimList.Count != 0)
+		{
+			for (int i = 0; i < newBeatUnit.SceneObjects.Count; i++)
+			{
+				string goName = newBeatUnit.SceneObjects[i];
+				string anim = newBeatUnit.AnimList[i];
+				Animator a = GetAnimator(goName);
+				if (a != null)
+				{
+					Debug.Log("CrossFade: " + goName + " " + anim);
+					a.CrossFade(anim, 0, 0);
+				}
+			}
+		}
+	}
+
+	private void PlayHitCheckBeat(BeatUnit unit, bool hit)
 	{
 		if (unit == null) return;
 		if (unit.IsHit)
@@ -222,6 +295,4 @@ public class BeatGameControl : YViewControl
 		if (m_BeatUnitById.TryGetValue(beatId, out u)) return u;
 		return null;
 	}
-
-
 }
