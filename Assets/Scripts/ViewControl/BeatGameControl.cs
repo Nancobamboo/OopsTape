@@ -24,6 +24,8 @@ public class BeatGameControl : YViewControl
 	public AudioSource m_BeatSource;
 	public List<string> SpaceAnimNames = new List<string>();
 	public List<Animator> PlayerAnimators = new List<Animator>();
+	public List<AudioClip> SpaceAudioClips = new List<AudioClip>();
+
 
 	bool IsPlayedHit = false;
 
@@ -158,17 +160,7 @@ public class BeatGameControl : YViewControl
 
 		if (press && (curBeatUnit == null || curBeatUnit.IsEmpty()))
 		{
-			if (PlayerAnimators != null && SpaceAnimNames != null)
-			{
-				int count = Mathf.Min(PlayerAnimators.Count, SpaceAnimNames.Count);
-				for (int i = 0; i < count; i++)
-				{
-					if (PlayerAnimators[i] != null && !string.IsNullOrEmpty(SpaceAnimNames[i]))
-					{
-						PlayerAnimators[i].CrossFade(SpaceAnimNames[i], 0, 0);
-					}
-				}
-			}
+			PlaySpaceAnimations();
 		}
 
 		if (curBeatUnit != null && curBeatUnit.IsHit)
@@ -215,6 +207,7 @@ public class BeatGameControl : YViewControl
 
 	void KeepPressGameCheck(int newBeat)
 	{
+
 		if (newBeat != CurrentBeat)
 		{
 			CurrentBeat = newBeat;
@@ -224,33 +217,26 @@ public class BeatGameControl : YViewControl
 
 		bool isSpacePressed = Input.GetKey(KeyCode.Space);
 
-		if (isSpacePressed == true)
+		if (isSpacePressed == false)
 		{
 			IsKeepPressSpace = false;
 		}
 
 		var curBeatUnit = GetBeatUnit(CurrentBeat);
-		// Case 1: no beat data or no anims on the current beat
-		if (curBeatUnit == null || curBeatUnit.AnimList == null || curBeatUnit.AnimList.Count == 0)
+		if (curBeatUnit != null && !string.IsNullOrEmpty(curBeatUnit.SoundName))
 		{
-			if (!IsKeepPressSpace && IsPlayedHit == false)
-			{
-				IsPlayedHit = true;
-				YActionSystem.Instance.DispatchAction(EActionId.FailKeepAnim);
-				PlayHitCheckBeat(curBeatUnit, false);
-			}
-			// pressed: no-op
+			PlaySound(curBeatUnit.SoundName);
 		}
 		// Case 2: hit beat logic
-		else if (curBeatUnit.IsHit)
+		if (curBeatUnit != null && curBeatUnit.IsHit)
 		{
-			if (!IsKeepPressSpace && IsPlayedHit == false)
-			{
-				IsPlayedHit = true;
-				YActionSystem.Instance.DispatchAction(EActionId.FailKeepAnim);
-				PlayHitCheckBeat(curBeatUnit, false);
-			}
-			else if (IsPlayedHit == false)
+			// if (IsKeepPressSpace && IsPlayedHit == false)
+			// {
+			// 	IsPlayedHit = true;
+			// 	YActionSystem.Instance.DispatchAction(EActionId.FailKeepAnim);
+			// 	PlayHitCheckBeat(curBeatUnit, false);
+			// }
+			if (IsKeepPressSpace == false && IsPlayedHit == false)
 			{
 				IsPlayedHit = true;
 				PlayHitCheckBeat(curBeatUnit, true);
@@ -261,12 +247,41 @@ public class BeatGameControl : YViewControl
 
 		m_BeatGuide.UpdateBeatTip(CurrentBeat);
 		var newBeatUnit = GetBeatUnit(CurrentBeat);
-		if (newBeatUnit != null && newBeatUnit.IsHit == false && newBeatUnit.AnimList != null && newBeatUnit.AnimList.Count != 0)
+
+
+
+		if (newBeatUnit != null && newBeatUnit.IsHit == false && newBeatUnit.IsEmpty() == false)
 		{
-			PlayNormalBeat(newBeatUnit);
+			if (IsPlayedHit == false)
+			{
+				IsPlayedHit = true;
+				if (IsKeepPressSpace)
+				{
+					PlayNormalBeat(newBeatUnit);
+				}
+				else
+				{
+					PlaySpaceAnimations();
+				}
+			}
 		}
 
+		if (newBeatUnit == null || newBeatUnit.IsEmpty() == true)
+		{
+			if (IsPlayedHit == false)
+			{
+				IsPlayedHit = true;
+				if (IsKeepPressSpace == false)
+				{
+					PlaySpaceAnimations();
+				}
+				else
+				{
 
+				}
+			}
+
+		}
 	}
 
 
@@ -329,14 +344,42 @@ public class BeatGameControl : YViewControl
 	{
 		if (m_BeatSource == null || string.IsNullOrEmpty(soundName)) return;
 
-		AudioClip clip = Resources.Load<AudioClip>("Sound/" + soundName);
+		AudioClip clip = Resources.Load<AudioClip>("Audio/" + soundName);
 		if (clip != null)
 		{
 			m_BeatSource.PlayOneShot(clip);
+			Debug.Log("PlaySound: " + soundName);
 		}
 		else
 		{
 			Debug.LogWarning("Sound clip not found: Sound/" + soundName);
+		}
+	}
+
+	private void PlaySpaceAnimations()
+	{
+		if (PlayerAnimators != null && SpaceAnimNames != null)
+		{
+			int count = Mathf.Min(PlayerAnimators.Count, SpaceAnimNames.Count);
+			for (int i = 0; i < count; i++)
+			{
+				if (PlayerAnimators[i] != null && !string.IsNullOrEmpty(SpaceAnimNames[i]))
+				{
+					PlayerAnimators[i].CrossFade(SpaceAnimNames[i], 0, 0);
+				}
+			}
+		}
+
+		// 播放音效
+		if (m_BeatSource != null && SpaceAudioClips != null)
+		{
+			for (int i = 0; i < SpaceAudioClips.Count; i++)
+			{
+				if (SpaceAudioClips[i] != null)
+				{
+					m_BeatSource.PlayOneShot(SpaceAudioClips[i]);
+				}
+			}
 		}
 	}
 }
