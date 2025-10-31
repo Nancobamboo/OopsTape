@@ -55,6 +55,12 @@ public class BeatGameControl : YViewControl
 
 	public void SetData()
 	{
+		UICounterControl counter = Asset.OpenUI<UICounterControl>();
+		counter.SetData(StartGame);
+	}
+
+	private void StartGame()
+	{
 		Animator[] animators = GameObject.FindObjectsByType<Animator>(FindObjectsSortMode.None);
 		for (int i = 0; i < animators.Length; i++)
 		{
@@ -234,10 +240,10 @@ public class BeatGameControl : YViewControl
 
 			if (oldBeat != null && oldBeat.IsHit && IsKeepPressSpace)
 			{
-				PlayHitCheckBeat(oldBeat,false);
+				PlayHitCheckBeat(oldBeat, false);
 			}
 
-            CurrentBeat = newBeat;
+			CurrentBeat = newBeat;
 			IsKeepPressSpace = true;
 			IsPlayedHit = false;
 		}
