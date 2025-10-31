@@ -138,10 +138,28 @@
         {
             "BeatId": 8,
             "SceneObjects": [
-                "BirdU"
+                "BirdU",
+                "BirdU",
+                "Bird4",
+                "Bird4",
+                "Bird3",
+                "Bird3",
+                "Bird2",
+                "Bird2",
+                "Bird1",
+                "Bird1"
             ],
             "AnimList": [
-                "Level4BirdSing"
+                "Level4BirdSing",
+                "Level4BirdSing",
+                "Level4BirdSing",
+                "Level4BirdFail",
+                "Level4BirdSing",
+                "Level4BirdFail",
+                "Level4BirdSing",
+                "Level4BirdFail",
+                "Level4BirdSing",
+                "Level4BirdFail"
             ],
             "IsHit": true,
             "SoundName": ""
@@ -200,10 +218,28 @@
         {
             "BeatId": 18,
             "SceneObjects": [
-                "BirdU"
+                "BirdU",
+                "BirdU",
+                "Bird4",
+                "Bird4",
+                "Bird3",
+                "Bird3",
+                "Bird2",
+                "Bird2",
+                "Bird1",
+                "Bird1"
             ],
             "AnimList": [
-                "Level4BirdSing"
+                "Level4BirdSing",
+                "Level4BirdSing",
+                "Level4BirdSing",
+                "Level4BirdFail",
+                "Level4BirdSing",
+                "Level4BirdFail",
+                "Level4BirdSing",
+                "Level4BirdFail",
+                "Level4BirdSing",
+                "Level4BirdFail"
             ],
             "IsHit": true,
             "SoundName": ""
