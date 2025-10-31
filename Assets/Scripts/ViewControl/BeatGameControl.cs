@@ -27,6 +27,8 @@ public class BeatGameControl : YViewControl
 	public List<Animator> PlayerAnimators = new List<Animator>();
 	public List<AudioClip> SpaceAudioClips = new List<AudioClip>();
 
+	public bool IsDedugMode = true;
+
 
 	bool IsPlayedHit = false;
 
@@ -53,9 +55,6 @@ public class BeatGameControl : YViewControl
 
 	public void SetData()
 	{
-		m_SoundEffectControl = Asset.CreateLevelObject<SoundEffectControl>(Vector3.zero);
-		m_SoundEffectControl.SetData();
-
 		Animator[] animators = GameObject.FindObjectsByType<Animator>(FindObjectsSortMode.None);
 		for (int i = 0; i < animators.Length; i++)
 		{
@@ -73,6 +72,9 @@ public class BeatGameControl : YViewControl
 				Debug.LogWarning("Multiple AudioSource found. Using the first one: " + m_BeatSource.gameObject.name);
 			}
 		}
+
+		m_SoundEffectControl = Asset.CreateLevelObject<SoundEffectControl>(Vector3.zero);
+		m_SoundEffectControl.SetData();
 
 		if (m_BeatSource != null && m_BeatSource.clip != null)
 		{
@@ -104,7 +106,7 @@ public class BeatGameControl : YViewControl
 				m_IsScheduled = true;
 				CurrentBeat = -1;
 
-				if (m_BeatGuide == null)
+				if (IsDedugMode && m_BeatGuide == null)
 				{
 					m_BeatGuide = Asset.OpenUI<UIBeatGuideControl>();
 				}
@@ -134,11 +136,22 @@ public class BeatGameControl : YViewControl
 			IsPlayedHit = false;
 			var newBeatUnit = GetBeatUnit(newBeat);
 			CurrentBeat = newBeat;
-			m_BeatGuide.UpdateBeatTip(CurrentBeat);
+			m_BeatGuide?.UpdateBeatTip(CurrentBeat);
 
 			if (newBeatUnit != null && !string.IsNullOrEmpty(newBeatUnit.SoundName))
 			{
-				PlaySound(newBeatUnit.SoundName);
+				if (newBeatUnit.IsHit == false)
+				{
+					PlaySound(newBeatUnit.SoundName);
+				}
+				else
+				{
+					if (press)
+					{
+
+
+					}
+				}
 			}
 
 			// Pressed Too Late
@@ -177,7 +190,8 @@ public class BeatGameControl : YViewControl
 					double clipTime = AudioSettings.dspTime - m_SongStartDsp - m_PausedDspDuration;
 					double beatTime = m_Timeline.GetTimeOfBeat(CurrentBeat);
 					bool hit = clipTime < beatTime;
-					PlayHitCheckBeat(curBeatUnit, hit);
+					PlayHitCheckBeat(curBeatUnit, true);
+					PlaySound(curBeatUnit.SoundName);
 				}
 			}
 		}
@@ -215,7 +229,15 @@ public class BeatGameControl : YViewControl
 		if (newBeat != CurrentBeat)
 		{
 			IsSoundStart = true;
-			CurrentBeat = newBeat;
+
+			var oldBeat = GetBeatUnit(CurrentBeat);
+
+			if (oldBeat != null && oldBeat.IsHit && IsKeepPressSpace)
+			{
+				PlayHitCheckBeat(oldBeat,false);
+			}
+
+            CurrentBeat = newBeat;
 			IsKeepPressSpace = true;
 			IsPlayedHit = false;
 		}
@@ -228,7 +250,7 @@ public class BeatGameControl : YViewControl
 		}
 
 		var curBeatUnit = GetBeatUnit(CurrentBeat);
-		if (IsSoundStart && curBeatUnit != null && !string.IsNullOrEmpty(curBeatUnit.SoundName))
+		if (IsSoundStart && curBeatUnit != null && !string.IsNullOrEmpty(curBeatUnit.SoundName) && curBeatUnit.IsHit == false)
 		{
 			PlaySound(curBeatUnit.SoundName);
 		}
@@ -245,12 +267,13 @@ public class BeatGameControl : YViewControl
 			{
 				IsPlayedHit = true;
 				PlayHitCheckBeat(curBeatUnit, true);
+				PlaySound(curBeatUnit.SoundName);
 				YActionSystem.Instance.DispatchAction(EActionId.SucceedKeepAnim);
 			}
 		}
 
 
-		m_BeatGuide.UpdateBeatTip(CurrentBeat);
+		m_BeatGuide?.UpdateBeatTip(CurrentBeat);
 		var newBeatUnit = GetBeatUnit(CurrentBeat);
 
 
