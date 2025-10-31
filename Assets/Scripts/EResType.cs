@@ -8,6 +8,7 @@ public enum EResType
     UIBeatGuide,
     UIUpper,
     LevelEnemy,
+    SoundEffect,
     Upper,
 
 }

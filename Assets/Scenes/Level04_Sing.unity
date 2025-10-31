@@ -317,8 +317,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1658331280}
   - component: {fileID: 1658331283}
-  - component: {fileID: 1658331282}
-  - component: {fileID: 1658331281}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -342,30 +340,6 @@ Transform:
   - {fileID: 434294329}
   m_Father: {fileID: 816761242}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1658331281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1658331279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2d901cbccc283244b996d2d22c68b20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1658331282
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1658331279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c53202caa13a8c94488e33f65b429d3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &1658331283
 AudioSource:
   m_ObjectHideFlags: 0
@@ -548,7 +522,7 @@ PrefabInstance:
       objectReference: {fileID: 434294331}
     - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
       propertyPath: IsKeepPressGame
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
       propertyPath: SpaceAnimNames.Array.size
@@ -557,6 +531,10 @@ PrefabInstance:
     - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
       propertyPath: PlayerAnimators.Array.size
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
+      propertyPath: SpaceAudioClips.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
       propertyPath: SpaceAnimNames.Array.data[0]
@@ -598,6 +576,10 @@ PrefabInstance:
       propertyPath: PlayerAnimators.Array.data[4]
       value: 
       objectReference: {fileID: 654105791}
+    - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
+      propertyPath: SpaceAudioClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: c6d249ef8010041459478e01f09c33b2, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

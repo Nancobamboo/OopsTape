@@ -20,6 +20,7 @@ public class BeatGameControl : YViewControl
 	public int CurrentBeat = -1;
 	private UIBeatGuideControl m_BeatGuide;
 	public bool IsCurBeatPressed = false;
+	private SoundEffectControl m_SoundEffectControl;
 
 	public AudioSource m_BeatSource;
 	public List<string> SpaceAnimNames = new List<string>();
@@ -41,7 +42,7 @@ public class BeatGameControl : YViewControl
 		base.OnInit();
 		m_View = CreateView<BeatGameView>();
 		Instance = this;
-		if (m_View != null) m_View.Asset = this.Asset;
+		if (m_View != null) Asset = m_View.Asset;
 	}
 
 	private void Start()
@@ -52,6 +53,9 @@ public class BeatGameControl : YViewControl
 
 	public void SetData()
 	{
+		m_SoundEffectControl = Asset.CreateLevelObject<SoundEffectControl>(Vector3.zero);
+		m_SoundEffectControl.SetData();
+
 		Animator[] animators = GameObject.FindObjectsByType<Animator>(FindObjectsSortMode.None);
 		for (int i = 0; i < animators.Length; i++)
 		{
@@ -207,9 +211,10 @@ public class BeatGameControl : YViewControl
 
 	void KeepPressGameCheck(int newBeat)
 	{
-
+		bool IsSoundStart = false;
 		if (newBeat != CurrentBeat)
 		{
+			IsSoundStart = true;
 			CurrentBeat = newBeat;
 			IsKeepPressSpace = true;
 			IsPlayedHit = false;
@@ -223,7 +228,7 @@ public class BeatGameControl : YViewControl
 		}
 
 		var curBeatUnit = GetBeatUnit(CurrentBeat);
-		if (curBeatUnit != null && !string.IsNullOrEmpty(curBeatUnit.SoundName))
+		if (IsSoundStart && curBeatUnit != null && !string.IsNullOrEmpty(curBeatUnit.SoundName))
 		{
 			PlaySound(curBeatUnit.SoundName);
 		}
@@ -342,18 +347,8 @@ public class BeatGameControl : YViewControl
 
 	private void PlaySound(string soundName)
 	{
-		if (m_BeatSource == null || string.IsNullOrEmpty(soundName)) return;
-
-		AudioClip clip = Resources.Load<AudioClip>("Audio/" + soundName);
-		if (clip != null)
-		{
-			m_BeatSource.PlayOneShot(clip);
-			Debug.Log("PlaySound: " + soundName);
-		}
-		else
-		{
-			Debug.LogWarning("Sound clip not found: Sound/" + soundName);
-		}
+		m_SoundEffectControl.PlayOneShot(soundName);
+		Debug.Log("PlaySound: " + soundName);
 	}
 
 	private void PlaySpaceAnimations()
@@ -370,14 +365,13 @@ public class BeatGameControl : YViewControl
 			}
 		}
 
-		// 播放音效
-		if (m_BeatSource != null && SpaceAudioClips != null)
+		if (m_SoundEffectControl != null && SpaceAudioClips != null)
 		{
 			for (int i = 0; i < SpaceAudioClips.Count; i++)
 			{
 				if (SpaceAudioClips[i] != null)
 				{
-					m_BeatSource.PlayOneShot(SpaceAudioClips[i]);
+					m_SoundEffectControl.PlayOneShot(SpaceAudioClips[i]);
 				}
 			}
 		}

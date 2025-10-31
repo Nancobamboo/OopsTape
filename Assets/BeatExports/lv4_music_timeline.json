@@ -180,7 +180,7 @@
                 "Level4BirdSing"
             ],
             "IsHit": false,
-            "SoundName": ""
+            "SoundName": "lv4_sound_do"
         },
         {
             "BeatId": 15,
@@ -191,7 +191,7 @@
                 "Level4BirdSing"
             ],
             "IsHit": false,
-            "SoundName": ""
+            "SoundName": "lv4_sound_re"
         },
         {
             "BeatId": 16,
@@ -202,7 +202,7 @@
                 "Level4BirdSing"
             ],
             "IsHit": false,
-            "SoundName": ""
+            "SoundName": "lv4_sound_mi"
         },
         {
             "BeatId": 17,
@@ -213,7 +213,7 @@
                 "Level4BirdSing"
             ],
             "IsHit": false,
-            "SoundName": ""
+            "SoundName": "lv4_sound_fa"
         },
         {
             "BeatId": 18,
@@ -242,7 +242,116 @@
                 "Level4BirdFail"
             ],
             "IsHit": true,
+            "SoundName": "lv4_sound_so"
+        },
+        {
+            "BeatId": 23,
+            "SceneObjects": [
+                "Bird1"
+            ],
+            "AnimList": [
+                "Level4BirdSing"
+            ],
+            "IsHit": false,
+            "SoundName": "lv4_sound_do"
+        },
+        {
+            "BeatId": 25,
+            "SceneObjects": [
+                "Bird3"
+            ],
+            "AnimList": [
+                "Level4BirdSing"
+            ],
+            "IsHit": false,
+            "SoundName": "lv4_sound_mi"
+        },
+        {
+            "BeatId": 27,
+            "SceneObjects": [
+                "BirdU",
+                "BirdU",
+                "Bird4",
+                "Bird4",
+                "Bird3",
+                "Bird3",
+                "Bird2",
+                "Bird2",
+                "Bird1",
+                "Bird1"
+            ],
+            "AnimList": [
+                "Level4BirdSing",
+                "Level4BirdSing",
+                "Level4BirdSing",
+                "Level4BirdFail",
+                "Level4BirdSing",
+                "Level4BirdFail",
+                "Level4BirdSing",
+                "Level4BirdFail",
+                "Level4BirdSing",
+                "Level4BirdFail"
+            ],
+            "IsHit": true,
+            "SoundName": "lv4_sound_so"
+        },
+        {
+            "BeatId": 32,
+            "SceneObjects": [],
+            "AnimList": [],
+            "IsHit": false,
             "SoundName": ""
+        },
+        {
+            "BeatId": 33,
+            "SceneObjects": [
+                "Bird1"
+            ],
+            "AnimList": [
+                "Level4BirdSing"
+            ],
+            "IsHit": false,
+            "SoundName": "lv4_sound_do"
+        },
+        {
+            "BeatId": 35,
+            "SceneObjects": [
+                "Bird3"
+            ],
+            "AnimList": [
+                "Level4BirdSing"
+            ],
+            "IsHit": false,
+            "SoundName": "lv4_sound_mi"
+        },
+        {
+            "BeatId": 37,
+            "SceneObjects": [
+                "BirdU",
+                "BirdU",
+                "Bird4",
+                "Bird4",
+                "Bird3",
+                "Bird3",
+                "Bird2",
+                "Bird2",
+                "Bird1",
+                "Bird1"
+            ],
+            "AnimList": [
+                "Level4BirdSing",
+                "Level4BirdSing",
+                "Level4BirdSing",
+                "Level4BirdFail",
+                "Level4BirdSing",
+                "Level4BirdFail",
+                "Level4BirdSing",
+                "Level4BirdFail",
+                "Level4BirdSing",
+                "Level4BirdFail"
+            ],
+            "IsHit": true,
+            "SoundName": "lv4_sound_so"
         }
     ]
 }
