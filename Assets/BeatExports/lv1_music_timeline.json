@@ -149,7 +149,8 @@
                 "Level1Turn",
                 "Level1SeaGullTurn"
             ],
-            "IsHit": false
+            "IsHit": false,
+            "SoundName": ""
         },
         {
             "BeatId": 4,
@@ -165,7 +166,38 @@
                 "Level1SeaGullSuccess",
                 "Level1SeaGullFail"
             ],
-            "IsHit": true
+            "IsHit": true,
+            "SoundName": ""
+        },
+        {
+            "BeatId": 10,
+            "SceneObjects": [
+                "Canvas",
+                "SeaGull"
+            ],
+            "AnimList": [
+                "Level1Turn",
+                "Level1SeaGullTurn"
+            ],
+            "IsHit": false,
+            "SoundName": ""
+        },
+        {
+            "BeatId": 11,
+            "SceneObjects": [
+                "Canvas",
+                "Canvas",
+                "SeaGull",
+                "SeaGull"
+            ],
+            "AnimList": [
+                "Level1Success",
+                "Level1Fail",
+                "Level1SeaGullSuccess",
+                "Level1SeaGullFail"
+            ],
+            "IsHit": true,
+            "SoundName": ""
         }
     ]
 }

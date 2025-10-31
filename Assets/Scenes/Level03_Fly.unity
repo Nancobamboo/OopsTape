@@ -198,6 +198,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
+      propertyPath: SpaceAnimName
+      value: Level3Success
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
+      propertyPath: PlayerAnimator
+      value: 
+      objectReference: {fileID: 106576670703373614}
+    - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
+      propertyPath: SpaceAnimNames.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
+      propertyPath: PlayerAnimators.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
+      propertyPath: SpaceAnimNames.Array.data[0]
+      value: Level3Fail
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
+      propertyPath: PlayerAnimators.Array.data[0]
+      value: 
+      objectReference: {fileID: 106576670703373614}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -520,6 +544,11 @@ PrefabInstance:
 --- !u!224 &106576670703373613 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5997188511151461057, guid: 5c1cb8ece528a374194bd792ee10618d, type: 3}
+  m_PrefabInstance: {fileID: 106576670703373612}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &106576670703373614 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6564465897776134326, guid: 5c1cb8ece528a374194bd792ee10618d, type: 3}
   m_PrefabInstance: {fileID: 106576670703373612}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &8611897451397419903 stripped

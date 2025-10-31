@@ -253,6 +253,11 @@ public class BeatUnit
     public List<string> AnimList;
     public bool IsHit;
     public string SoundName;
+    
+    public bool IsEmpty()
+    {
+        return AnimList == null || AnimList.Count == 0;
+    }
 }
 
 

@@ -313,6 +313,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1333143290169029464, guid: 236015662c848db4d9646b9c7a73ab06, type: 3}
   m_PrefabInstance: {fileID: 1095033166}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1095033168 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 94374175795728845, guid: 236015662c848db4d9646b9c7a73ab06, type: 3}
+  m_PrefabInstance: {fileID: 1095033166}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1185429623 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7564156734216022874, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
@@ -394,6 +399,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
+      propertyPath: SpaceAnimName
+      value: Level2Fall
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
+      propertyPath: PlayerAnimator
+      value: 
+      objectReference: {fileID: 1095033168}
+    - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
+      propertyPath: SpaceAnimNames.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
+      propertyPath: PlayerAnimators.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
+      propertyPath: SpaceAnimNames.Array.data[0]
+      value: Level2Fall
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
+      propertyPath: PlayerAnimators.Array.data[0]
+      value: 
+      objectReference: {fileID: 1095033168}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

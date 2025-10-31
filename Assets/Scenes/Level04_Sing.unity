@@ -189,6 +189,21 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7027909851665567608, guid: e0e0714f0410dde4ab4f830fad23b011, type: 3}
   m_PrefabInstance: {fileID: 434294328}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &434294331 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4334798753729147144, guid: e0e0714f0410dde4ab4f830fad23b011, type: 3}
+  m_PrefabInstance: {fileID: 434294328}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &654105791 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6571732388089401230, guid: e0e0714f0410dde4ab4f830fad23b011, type: 3}
+  m_PrefabInstance: {fileID: 434294328}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &664931445 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4659447202177173151, guid: e0e0714f0410dde4ab4f830fad23b011, type: 3}
+  m_PrefabInstance: {fileID: 434294328}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &816761239
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,6 +297,16 @@ Transform:
   - {fileID: 1658331280}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &933528143 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6088185331443324852, guid: e0e0714f0410dde4ab4f830fad23b011, type: 3}
+  m_PrefabInstance: {fileID: 434294328}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1083046385 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4006995076749412984, guid: e0e0714f0410dde4ab4f830fad23b011, type: 3}
+  m_PrefabInstance: {fileID: 434294328}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1658331279
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,9 +539,65 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
+      propertyPath: SpaceAnimName
+      value: Level4BirdSing
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
+      propertyPath: PlayerAnimator
+      value: 
+      objectReference: {fileID: 434294331}
+    - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
       propertyPath: IsKeepPressGame
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
+      propertyPath: SpaceAnimNames.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
+      propertyPath: PlayerAnimators.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
+      propertyPath: SpaceAnimNames.Array.data[0]
+      value: Level4BirdSing
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
+      propertyPath: SpaceAnimNames.Array.data[1]
+      value: Level4BirdFail
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
+      propertyPath: SpaceAnimNames.Array.data[2]
+      value: Level4BirdFail
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
+      propertyPath: SpaceAnimNames.Array.data[3]
+      value: Level4BirdFail
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
+      propertyPath: SpaceAnimNames.Array.data[4]
+      value: Level4BirdFail
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
+      propertyPath: PlayerAnimators.Array.data[0]
+      value: 
+      objectReference: {fileID: 434294331}
+    - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
+      propertyPath: PlayerAnimators.Array.data[1]
+      value: 
+      objectReference: {fileID: 933528143}
+    - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
+      propertyPath: PlayerAnimators.Array.data[2]
+      value: 
+      objectReference: {fileID: 664931445}
+    - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
+      propertyPath: PlayerAnimators.Array.data[3]
+      value: 
+      objectReference: {fileID: 1083046385}
+    - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
+      propertyPath: PlayerAnimators.Array.data[4]
+      value: 
+      objectReference: {fileID: 654105791}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

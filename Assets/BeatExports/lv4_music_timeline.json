@@ -99,7 +99,8 @@
             "AnimList": [
                 "Level4BirdSing"
             ],
-            "IsHit": false
+            "IsHit": false,
+            "SoundName": ""
         },
         {
             "BeatId": 5,
@@ -109,7 +110,8 @@
             "AnimList": [
                 "Level4BirdSing"
             ],
-            "IsHit": false
+            "IsHit": false,
+            "SoundName": ""
         },
         {
             "BeatId": 7,
@@ -119,7 +121,8 @@
             "AnimList": [
                 "Level4BirdSing"
             ],
-            "IsHit": false
+            "IsHit": false,
+            "SoundName": ""
         },
         {
             "BeatId": 6,
@@ -129,7 +132,8 @@
             "AnimList": [
                 "Level4BirdSing"
             ],
-            "IsHit": false
+            "IsHit": false,
+            "SoundName": ""
         },
         {
             "BeatId": 8,
@@ -139,13 +143,70 @@
             "AnimList": [
                 "Level4BirdSing"
             ],
-            "IsHit": true
+            "IsHit": true,
+            "SoundName": ""
         },
         {
             "BeatId": 3,
             "SceneObjects": [],
             "AnimList": [],
-            "IsHit": false
+            "IsHit": false,
+            "SoundName": ""
+        },
+        {
+            "BeatId": 14,
+            "SceneObjects": [
+                "Bird1"
+            ],
+            "AnimList": [
+                "Level4BirdSing"
+            ],
+            "IsHit": false,
+            "SoundName": ""
+        },
+        {
+            "BeatId": 15,
+            "SceneObjects": [
+                "Bird2"
+            ],
+            "AnimList": [
+                "Level4BirdSing"
+            ],
+            "IsHit": false,
+            "SoundName": ""
+        },
+        {
+            "BeatId": 16,
+            "SceneObjects": [
+                "Bird3"
+            ],
+            "AnimList": [
+                "Level4BirdSing"
+            ],
+            "IsHit": false,
+            "SoundName": ""
+        },
+        {
+            "BeatId": 17,
+            "SceneObjects": [
+                "Bird4"
+            ],
+            "AnimList": [
+                "Level4BirdSing"
+            ],
+            "IsHit": false,
+            "SoundName": ""
+        },
+        {
+            "BeatId": 18,
+            "SceneObjects": [
+                "BirdU"
+            ],
+            "AnimList": [
+                "Level4BirdSing"
+            ],
+            "IsHit": true,
+            "SoundName": ""
         }
     ]
 }

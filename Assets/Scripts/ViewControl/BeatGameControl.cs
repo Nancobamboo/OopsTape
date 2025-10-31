@@ -22,6 +22,8 @@ public class BeatGameControl : YViewControl
 	public bool IsCurBeatPressed = false;
 
 	public AudioSource m_BeatSource;
+	public List<string> SpaceAnimNames = new List<string>();
+	public List<Animator> PlayerAnimators = new List<Animator>();
 
 	bool IsPlayedHit = false;
 
@@ -128,7 +130,6 @@ public class BeatGameControl : YViewControl
 			CurrentBeat = newBeat;
 			m_BeatGuide.UpdateBeatTip(CurrentBeat);
 
-			// 播放音效
 			if (newBeatUnit != null && !string.IsNullOrEmpty(newBeatUnit.SoundName))
 			{
 				PlaySound(newBeatUnit.SoundName);
@@ -151,9 +152,23 @@ public class BeatGameControl : YViewControl
 				IsCurBeatPressed = false;
 			}
 
-			CurrentBeat = newBeat;
 			curBeatUnit = newBeatUnit;
 			PlayNormalBeat(curBeatUnit);
+		}
+
+		if (press && (curBeatUnit == null || curBeatUnit.IsEmpty()))
+		{
+			if (PlayerAnimators != null && SpaceAnimNames != null)
+			{
+				int count = Mathf.Min(PlayerAnimators.Count, SpaceAnimNames.Count);
+				for (int i = 0; i < count; i++)
+				{
+					if (PlayerAnimators[i] != null && !string.IsNullOrEmpty(SpaceAnimNames[i]))
+					{
+						PlayerAnimators[i].CrossFade(SpaceAnimNames[i], 0, 0);
+					}
+				}
+			}
 		}
 
 		if (curBeatUnit != null && curBeatUnit.IsHit)

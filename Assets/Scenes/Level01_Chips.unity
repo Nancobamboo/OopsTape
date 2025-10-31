@@ -286,6 +286,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 329333063722974787, guid: 58ce07354eb1d7740946489ccf1edd96, type: 3}
   m_PrefabInstance: {fileID: 1101395598}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1101395601 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6068948883820925326, guid: 58ce07354eb1d7740946489ccf1edd96, type: 3}
+  m_PrefabInstance: {fileID: 1101395598}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1343135041
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -362,6 +367,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
+      propertyPath: SpaceAnimName
+      value: Level1SeaGullFail
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
+      propertyPath: PlayerAnimator
+      value: 
+      objectReference: {fileID: 1101395601}
+    - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
+      propertyPath: SpaceAnimNames.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
+      propertyPath: PlayerAnimators.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
+      propertyPath: SpaceAnimNames.Array.data[0]
+      value: Level1SeaGullFail
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
+      propertyPath: PlayerAnimators.Array.data[0]
+      value: 
+      objectReference: {fileID: 1101395601}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
