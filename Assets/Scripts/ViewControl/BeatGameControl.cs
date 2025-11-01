@@ -55,6 +55,21 @@ public class BeatGameControl : YViewControl
 
 	public void SetData()
 	{
+		AudioSource[] sources = GameObject.FindObjectsByType<AudioSource>(FindObjectsSortMode.None);
+		if (sources != null && sources.Length > 0)
+		{
+			m_BeatSource = sources[0];
+			if (sources.Length > 1)
+			{
+				Debug.LogWarning("Multiple AudioSource found. Using the first one: " + m_BeatSource.gameObject.name);
+			}
+		}
+
+		if (m_BeatSource != null && m_BeatSource.isPlaying)
+		{
+			m_BeatSource.Stop();
+		}
+
 		UICounterControl counter = Asset.OpenUI<UICounterControl>();
 		counter.SetData(StartGame);
 	}
@@ -67,16 +82,6 @@ public class BeatGameControl : YViewControl
 			Animator a = animators[i];
 			GameObject go = a.gameObject;
 			m_AnimatorDict[go.name] = a;
-		}
-
-		AudioSource[] sources = GameObject.FindObjectsByType<AudioSource>(FindObjectsSortMode.None);
-		if (sources != null && sources.Length > 0)
-		{
-			m_BeatSource = sources[0];
-			if (sources.Length > 1)
-			{
-				Debug.LogWarning("Multiple AudioSource found. Using the first one: " + m_BeatSource.gameObject.name);
-			}
 		}
 
 		m_SoundEffectControl = Asset.CreateLevelObject<SoundEffectControl>(Vector3.zero);

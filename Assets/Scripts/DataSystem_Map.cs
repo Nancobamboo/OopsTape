@@ -7,6 +7,7 @@ public partial class DataSystem
 		if (dataLevel != null && dataLevel.LevelUnlocked.Count == 0)
 		{
 			dataLevel.AddLevelUnlockedData((int)UISelectControl.ESceneName.Level04_Sing);
+			SaveDataLevel();
 		}
 	}
 }

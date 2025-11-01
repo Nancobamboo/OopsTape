@@ -9,12 +9,16 @@ public class DataLevel : IData
 	public int TutorUINum;
 	public int TutorSoundNum;
 	public List<int> LevelScoreArray = new List<int>();
+	public bool UseTutorUI;
+	public bool UseTutorSound;
 	public void LoadFromJson(JObject jobject)
 	{
 		JsonUtil.ToList(jobject, "LevelUnlocked", ref LevelUnlocked);
 		TutorUINum = (int)jobject["TutorUINum"];
 		TutorSoundNum = (int)jobject["TutorSoundNum"];
 		JsonUtil.ToList(jobject, "LevelScoreArray", ref LevelScoreArray);
+		UseTutorUI = (bool)jobject["UseTutorUI"];
+		UseTutorSound = (bool)jobject["UseTutorSound"];
 	}
 	public void SaveToJson(JObject jobject)
 	{
@@ -22,6 +26,8 @@ public class DataLevel : IData
 		jobject.Add("TutorUINum", TutorUINum);
 		jobject.Add("TutorSoundNum", TutorSoundNum);
 		jobject.Add("LevelScoreArray", JsonUtil.ToJArray(LevelScoreArray));
+		jobject.Add("UseTutorUI", UseTutorUI);
+		jobject.Add("UseTutorSound", UseTutorSound);
 	}
 	public void AddLevelUnlockedData(int data)
 	{
