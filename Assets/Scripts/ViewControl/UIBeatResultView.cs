@@ -4,17 +4,15 @@ using UnityEngine.UI;
 
 public class UIBeatResultView : YBaseView
 {
-	public Button BtnEsc;
 	public Text TxtScore;
-	public GameObject Perfect;
+	public Button BtnEsc;
 	public override void OnInit(Transform holder)
 	{
 		var itemRef = holder.GetComponent<YViewReference>();
 		if(itemRef == null) return;
 		var viewItemList = itemRef.ViewItemList;
 		if(viewItemList == null || viewItemList.Count == 0) return;
-		BtnEsc = viewItemList[0].Target.GetComponent<Button>();
-		TxtScore = viewItemList[1].Target.GetComponent<Text>();
-		Perfect = viewItemList[2].Target.gameObject;
+		TxtScore = viewItemList[0].Target.GetComponent<Text>();
+		BtnEsc = viewItemList[1].Target.GetComponent<Button>();
 	}
 }
