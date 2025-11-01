@@ -9,6 +9,7 @@ public enum EResType
     UISelectTutor,
     UICounter,
     UISelect,
+    UIStart,
     UIUpper,
     LevelEnemy,
     SoundEffect,

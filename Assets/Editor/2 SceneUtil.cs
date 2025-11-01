@@ -19,6 +19,7 @@ public class SceneUtil : EditorWindow
 
     public enum ESceneName
     {
+        GameFlash,
         GameEntry,
         Level01_Chips,
         Level02_Koala,
