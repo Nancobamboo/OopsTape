@@ -114,7 +114,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -421}
+  m_AnchoredPosition: {x: 0, y: -462}
   m_SizeDelta: {x: 1140.93, y: 137}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5138567679627429239
@@ -238,7 +238,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -92.32892}
+  m_AnchoredPosition: {x: 0, y: 11}
   m_SizeDelta: {x: 1300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1933725300110342464
@@ -389,8 +389,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 651, y: 282}
-  m_SizeDelta: {x: 1142.9136, y: 268.501}
+  m_AnchoredPosition: {x: -9, y: -212}
+  m_SizeDelta: {x: 1142.9136, y: 190}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6394581459919008567
 CanvasRenderer:
@@ -413,7 +413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.63438743, b: 0.0047169924, a: 1}
+  m_Color: {r: 0.32941177, g: 0.5294118, b: 0.9686275, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -422,7 +422,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 96125373f05f6cc4db332a1686137385, type: 3}
-    m_FontSize: 200
+    m_FontSize: 180
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -468,7 +468,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -839}
+  m_AnchoredPosition: {x: 0, y: -874}
   m_SizeDelta: {x: 1000, y: 149.6938}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6368414735350203192
@@ -706,11 +706,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5903510885495802364}
   - {fileID: 9059289364888158237}
-  - {fileID: 8654029875795984790}
   - {fileID: 7235699809732952672}
   - {fileID: 6900797754808810509}
+  - {fileID: 8654029875795984790}
+  - {fileID: 5903510885495802364}
   - {fileID: 6904010995948136336}
   - {fileID: 1611229739875408953}
   m_Father: {fileID: 0}
@@ -792,7 +792,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -224}
+  m_AnchoredPosition: {x: 0, y: -210}
   m_SizeDelta: {x: 1000, y: 257.1654}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &595606261001512686
