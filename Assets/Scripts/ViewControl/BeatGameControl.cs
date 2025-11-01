@@ -144,12 +144,12 @@ public class BeatGameControl : YViewControl
 			IsPlayedHit = false;
 			var newBeatUnit = GetBeatUnit(newBeat);
 			CurrentBeat = newBeat;
-			m_BeatGuide?.UpdateBeatTip(CurrentBeat);
 
 			if (newBeatUnit != null && newBeatUnit.IsTutor && m_BeatGuide != null)
 			{
 				m_BeatGuide?.SetData(m_BeatUnitById, newBeatUnit.BeatId, newBeatUnit.TutorEndId);
 			}
+			m_BeatGuide?.UpdateBeatTip(CurrentBeat);
 
 			if (newBeatUnit != null && !string.IsNullOrEmpty(newBeatUnit.SoundName))
 			{

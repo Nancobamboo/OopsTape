@@ -217,8 +217,8 @@
             ],
             "IsHit": false,
             "SoundName": "",
-            "IsTutor": false,
-            "TutorEndId": 0
+            "IsTutor": true,
+            "TutorEndId": 16
         },
         {
             "BeatId": 11,
@@ -267,8 +267,8 @@
             ],
             "IsHit": false,
             "SoundName": "",
-            "IsTutor": false,
-            "TutorEndId": 0
+            "IsTutor": true,
+            "TutorEndId": 31
         },
         {
             "BeatId": 23,
@@ -390,8 +390,8 @@
             ],
             "IsHit": false,
             "SoundName": "",
-            "IsTutor": false,
-            "TutorEndId": 0
+            "IsTutor": true,
+            "TutorEndId": 46
         },
         {
             "BeatId": 37,

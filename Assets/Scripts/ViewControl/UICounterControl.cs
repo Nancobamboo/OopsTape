@@ -32,9 +32,11 @@ public class UICounterControl : YViewControl
 			m_View.One,
 			m_View.Two,
 			m_View.Three,
-			m_View.Four,
-			m_View.Five
+
 		};
+
+		m_View.Five.gameObject.SetActive(false);
+		m_View.Four.gameObject.SetActive(false);
 
 		for (int i = 0; i < m_Images.Length; i++)
 		{
