@@ -224,11 +224,15 @@
             "BeatId": 11,
             "SceneObjects": [
                 "Canvas",
-                "Canvas"
+                "Canvas",
+                "Fly",
+                "Fly"
             ],
             "AnimList": [
                 "Level3Success",
-                "Level3Fail"
+                "Level3FlyMiss",
+                "Level3FlySuccess",
+                "Level3FlyFail"
             ],
             "IsHit": true,
             "SoundName": "",
