@@ -11,10 +11,28 @@ public enum UISelectAnimState
 
 public class UISelectControl : YViewControl
 {
+	public enum ESceneName
+	{
+		GameEntry,
+		Level01_Chips,
+		Level02_Koala,
+		Level03_Fly,
+		Level04_Sing,
+		Upper
+	}
 	private UISelectView m_View;
-	private System.Action<int> m_OnLevelSelected;
 	private bool[] m_LevelUnlocked;
 	private int m_SelectedLevel = -1;
+	private DataLevel m_DataLevel;
+	private ESceneName m_SelectedSceneName;
+
+	private ESceneName[] m_ButtonSceneMap = new ESceneName[]
+	{
+		ESceneName.Level04_Sing,
+		ESceneName.Level03_Fly,
+		ESceneName.Level01_Chips,
+		ESceneName.Level04_Sing
+	};
 
 	public static EResType GetResType()
 	{
@@ -25,48 +43,39 @@ public class UISelectControl : YViewControl
 	{
 		base.OnInit();
 		m_View = CreateView<UISelectView>();
+		m_DataLevel = DataSystem.Instance.GetDataLevel();
 
 		m_View.BtnLevel1.onClick.AddListener(() => OnLevelClick(0));
 		m_View.BtnLevel2.onClick.AddListener(() => OnLevelClick(1));
 		m_View.BtnLevel3.onClick.AddListener(() => OnLevelClick(2));
 		m_View.BtnLevel4.onClick.AddListener(() => OnLevelClick(3));
+		m_View.BtnSpace.onClick.AddListener(OnLevelConfirm);
 	}
 
 	public void PlayLevelAnim(int levelIndex, UISelectAnimState animState)
 	{
 		if (levelIndex < 0 || levelIndex >= 4) return;
-		if (m_View == null) return;
 
 		Animator[] animators = new Animator[] { m_View.Level1, m_View.Level2, m_View.Level3, m_View.Level4 };
-		if (animators[levelIndex] != null)
-		{
-			animators[levelIndex].Play(animState.ToString(), 0);
-		}
+		animators[levelIndex].Play(animState.ToString(), 0);
 	}
 
 	private void Start()
 	{
-		DataLevel dataLevel = DataSystem.Instance.GetDataLevel();
 		bool[] levelUnlocked = new bool[4];
 
 		for (int i = 0; i < levelUnlocked.Length; i++)
 		{
-			levelUnlocked[i] = dataLevel.LevelUnlocked.Contains(i + 1);
+			ESceneName sceneName = m_ButtonSceneMap[i];
+			levelUnlocked[i] = m_DataLevel.LevelUnlocked.Contains((int)sceneName);
 		}
 
-		SetData(levelUnlocked, OnLevelSelected);
+		SetData(levelUnlocked);
 	}
 
-	private void OnLevelSelected(int levelIndex)
-	{
-		string sceneName = "Level0" + (levelIndex + 1);
-		Asset.TryLoadScene(sceneName);
-	}
-
-	public void SetData(bool[] levelUnlocked, System.Action<int> onLevelSelected)
+	public void SetData(bool[] levelUnlocked)
 	{
 		m_LevelUnlocked = levelUnlocked;
-		m_OnLevelSelected = onLevelSelected;
 		m_SelectedLevel = -1;
 
 		if (m_LevelUnlocked == null)
@@ -77,51 +86,60 @@ public class UISelectControl : YViewControl
 		UpdateLevelStates();
 	}
 
+	public void OnLevelConfirm()
+	{
+		string sceneNameStr = m_SelectedSceneName.ToString();
+		Asset.TryLoadScene(sceneNameStr);
+	}
+
 	private void UpdateLevelStates()
 	{
-		if (m_View == null) return;
-
 		Animator[] animators = new Animator[] { m_View.Level1, m_View.Level2, m_View.Level3, m_View.Level4 };
+		RectTransform[] locks = new RectTransform[] { m_View.Lock1, m_View.Lock2, m_View.Lock3, m_View.Lock4 };
 
 		for (int i = 0; i < animators.Length && i < m_LevelUnlocked.Length; i++)
 		{
-			if (animators[i] != null)
+			if (m_LevelUnlocked[i])
 			{
-				if (m_LevelUnlocked[i])
-				{
-					animators[i].Play("Idel", 0);
-				}
-				else
-				{
-					animators[i].Play("UIselectUnlock", 0);
-				}
+				animators[i].CrossFade(UISelectAnimState.Idel.ToString(), 0, 0);
 			}
+			else
+			{
+				animators[i].CrossFade(UISelectAnimState.UIselectUnlock.ToString(), 0, 0);
+			}
+
+			locks[i].gameObject.SetActive(!m_LevelUnlocked[i]);
 		}
 	}
 
 	public void OnLevelClick(int levelIndex)
 	{
 		if (levelIndex < 0 || levelIndex >= 4) return;
-		if (m_LevelUnlocked == null || levelIndex >= m_LevelUnlocked.Length) return;
 		if (!m_LevelUnlocked[levelIndex]) return;
 
 		Animator[] animators = new Animator[] { m_View.Level1, m_View.Level2, m_View.Level3, m_View.Level4 };
 
-		if (m_SelectedLevel >= 0 && m_SelectedLevel < animators.Length && animators[m_SelectedLevel] != null)
-		{
-			animators[m_SelectedLevel].Play("Idel", 0);
-		}
-
 		m_SelectedLevel = levelIndex;
+		m_SelectedSceneName = m_ButtonSceneMap[levelIndex];
 
-		if (animators[levelIndex] != null)
+		for (int i = 0; i < animators.Length; i++)
 		{
-			animators[levelIndex].Play("UISelectThis", 0);
+			if (i == levelIndex)
+			{
+				animators[i].CrossFade(UISelectAnimState.UISelectThis.ToString(), 0, 0);
+			}
+			else
+			{
+				animators[i].CrossFade(UISelectAnimState.Idel.ToString(), 0, 0);
+			}
 		}
+	}
 
-		if (m_OnLevelSelected != null)
+	private void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.Space))
 		{
-			m_OnLevelSelected(levelIndex);
+			OnLevelConfirm();
 		}
 	}
 
