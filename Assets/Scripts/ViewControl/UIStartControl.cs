@@ -4,6 +4,9 @@ using UnityEngine;
 public class UIStartControl : YViewControl
 {
 	private UIStartView m_View;
+	private float m_AnimationDuration;
+	private float m_AnimationStartTime;
+	private bool m_CanClick = false;
 
 	public static EResType GetResType()
 	{
@@ -14,16 +17,28 @@ public class UIStartControl : YViewControl
 	{
 		base.OnInit();
 		m_View = CreateView<UIStartView>();
+
+		AnimatorStateInfo stateInfo = m_View.Canvas.GetCurrentAnimatorStateInfo(0);
+		m_AnimationDuration = stateInfo.length;
+		m_AnimationStartTime = Time.time;
 	}
 
-	public void SetData()
-	{
-		;
-	}
 
 	private void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.Space))
+		if (!m_CanClick)
+		{
+			if (Time.time - m_AnimationStartTime >= m_AnimationDuration)
+			{
+				m_CanClick = true;
+			}
+			else
+			{
+				return;
+			}
+		}
+
+		if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
 		{
 			if (DataSystem.Instance.GetDataLevel().LevelUnlocked.Count > 1)
 			{

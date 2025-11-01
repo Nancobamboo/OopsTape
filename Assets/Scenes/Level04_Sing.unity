@@ -38,6 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -387,7 +388,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
       propertyPath: IsDedugMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
       propertyPath: SpaceAnimName
@@ -399,7 +400,7 @@ PrefabInstance:
       objectReference: {fileID: 434294331}
     - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
       propertyPath: IsKeepPressGame
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
       propertyPath: SpaceAnimNames.Array.size

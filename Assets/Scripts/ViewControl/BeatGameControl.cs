@@ -15,6 +15,9 @@ public class BeatGameControl : YViewControl
 	private double m_SongOffsetSeconds;
 	private bool m_IsScheduled;
 	private float m_GoodWindowBeats = 1f / 6f;
+	private float m_AudioClipLength;
+	private float ShowResultMoment;
+	private bool m_ResultShown = false;
 	public static BeatGameControl Instance { get; private set; }
 	public int CurrentBeat = -1;
 	private UIBeatGuideControl m_BeatGuide;
@@ -32,6 +35,9 @@ public class BeatGameControl : YViewControl
 	bool IsPlayedHit = false;
 
 	public bool IsKeepPressGame = false;
+
+	public int TotalScore = 0;
+	public int ComboNum = 0;
 
 	public static EResType GetResType()
 	{
@@ -67,6 +73,11 @@ public class BeatGameControl : YViewControl
 		if (m_BeatSource != null && m_BeatSource.isPlaying)
 		{
 			m_BeatSource.Stop();
+		}
+
+		if (m_BeatSource != null && m_BeatSource.clip != null)
+		{
+			m_AudioClipLength = m_BeatSource.clip.length;
 		}
 
 		m_SoundEffectControl = Asset.CreateLevelObject<SoundEffectControl>(Vector3.zero);
@@ -121,6 +132,7 @@ public class BeatGameControl : YViewControl
 				m_BeatSource.PlayScheduled(m_SongStartDsp);
 				m_IsScheduled = true;
 				CurrentBeat = -1;
+				ShowResultMoment = Time.time + m_AudioClipLength;
 
 				if (IsDedugMode && m_BeatGuide == null)
 				{
@@ -225,6 +237,14 @@ public class BeatGameControl : YViewControl
 		{
 			return;
 		}
+
+		if (!m_ResultShown && Time.time >= ShowResultMoment)
+		{
+			m_ResultShown = true;
+			UIBeatResultControl result = Asset.OpenUI<UIBeatResultControl>();
+			result.SetData(TotalScore);
+		}
+
 		double dsp = AudioSettings.dspTime;
 		double playerBeat = (dsp - m_SongStartDsp - m_PausedDspDuration - m_SongOffsetSeconds) / m_SecondsPerBeat;
 		int newBeat = (int)System.Math.Round(playerBeat);
@@ -358,6 +378,18 @@ public class BeatGameControl : YViewControl
 	private void PlayHitCheckBeat(BeatUnit unit, bool hit)
 	{
 		if (unit == null) return;
+
+		if (hit)
+		{
+			ComboNum++;
+			float score = DataSystem.CalculateFinalScore(ComboNum);
+			TotalScore += (int)score;
+		}
+		else
+		{
+			ComboNum = 0;
+		}
+
 		if (unit.IsHit)
 		{
 			for (int i = 0; i < unit.SceneObjects.Count; i++)
