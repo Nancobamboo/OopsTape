@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3624159453614997537}
   - component: {fileID: 1122399958670031991}
   - component: {fileID: 3102102576169016177}
+  - component: {fileID: 578964115055043432}
+  - component: {fileID: 1850981887649213588}
   m_Layer: 0
   m_Name: UIStart
   m_TagString: Untagged
@@ -151,6 +153,36 @@ PlayableDirector:
     value: {fileID: 1122399958670031991}
   m_ExposedReferences:
     m_References: []
+--- !u!114 &578964115055043432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549929163700154711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 637109d37df5caa4a8b283cb20fd9cb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ViewItemList:
+  - Target: {fileID: 2551171024786962360}
+    Components:
+    - {fileID: 6140515605677157586}
+    VarNameArray: []
+--- !u!114 &1850981887649213588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549929163700154711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1be0e7c1da705c9428ce5bc8cb78fbb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDirty: 0
 --- !u!1 &1028549949050050662
 GameObject:
   m_ObjectHideFlags: 0
