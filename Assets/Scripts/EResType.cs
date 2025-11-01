@@ -6,6 +6,7 @@ public enum EResType
     UIGuideTip,
     UIBeatTip,
     UIBeatGuide,
+    UICounter,
     UIUpper,
     LevelEnemy,
     SoundEffect,

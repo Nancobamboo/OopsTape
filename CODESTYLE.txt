@@ -1,0 +1,23 @@
+Project Code Style
+
+1) Naming
+- Public fields/properties/methods/classes: PascalCase
+- Private fields: m_PascalCase
+- Local variables: camelCase
+- Constants: PascalCase
+
+2) Comments
+- Do not write comments.
+
+3) Formatting
+- Preserve indentation style of each existing file
+- Prefer readability; no hard line-length limit
+- No trailing whitespace
+
+4) C#
+- Use explicit access modifiers
+- Avoid var when type is non-obvious
+- Use readonly where appropriate
+
+5) JSON
+- Use float/double as needed; do not force integers
