@@ -350,6 +350,10 @@ public class BeatLevelWindow : EditorWindow
                         if (emptyAnim) second = "O";
                         else if (unitS.IsHit) second = "Hit";
                     }
+                    if (unitS.IsTutor)
+                    {
+                        second += "+T";
+                    }
                 }
             }
             EditorGUILayout.BeginHorizontal(GUIStyle.none, GUILayout.Width(kCellWidth));

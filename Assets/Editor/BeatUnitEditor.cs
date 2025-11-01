@@ -197,6 +197,8 @@ public class BeatUnitEditor : EditorWindow
             BeatId = m_Unit.BeatId,
             IsHit = m_Unit.IsHit,
             SoundName = m_Unit.SoundName,
+            IsTutor = m_Unit.IsTutor,
+            TutorEndId = m_Unit.TutorEndId,
             SceneObjects = new List<string>(),
             AnimList = new List<string>()
         };
@@ -224,6 +226,8 @@ public class BeatUnitEditor : EditorWindow
         // 应用模板的除BeatId外的所有值到当前unit
         m_Unit.IsHit = template.IsHit;
         m_Unit.SoundName = template.SoundName;
+        m_Unit.IsTutor = template.IsTutor;
+        m_Unit.TutorEndId = template.TutorEndId;
 
         // 复制SceneObjects和AnimList
         if (template.SceneObjects != null)
@@ -297,6 +301,24 @@ public class BeatUnitEditor : EditorWindow
             {
                 m_Unit.SoundName = string.Empty;
             }
+            ApplyAndSave();
+        }
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        EditorGUI.BeginChangeCheck();
+        bool newIsTutor = EditorGUILayout.Toggle("Is Tutor", m_Unit.IsTutor);
+        if (EditorGUI.EndChangeCheck())
+        {
+            m_Unit.IsTutor = newIsTutor;
+            ApplyAndSave();
+        }
+
+        EditorGUI.BeginChangeCheck();
+        int newTutorEndId = EditorGUILayout.IntField("Tutor End Id", m_Unit.TutorEndId);
+        if (EditorGUI.EndChangeCheck())
+        {
+            m_Unit.TutorEndId = newTutorEndId;
             ApplyAndSave();
         }
         EditorGUILayout.EndHorizontal();
