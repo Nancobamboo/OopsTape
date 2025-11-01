@@ -164,7 +164,7 @@ public class BeatGameControl : YViewControl
 
 			if (newBeatUnit != null && newBeatUnit.IsTutor && m_BeatGuide != null)
 			{
-				m_BeatGuide?.SetData(m_BeatUnitById, newBeatUnit.BeatId, newBeatUnit.TutorEndId);
+				m_BeatGuide?.SetData(m_BeatUnitById, newBeatUnit.BeatId, newBeatUnit.TutorEndId, m_SoundEffectControl);
 			}
 			m_BeatGuide?.UpdateBeatTip(CurrentBeat);
 
@@ -291,7 +291,7 @@ public class BeatGameControl : YViewControl
 
 		if (curBeatUnit != null && curBeatUnit.IsTutor)
 		{
-			m_BeatGuide.SetData(m_BeatUnitById, curBeatUnit.BeatId, curBeatUnit.TutorEndId);
+			m_BeatGuide.SetData(m_BeatUnitById, curBeatUnit.BeatId, curBeatUnit.TutorEndId, m_SoundEffectControl);
 		}
 
 		if (IsSoundStart && curBeatUnit != null && !string.IsNullOrEmpty(curBeatUnit.SoundName) && curBeatUnit.IsHit == false)
