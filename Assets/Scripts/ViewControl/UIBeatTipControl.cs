@@ -35,7 +35,7 @@ public class UIBeatTipControl : YViewControl
 		}
 		else
 		{
-			m_View.ImgBeat.color = Color.white;
+			m_View.ImgBeat.color = Color.clear;
 		}
 	}
 

@@ -1,5 +1,6 @@
 public partial class DataSystem
 {
+	public static float InputExtraTime = 0.3f;
 	public void LoadGameData()
 	{
 		LoadDataLevel();

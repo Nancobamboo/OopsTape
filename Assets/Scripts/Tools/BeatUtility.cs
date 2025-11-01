@@ -243,6 +243,26 @@ public class BeatTimelineJson
     public List<float> BeatTimes;
     public string AudioName;
     public List<BeatUnit> BeatUnits;
+
+    public double GetTimeOfBeat(double beatIndex)
+    {
+        if (BeatTimes != null && beatIndex >= 0 && beatIndex < BeatTimes.Count)
+        {
+            return BeatTimes[(int)beatIndex];
+        }
+        return OffsetSeconds + beatIndex * SecondsPerBeat;
+    }
+
+    public double GetBeatOfTime(double timeSeconds)
+    {
+        return (timeSeconds - OffsetSeconds) / SecondsPerBeat;
+    }
+
+    public int GetNearestBeatIndex(double timeSeconds)
+    {
+        double b = GetBeatOfTime(timeSeconds);
+        return (int)System.Math.Round(b);
+    }
 }
 
 [Serializable]
