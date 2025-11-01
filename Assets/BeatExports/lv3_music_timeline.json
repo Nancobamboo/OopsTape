@@ -325,39 +325,25 @@
     "AudioName": "lv3_music",
     "BeatUnits": [
         {
-            "BeatId": 4,
-            "SceneObjects": [
-                "Fly"
-            ],
-            "AnimList": [
-                "Level3FlyCome1"
-            ],
+            "BeatId": 0,
+            "SceneObjects": [],
+            "AnimList": [],
             "IsHit": false,
             "SoundName": "",
             "IsTutor": true,
-            "TutorEndId": 30
+            "TutorEndId": 8
         },
         {
-            "BeatId": 7,
-            "SceneObjects": [
-                "Canvas",
-                "Canvas",
-                "Fly",
-                "Fly"
-            ],
-            "AnimList": [
-                "Level3Success",
-                "Level3FlyMiss",
-                "Level3FlySuccess1",
-                "Level3FlyFail1"
-            ],
-            "IsHit": true,
+            "BeatId": 82,
+            "SceneObjects": [],
+            "AnimList": [],
+            "IsHit": false,
             "SoundName": "",
             "IsTutor": false,
             "TutorEndId": 0
         },
         {
-            "BeatId": 20,
+            "BeatId": 9,
             "SceneObjects": [
                 "Fly"
             ],
@@ -367,32 +353,10 @@
             "IsHit": false,
             "SoundName": "",
             "IsTutor": true,
-            "TutorEndId": 30
+            "TutorEndId": 11
         },
         {
-            "BeatId": 0,
-            "SceneObjects": [],
-            "AnimList": [],
-            "IsHit": false,
-            "SoundName": "",
-            "IsTutor": true,
-            "TutorEndId": 4
-        },
-        {
-            "BeatId": 44,
-            "SceneObjects": [
-                "Fly"
-            ],
-            "AnimList": [
-                "Level3FlyCome1"
-            ],
-            "IsHit": false,
-            "SoundName": "",
-            "IsTutor": true,
-            "TutorEndId": 30
-        },
-        {
-            "BeatId": 47,
+            "BeatId": 11,
             "SceneObjects": [
                 "Canvas",
                 "Canvas",
@@ -402,8 +366,8 @@
             "AnimList": [
                 "Level3Success",
                 "Level3FlyMiss",
-                "Level3FlySuccess1",
-                "Level3FlyFail1"
+                "Level3FlySuccess2",
+                "Level3FlyFail2"
             ],
             "IsHit": true,
             "SoundName": "",
@@ -413,69 +377,18 @@
         {
             "BeatId": 17,
             "SceneObjects": [
-                "Canvas",
-                "Canvas",
-                "Fly",
                 "Fly"
             ],
             "AnimList": [
-                "Level3Success",
-                "Level3FlyMiss",
-                "Level3FlySuccess1",
-                "Level3FlyFail1"
-            ],
-            "IsHit": true,
-            "SoundName": "",
-            "IsTutor": false,
-            "TutorEndId": 0
-        },
-        {
-            "BeatId": 14,
-            "SceneObjects": [
-                "Fly"
-            ],
-            "AnimList": [
-                "Level3FlyCome1"
+                "Level3FlyCome2"
             ],
             "IsHit": false,
             "SoundName": "",
             "IsTutor": true,
-            "TutorEndId": 30
+            "TutorEndId": 19
         },
         {
-            "BeatId": 13,
-            "SceneObjects": [
-                "Canvas",
-                "Canvas",
-                "Fly",
-                "Fly"
-            ],
-            "AnimList": [
-                "Level3Success",
-                "Level3FlyMiss",
-                "Level3FlySuccess1",
-                "Level3FlyFail1"
-            ],
-            "IsHit": true,
-            "SoundName": "",
-            "IsTutor": false,
-            "TutorEndId": 0
-        },
-        {
-            "BeatId": 10,
-            "SceneObjects": [
-                "Fly"
-            ],
-            "AnimList": [
-                "Level3FlyCome1"
-            ],
-            "IsHit": false,
-            "SoundName": "",
-            "IsTutor": true,
-            "TutorEndId": 30
-        },
-        {
-            "BeatId": 22,
+            "BeatId": 19,
             "SceneObjects": [
                 "Canvas",
                 "Canvas",
@@ -494,7 +407,7 @@
             "TutorEndId": 0
         },
         {
-            "BeatId": 23,
+            "BeatId": 25,
             "SceneObjects": [
                 "Fly"
             ],
@@ -504,10 +417,10 @@
             "IsHit": false,
             "SoundName": "",
             "IsTutor": true,
-            "TutorEndId": 30
+            "TutorEndId": 27
         },
         {
-            "BeatId": 25,
+            "BeatId": 27,
             "SceneObjects": [
                 "Canvas",
                 "Canvas",
@@ -526,7 +439,20 @@
             "TutorEndId": 0
         },
         {
-            "BeatId": 41,
+            "BeatId": 29,
+            "SceneObjects": [
+                "Fly"
+            ],
+            "AnimList": [
+                "Level3FlyCome2"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 31
+        },
+        {
+            "BeatId": 31,
             "SceneObjects": [
                 "Canvas",
                 "Canvas",
@@ -547,6 +473,275 @@
         {
             "BeatId": 33,
             "SceneObjects": [
+                "Fly"
+            ],
+            "AnimList": [
+                "Level3FlyCome2"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 35
+        },
+        {
+            "BeatId": 35,
+            "SceneObjects": [
+                "Canvas",
+                "Canvas",
+                "Fly",
+                "Fly"
+            ],
+            "AnimList": [
+                "Level3Success",
+                "Level3FlyMiss",
+                "Level3FlySuccess2",
+                "Level3FlyFail2"
+            ],
+            "IsHit": true,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 37,
+            "SceneObjects": [
+                "Fly"
+            ],
+            "AnimList": [
+                "Level3FlyCome2"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 39
+        },
+        {
+            "BeatId": 39,
+            "SceneObjects": [
+                "Canvas",
+                "Canvas",
+                "Fly",
+                "Fly"
+            ],
+            "AnimList": [
+                "Level3Success",
+                "Level3FlyMiss",
+                "Level3FlySuccess2",
+                "Level3FlyFail2"
+            ],
+            "IsHit": true,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 41,
+            "SceneObjects": [
+                "Fly"
+            ],
+            "AnimList": [
+                "Level3FlyCome2"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 43
+        },
+        {
+            "BeatId": 43,
+            "SceneObjects": [
+                "Canvas",
+                "Canvas",
+                "Fly",
+                "Fly"
+            ],
+            "AnimList": [
+                "Level3Success",
+                "Level3FlyMiss",
+                "Level3FlySuccess2",
+                "Level3FlyFail2"
+            ],
+            "IsHit": true,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 44,
+            "SceneObjects": [
+                "Fly"
+            ],
+            "AnimList": [
+                "Level3FlyCome2"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 46
+        },
+        {
+            "BeatId": 46,
+            "SceneObjects": [
+                "Canvas",
+                "Canvas",
+                "Fly",
+                "Fly"
+            ],
+            "AnimList": [
+                "Level3Success",
+                "Level3FlyMiss",
+                "Level3FlySuccess2",
+                "Level3FlyFail2"
+            ],
+            "IsHit": true,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 50,
+            "SceneObjects": [
+                "Fly"
+            ],
+            "AnimList": [
+                "Level3FlyCome2"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 52
+        },
+        {
+            "BeatId": 52,
+            "SceneObjects": [
+                "Canvas",
+                "Canvas",
+                "Fly",
+                "Fly"
+            ],
+            "AnimList": [
+                "Level3Success",
+                "Level3FlyMiss",
+                "Level3FlySuccess2",
+                "Level3FlyFail2"
+            ],
+            "IsHit": true,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 54,
+            "SceneObjects": [
+                "Fly"
+            ],
+            "AnimList": [
+                "Level3FlyCome2"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 56
+        },
+        {
+            "BeatId": 56,
+            "SceneObjects": [
+                "Canvas",
+                "Canvas",
+                "Fly",
+                "Fly"
+            ],
+            "AnimList": [
+                "Level3Success",
+                "Level3FlyMiss",
+                "Level3FlySuccess2",
+                "Level3FlyFail2"
+            ],
+            "IsHit": true,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 57,
+            "SceneObjects": [
+                "Fly"
+            ],
+            "AnimList": [
+                "Level3FlyCome2"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 59
+        },
+        {
+            "BeatId": 59,
+            "SceneObjects": [
+                "Canvas",
+                "Canvas",
+                "Fly",
+                "Fly"
+            ],
+            "AnimList": [
+                "Level3Success",
+                "Level3FlyMiss",
+                "Level3FlySuccess2",
+                "Level3FlyFail2"
+            ],
+            "IsHit": true,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 61,
+            "SceneObjects": [
+                "Fly"
+            ],
+            "AnimList": [
+                "Level3FlyCome2"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 63
+        },
+        {
+            "BeatId": 63,
+            "SceneObjects": [
+                "Canvas",
+                "Canvas",
+                "Fly",
+                "Fly"
+            ],
+            "AnimList": [
+                "Level3Success",
+                "Level3FlyMiss",
+                "Level3FlySuccess2",
+                "Level3FlyFail2"
+            ],
+            "IsHit": true,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 66,
+            "SceneObjects": [
+                "Fly"
+            ],
+            "AnimList": [
+                "Level3FlyCome1"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 69
+        },
+        {
+            "BeatId": 69,
+            "SceneObjects": [
                 "Canvas",
                 "Canvas",
                 "Fly",
@@ -564,7 +759,7 @@
             "TutorEndId": 0
         },
         {
-            "BeatId": 30,
+            "BeatId": 73,
             "SceneObjects": [
                 "Fly"
             ],
@@ -574,36 +769,10 @@
             "IsHit": false,
             "SoundName": "",
             "IsTutor": true,
-            "TutorEndId": 30
+            "TutorEndId": 76
         },
         {
-            "BeatId": 39,
-            "SceneObjects": [
-                "Fly"
-            ],
-            "AnimList": [
-                "Level3FlyCome2"
-            ],
-            "IsHit": false,
-            "SoundName": "",
-            "IsTutor": true,
-            "TutorEndId": 59
-        },
-        {
-            "BeatId": 48,
-            "SceneObjects": [
-                "Fly"
-            ],
-            "AnimList": [
-                "Level3FlyCome2"
-            ],
-            "IsHit": false,
-            "SoundName": "",
-            "IsTutor": true,
-            "TutorEndId": 30
-        },
-        {
-            "BeatId": 50,
+            "BeatId": 76,
             "SceneObjects": [
                 "Canvas",
                 "Canvas",
@@ -613,228 +782,8 @@
             "AnimList": [
                 "Level3Success",
                 "Level3FlyMiss",
-                "Level3FlySuccess2",
-                "Level3FlyFail2"
-            ],
-            "IsHit": true,
-            "SoundName": "",
-            "IsTutor": false,
-            "TutorEndId": 0
-        },
-        {
-            "BeatId": 65,
-            "SceneObjects": [
-                "Canvas",
-                "Canvas",
-                "Fly",
-                "Fly"
-            ],
-            "AnimList": [
-                "Level3Success",
-                "Level3FlyMiss",
-                "Level3FlySuccess2",
-                "Level3FlyFail2"
-            ],
-            "IsHit": true,
-            "SoundName": "",
-            "IsTutor": false,
-            "TutorEndId": 0
-        },
-        {
-            "BeatId": 63,
-            "SceneObjects": [
-                "Fly"
-            ],
-            "AnimList": [
-                "Level3FlyCome2"
-            ],
-            "IsHit": false,
-            "SoundName": "",
-            "IsTutor": true,
-            "TutorEndId": 80
-        },
-        {
-            "BeatId": 66,
-            "SceneObjects": [
-                "Fly"
-            ],
-            "AnimList": [
-                "Level3FlyCome2"
-            ],
-            "IsHit": false,
-            "SoundName": "",
-            "IsTutor": true,
-            "TutorEndId": 30
-        },
-        {
-            "BeatId": 68,
-            "SceneObjects": [
-                "Canvas",
-                "Canvas",
-                "Fly",
-                "Fly"
-            ],
-            "AnimList": [
-                "Level3Success",
-                "Level3FlyMiss",
-                "Level3FlySuccess2",
-                "Level3FlyFail2"
-            ],
-            "IsHit": true,
-            "SoundName": "",
-            "IsTutor": false,
-            "TutorEndId": 0
-        },
-        {
-            "BeatId": 69,
-            "SceneObjects": [
-                "Fly"
-            ],
-            "AnimList": [
-                "Level3FlyCome2"
-            ],
-            "IsHit": false,
-            "SoundName": "",
-            "IsTutor": true,
-            "TutorEndId": 30
-        },
-        {
-            "BeatId": 71,
-            "SceneObjects": [
-                "Canvas",
-                "Canvas",
-                "Fly",
-                "Fly"
-            ],
-            "AnimList": [
-                "Level3Success",
-                "Level3FlyMiss",
-                "Level3FlySuccess2",
-                "Level3FlyFail2"
-            ],
-            "IsHit": true,
-            "SoundName": "",
-            "IsTutor": false,
-            "TutorEndId": 0
-        },
-        {
-            "BeatId": 72,
-            "SceneObjects": [
-                "Fly"
-            ],
-            "AnimList": [
-                "Level3FlyCome2"
-            ],
-            "IsHit": false,
-            "SoundName": "",
-            "IsTutor": true,
-            "TutorEndId": 30
-        },
-        {
-            "BeatId": 74,
-            "SceneObjects": [
-                "Canvas",
-                "Canvas",
-                "Fly",
-                "Fly"
-            ],
-            "AnimList": [
-                "Level3Success",
-                "Level3FlyMiss",
-                "Level3FlySuccess2",
-                "Level3FlyFail2"
-            ],
-            "IsHit": true,
-            "SoundName": "",
-            "IsTutor": false,
-            "TutorEndId": 0
-        },
-        {
-            "BeatId": 75,
-            "SceneObjects": [
-                "Fly"
-            ],
-            "AnimList": [
-                "Level3FlyCome2"
-            ],
-            "IsHit": false,
-            "SoundName": "",
-            "IsTutor": true,
-            "TutorEndId": 30
-        },
-        {
-            "BeatId": 78,
-            "SceneObjects": [
-                "Fly"
-            ],
-            "AnimList": [
-                "Level3FlyCome2"
-            ],
-            "IsHit": false,
-            "SoundName": "",
-            "IsTutor": true,
-            "TutorEndId": 30
-        },
-        {
-            "BeatId": 77,
-            "SceneObjects": [
-                "Canvas",
-                "Canvas",
-                "Fly",
-                "Fly"
-            ],
-            "AnimList": [
-                "Level3Success",
-                "Level3FlyMiss",
-                "Level3FlySuccess2",
-                "Level3FlyFail2"
-            ],
-            "IsHit": true,
-            "SoundName": "",
-            "IsTutor": false,
-            "TutorEndId": 0
-        },
-        {
-            "BeatId": 80,
-            "SceneObjects": [
-                "Canvas",
-                "Canvas",
-                "Fly",
-                "Fly"
-            ],
-            "AnimList": [
-                "Level3Success",
-                "Level3FlyMiss",
-                "Level3FlySuccess2",
-                "Level3FlyFail2"
-            ],
-            "IsHit": true,
-            "SoundName": "",
-            "IsTutor": false,
-            "TutorEndId": 0
-        },
-        {
-            "BeatId": 82,
-            "SceneObjects": [],
-            "AnimList": [],
-            "IsHit": false,
-            "SoundName": "",
-            "IsTutor": false,
-            "TutorEndId": 0
-        },
-        {
-            "BeatId": 83,
-            "SceneObjects": [
-                "Canvas",
-                "Canvas",
-                "Fly",
-                "Fly"
-            ],
-            "AnimList": [
-                "Level3Success",
-                "Level3FlyMiss",
-                "Level3FlySuccess2",
-                "Level3FlyFail2"
+                "Level3FlySuccess1",
+                "Level3FlyFail1"
             ],
             "IsHit": true,
             "SoundName": "",
@@ -847,28 +796,15 @@
                 "Fly"
             ],
             "AnimList": [
-                "Level3FlyCome2"
-            ],
-            "IsHit": false,
-            "SoundName": "",
-            "IsTutor": true,
-            "TutorEndId": 30
-        },
-        {
-            "BeatId": 86,
-            "SceneObjects": [
-                "Fly"
-            ],
-            "AnimList": [
                 "Level3FlyCome1"
             ],
             "IsHit": false,
             "SoundName": "",
             "IsTutor": true,
-            "TutorEndId": 30
+            "TutorEndId": 84
         },
         {
-            "BeatId": 89,
+            "BeatId": 84,
             "SceneObjects": [
                 "Canvas",
                 "Canvas",
@@ -897,74 +833,10 @@
             "IsHit": false,
             "SoundName": "",
             "IsTutor": true,
-            "TutorEndId": 30
+            "TutorEndId": 93
         },
         {
             "BeatId": 93,
-            "SceneObjects": [
-                "Canvas",
-                "Canvas",
-                "Fly",
-                "Fly"
-            ],
-            "AnimList": [
-                "Level3Success",
-                "Level3FlyMiss",
-                "Level3FlySuccess1",
-                "Level3FlyFail1"
-            ],
-            "IsHit": true,
-            "SoundName": "",
-            "IsTutor": false,
-            "TutorEndId": 0
-        },
-        {
-            "BeatId": 94,
-            "SceneObjects": [
-                "Fly"
-            ],
-            "AnimList": [
-                "Level3FlyCome1"
-            ],
-            "IsHit": false,
-            "SoundName": "",
-            "IsTutor": true,
-            "TutorEndId": 30
-        },
-        {
-            "BeatId": 97,
-            "SceneObjects": [
-                "Canvas",
-                "Canvas",
-                "Fly",
-                "Fly"
-            ],
-            "AnimList": [
-                "Level3Success",
-                "Level3FlyMiss",
-                "Level3FlySuccess1",
-                "Level3FlyFail1"
-            ],
-            "IsHit": true,
-            "SoundName": "",
-            "IsTutor": false,
-            "TutorEndId": 0
-        },
-        {
-            "BeatId": 98,
-            "SceneObjects": [
-                "Fly"
-            ],
-            "AnimList": [
-                "Level3FlyCome1"
-            ],
-            "IsHit": false,
-            "SoundName": "",
-            "IsTutor": true,
-            "TutorEndId": 30
-        },
-        {
-            "BeatId": 101,
             "SceneObjects": [
                 "Canvas",
                 "Canvas",
@@ -988,15 +860,15 @@
                 "Fly"
             ],
             "AnimList": [
-                "Level3FlyCome1"
+                "Level3FlyCome2"
             ],
             "IsHit": false,
             "SoundName": "",
             "IsTutor": true,
-            "TutorEndId": 30
+            "TutorEndId": 104
         },
         {
-            "BeatId": 105,
+            "BeatId": 104,
             "SceneObjects": [
                 "Canvas",
                 "Canvas",
@@ -1006,8 +878,8 @@
             "AnimList": [
                 "Level3Success",
                 "Level3FlyMiss",
-                "Level3FlySuccess1",
-                "Level3FlyFail1"
+                "Level3FlySuccess2",
+                "Level3FlyFail2"
             ],
             "IsHit": true,
             "SoundName": "",
@@ -1020,15 +892,15 @@
                 "Fly"
             ],
             "AnimList": [
-                "Level3FlyCome1"
+                "Level3FlyCome2"
             ],
             "IsHit": false,
             "SoundName": "",
             "IsTutor": true,
-            "TutorEndId": 30
+            "TutorEndId": 108
         },
         {
-            "BeatId": 109,
+            "BeatId": 108,
             "SceneObjects": [
                 "Canvas",
                 "Canvas",
@@ -1038,8 +910,8 @@
             "AnimList": [
                 "Level3Success",
                 "Level3FlyMiss",
-                "Level3FlySuccess1",
-                "Level3FlyFail1"
+                "Level3FlySuccess2",
+                "Level3FlyFail2"
             ],
             "IsHit": true,
             "SoundName": "",
@@ -1047,39 +919,7 @@
             "TutorEndId": 0
         },
         {
-            "BeatId": 111,
-            "SceneObjects": [
-                "Fly"
-            ],
-            "AnimList": [
-                "Level3FlyCome1"
-            ],
-            "IsHit": false,
-            "SoundName": "",
-            "IsTutor": true,
-            "TutorEndId": 30
-        },
-        {
-            "BeatId": 114,
-            "SceneObjects": [
-                "Canvas",
-                "Canvas",
-                "Fly",
-                "Fly"
-            ],
-            "AnimList": [
-                "Level3Success",
-                "Level3FlyMiss",
-                "Level3FlySuccess1",
-                "Level3FlyFail1"
-            ],
-            "IsHit": true,
-            "SoundName": "",
-            "IsTutor": false,
-            "TutorEndId": 0
-        },
-        {
-            "BeatId": 115,
+            "BeatId": 110,
             "SceneObjects": [
                 "Fly"
             ],
@@ -1089,10 +929,42 @@
             "IsHit": false,
             "SoundName": "",
             "IsTutor": true,
-            "TutorEndId": 30
+            "TutorEndId": 112
         },
         {
-            "BeatId": 117,
+            "BeatId": 112,
+            "SceneObjects": [
+                "Canvas",
+                "Canvas",
+                "Fly",
+                "Fly"
+            ],
+            "AnimList": [
+                "Level3Success",
+                "Level3FlyMiss",
+                "Level3FlySuccess2",
+                "Level3FlyFail2"
+            ],
+            "IsHit": true,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 114,
+            "SceneObjects": [
+                "Fly"
+            ],
+            "AnimList": [
+                "Level3FlyCome2"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 116
+        },
+        {
+            "BeatId": 116,
             "SceneObjects": [
                 "Canvas",
                 "Canvas",
@@ -1116,48 +988,16 @@
                 "Fly"
             ],
             "AnimList": [
-                "Level3FlyCome2"
+                "Level3FlyCome1"
             ],
             "IsHit": false,
             "SoundName": "",
             "IsTutor": true,
-            "TutorEndId": 30
-        },
-        {
-            "BeatId": 120,
-            "SceneObjects": [
-                "Canvas",
-                "Canvas",
-                "Fly",
-                "Fly"
-            ],
-            "AnimList": [
-                "Level3Success",
-                "Level3FlyMiss",
-                "Level3FlySuccess2",
-                "Level3FlyFail2"
-            ],
-            "IsHit": true,
-            "SoundName": "",
-            "IsTutor": false,
-            "TutorEndId": 0
+            "TutorEndId": 121
         },
         {
             "BeatId": 121,
             "SceneObjects": [
-                "Fly"
-            ],
-            "AnimList": [
-                "Level3FlyCome2"
-            ],
-            "IsHit": false,
-            "SoundName": "",
-            "IsTutor": true,
-            "TutorEndId": 30
-        },
-        {
-            "BeatId": 123,
-            "SceneObjects": [
                 "Canvas",
                 "Canvas",
                 "Fly",
@@ -1166,30 +1006,30 @@
             "AnimList": [
                 "Level3Success",
                 "Level3FlyMiss",
-                "Level3FlySuccess2",
-                "Level3FlyFail2"
+                "Level3FlySuccess1",
+                "Level3FlyFail1"
             ],
             "IsHit": true,
             "SoundName": "",
             "IsTutor": false,
             "TutorEndId": 0
-        },
-        {
-            "BeatId": 124,
-            "SceneObjects": [
-                "Fly"
-            ],
-            "AnimList": [
-                "Level3FlyCome2"
-            ],
-            "IsHit": false,
-            "SoundName": "",
-            "IsTutor": true,
-            "TutorEndId": 30
         },
         {
             "BeatId": 126,
             "SceneObjects": [
+                "Fly"
+            ],
+            "AnimList": [
+                "Level3FlyCome2"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 104
+        },
+        {
+            "BeatId": 128,
+            "SceneObjects": [
                 "Canvas",
                 "Canvas",
                 "Fly",
@@ -1205,42 +1045,10 @@
             "SoundName": "",
             "IsTutor": false,
             "TutorEndId": 0
-        },
-        {
-            "BeatId": 127,
-            "SceneObjects": [
-                "Fly"
-            ],
-            "AnimList": [
-                "Level3FlyCome2"
-            ],
-            "IsHit": false,
-            "SoundName": "",
-            "IsTutor": true,
-            "TutorEndId": 30
         },
         {
             "BeatId": 129,
             "SceneObjects": [
-                "Canvas",
-                "Canvas",
-                "Fly",
-                "Fly"
-            ],
-            "AnimList": [
-                "Level3Success",
-                "Level3FlyMiss",
-                "Level3FlySuccess2",
-                "Level3FlyFail2"
-            ],
-            "IsHit": true,
-            "SoundName": "",
-            "IsTutor": false,
-            "TutorEndId": 0
-        },
-        {
-            "BeatId": 130,
-            "SceneObjects": [
                 "Fly"
             ],
             "AnimList": [
@@ -1249,42 +1057,10 @@
             "IsHit": false,
             "SoundName": "",
             "IsTutor": true,
-            "TutorEndId": 30
+            "TutorEndId": 104
         },
         {
-            "BeatId": 132,
-            "SceneObjects": [
-                "Canvas",
-                "Canvas",
-                "Fly",
-                "Fly"
-            ],
-            "AnimList": [
-                "Level3Success",
-                "Level3FlyMiss",
-                "Level3FlySuccess2",
-                "Level3FlyFail2"
-            ],
-            "IsHit": true,
-            "SoundName": "",
-            "IsTutor": false,
-            "TutorEndId": 0
-        },
-        {
-            "BeatId": 133,
-            "SceneObjects": [
-                "Fly"
-            ],
-            "AnimList": [
-                "Level3FlyCome2"
-            ],
-            "IsHit": false,
-            "SoundName": "",
-            "IsTutor": true,
-            "TutorEndId": 30
-        },
-        {
-            "BeatId": 135,
+            "BeatId": 131,
             "SceneObjects": [
                 "Canvas",
                 "Canvas",
