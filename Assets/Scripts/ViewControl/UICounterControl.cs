@@ -9,9 +9,8 @@ public class UICounterControl : YViewControl
 	private Image[] m_Images;
 	private System.Action m_Callback;
 	private int m_CurrentIndex = 0;
-	private float m_Timer = 0f;
-	private const float k_Interval = 1f;
-	private bool m_IsPlaying = false;
+	private float NextPlayMoment;
+	private SoundEffectControl m_SoundEffectControl;
 
 	public static EResType GetResType()
 	{
@@ -24,9 +23,10 @@ public class UICounterControl : YViewControl
 		m_View = CreateView<UICounterView>();
 	}
 
-	public void SetData(System.Action callback)
+	public void SetData(System.Action callback, SoundEffectControl soundEffectControl)
 	{
 		m_Callback = callback;
+		m_SoundEffectControl = soundEffectControl;
 		m_Images = new Image[]
 		{
 			m_View.One,
@@ -47,8 +47,19 @@ public class UICounterControl : YViewControl
 		}
 
 		m_CurrentIndex = 0;
-		m_Timer = 0f;
-		m_IsPlaying = true;
+
+		if (m_Images.Length > 0 && m_Images[0] != null)
+		{
+			m_Images[0].gameObject.SetActive(true);
+			int audioIndex = m_Images.Length - m_CurrentIndex;
+			string audioName = "Voice_girl_0" + audioIndex;
+			if (m_SoundEffectControl != null)
+			{
+				m_SoundEffectControl.PlayOneShot(audioName);
+			}
+			m_CurrentIndex++;
+			NextPlayMoment = Time.time + 1f;
+		}
 	}
 
 	protected override void OnReturn()
@@ -58,39 +69,36 @@ public class UICounterControl : YViewControl
 
 	private void Update()
 	{
-		if (!m_IsPlaying || m_Images == null) return;
+		if (m_Images == null) return;
 
-		m_Timer += Time.deltaTime;
-
-		if (m_Timer >= k_Interval)
+		if (Time.time > NextPlayMoment)
 		{
-			m_Timer = 0f;
-
-			if (m_CurrentIndex > 0 && m_CurrentIndex <= m_Images.Length)
+			if (m_CurrentIndex == m_Images.Length)
 			{
-				if (m_Images[m_CurrentIndex - 1] != null)
-				{
-					m_Images[m_CurrentIndex - 1].gameObject.SetActive(false);
-				}
-			}
-
-			if (m_CurrentIndex < m_Images.Length)
-			{
-				if (m_Images[m_CurrentIndex] != null)
-				{
-					m_Images[m_CurrentIndex].gameObject.SetActive(true);
-				}
-				m_CurrentIndex++;
-			}
-
-			if (m_CurrentIndex >= m_Images.Length)
-			{
-				m_IsPlaying = false;
 				if (m_Callback != null)
 				{
 					m_Callback();
 				}
 				Destroy(gameObject);
+			}
+			else
+			{
+				if (m_CurrentIndex > 0)
+				{
+					m_Images[m_CurrentIndex - 1].gameObject.SetActive(false);
+				}
+
+				m_Images[m_CurrentIndex].gameObject.SetActive(true);
+
+				int audioIndex = m_Images.Length - m_CurrentIndex;
+				string audioName = "Voice_girl_0" + audioIndex;
+				if (m_SoundEffectControl != null)
+				{
+					m_SoundEffectControl.PlayOneShot(audioName);
+				}
+
+				m_CurrentIndex++;
+				NextPlayMoment = Time.time + 1f;
 			}
 		}
 	}

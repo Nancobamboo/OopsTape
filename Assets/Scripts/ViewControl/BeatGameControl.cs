@@ -8,7 +8,6 @@ public class BeatGameControl : YViewControl
 	private BeatGameView m_View;
 	private Dictionary<string, Animator> m_AnimatorDict = new Dictionary<string, Animator>();
 	private BeatTimelineJson m_TimelineData;
-	private BeatUtility.BeatTimeline m_Timeline;
 	private Dictionary<int, BeatUnit> m_BeatUnitById = new Dictionary<int, BeatUnit>();
 	private double m_SongStartDsp;
 	private double m_PausedDspDuration;
@@ -70,8 +69,11 @@ public class BeatGameControl : YViewControl
 			m_BeatSource.Stop();
 		}
 
+		m_SoundEffectControl = Asset.CreateLevelObject<SoundEffectControl>(Vector3.zero);
+		m_SoundEffectControl.SetData();
+
 		UICounterControl counter = Asset.OpenUI<UICounterControl>();
-		counter.SetData(StartGame);
+		counter.SetData(StartGame, m_SoundEffectControl);
 	}
 
 	private void StartGame()
@@ -84,8 +86,7 @@ public class BeatGameControl : YViewControl
 			m_AnimatorDict[go.name] = a;
 		}
 
-		m_SoundEffectControl = Asset.CreateLevelObject<SoundEffectControl>(Vector3.zero);
-		m_SoundEffectControl.SetData();
+
 
 		if (m_BeatSource != null && m_BeatSource.clip != null)
 		{
@@ -97,7 +98,6 @@ public class BeatGameControl : YViewControl
 			{
 				string json = File.ReadAllText(path);
 				m_TimelineData = JsonUtility.FromJson<BeatTimelineJson>(json);
-				m_Timeline = BeatUtility.FromJson(json);
 				m_BeatUnitById.Clear();
 				if (m_TimelineData != null && m_TimelineData.BeatUnits != null)
 				{
@@ -105,10 +105,15 @@ public class BeatGameControl : YViewControl
 					{
 						BeatUnit u = m_TimelineData.BeatUnits[i];
 						m_BeatUnitById[u.BeatId] = u;
+
+						if (u.IsHit && m_TimelineData.BeatTimes != null && u.BeatId >= 0 && u.BeatId < m_TimelineData.BeatTimes.Count)
+						{
+							m_TimelineData.BeatTimes[u.BeatId] += DataSystem.InputExtraTime;
+						}
 					}
 				}
-				m_SecondsPerBeat = m_Timeline.SecondsPerBeat;
-				m_SongOffsetSeconds = m_Timeline.OffsetSeconds;
+				m_SecondsPerBeat = m_TimelineData.SecondsPerBeat;
+				m_SongOffsetSeconds = m_TimelineData.OffsetSeconds;
 				m_PausedDspDuration = 0.0;
 				double lead = 0.1;
 				m_SongStartDsp = AudioSettings.dspTime + lead;
@@ -201,7 +206,7 @@ public class BeatGameControl : YViewControl
 				{
 					IsPlayedHit = true;
 					double clipTime = AudioSettings.dspTime - m_SongStartDsp - m_PausedDspDuration;
-					double beatTime = m_Timeline.GetTimeOfBeat(CurrentBeat);
+					double beatTime = m_TimelineData.GetTimeOfBeat(CurrentBeat);
 					bool hit = clipTime < beatTime;
 					PlayHitCheckBeat(curBeatUnit, true);
 					PlaySound(curBeatUnit.SoundName);

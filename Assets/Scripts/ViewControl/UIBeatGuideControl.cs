@@ -43,7 +43,6 @@ public class UIBeatGuideControl : YViewControl
 		m_Units = units;
 		m_EndTutorId = endTutorId;
 
-		if (m_Tips == null) m_Tips = new Dictionary<int, UIBeatTipControl>();
 
 		foreach (var kvp in m_Tips)
 		{
@@ -63,14 +62,15 @@ public class UIBeatGuideControl : YViewControl
 
 			var tip = GetOrCreateTip();
 			m_Tips[tutorId] = tip;
-
+			bool isTip = false;
+			bool isHit = false;
 			if (beatUnit != null)
 			{
-				bool isHit = beatUnit.IsHit;
-				bool isTip = beatUnit.AnimList != null && beatUnit.AnimList.Count != 0;
-				tip.SetData(isHit, isTip);
-				tip.SetData(tutorId);
+				isHit = beatUnit.IsHit;
+				isTip = beatUnit != null && beatUnit.IsEmpty() == false;
 			}
+			tip.SetData(isHit, isTip);
+			tip.SetData(tutorId);
 			tip.ShowBg(false);
 		}
 	}
