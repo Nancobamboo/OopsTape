@@ -116,10 +116,7 @@ public class BeatGameControl : YViewControl
 				{
 					m_BeatGuide = Asset.OpenUI<UIBeatGuideControl>();
 				}
-				if (m_BeatGuide != null)
-				{
-					m_BeatGuide.SetData(m_BeatUnitById);
-				}
+
 			}
 			else
 			{
@@ -143,6 +140,11 @@ public class BeatGameControl : YViewControl
 			var newBeatUnit = GetBeatUnit(newBeat);
 			CurrentBeat = newBeat;
 			m_BeatGuide?.UpdateBeatTip(CurrentBeat);
+
+			if (newBeatUnit != null && newBeatUnit.IsTutor && m_BeatGuide != null)
+			{
+				m_BeatGuide?.SetData(m_BeatUnitById, newBeatUnit.BeatId, newBeatUnit.TutorEndId);
+			}
 
 			if (newBeatUnit != null && !string.IsNullOrEmpty(newBeatUnit.SoundName))
 			{
@@ -256,6 +258,12 @@ public class BeatGameControl : YViewControl
 		}
 
 		var curBeatUnit = GetBeatUnit(CurrentBeat);
+
+		if (curBeatUnit != null && curBeatUnit.IsTutor)
+		{
+			m_BeatGuide.SetData(m_BeatUnitById, curBeatUnit.BeatId, curBeatUnit.TutorEndId);
+		}
+
 		if (IsSoundStart && curBeatUnit != null && !string.IsNullOrEmpty(curBeatUnit.SoundName) && curBeatUnit.IsHit == false)
 		{
 			PlaySound(curBeatUnit.SoundName);

@@ -15,6 +15,7 @@ public class UIBeatTipControl : YViewControl
 	{
 		base.OnInit();
 		m_View = CreateView<UIBeatTipView>();
+		ShowBg(false);
 	}
 
 	public void ShowBg(bool show)
