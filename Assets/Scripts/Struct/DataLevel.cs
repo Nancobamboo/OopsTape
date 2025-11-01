@@ -8,26 +8,42 @@ public class DataLevel : IData
 	public List<int> LevelUnlocked = new List<int>();
 	public int TutorUINum;
 	public int TutorSoundNum;
-	public List<int> LevelScoreArray = new List<int>();
+	public Dictionary<int, int> LevelScoreDict = new Dictionary<int, int>();
 	public bool UseTutorUI;
 	public bool UseTutorSound;
+	public int GameTimes;
+	public int NewItem;
 	public void LoadFromJson(JObject jobject)
 	{
 		JsonUtil.ToList(jobject, "LevelUnlocked", ref LevelUnlocked);
 		TutorUINum = (int)jobject["TutorUINum"];
 		TutorSoundNum = (int)jobject["TutorSoundNum"];
-		JsonUtil.ToList(jobject, "LevelScoreArray", ref LevelScoreArray);
+		var LevelScoreKey = new List<int>();
+		JsonUtil.ToList(jobject, "LevelScoreKey", ref LevelScoreKey);
+		var LevelScoreValue = new List<int>();
+		JsonUtil.ToList(jobject, "LevelScoreValue", ref LevelScoreValue);
+		for(int i = 0; i < LevelScoreKey.Count; i++)
+		{
+			LevelScoreDict[LevelScoreKey[i]] = LevelScoreValue[i];
+		}
 		UseTutorUI = (bool)jobject["UseTutorUI"];
 		UseTutorSound = (bool)jobject["UseTutorSound"];
+		GameTimes = (int)jobject["GameTimes"];
+		NewItem = (int)jobject["NewItem"];
 	}
 	public void SaveToJson(JObject jobject)
 	{
 		jobject.Add("LevelUnlocked", JsonUtil.ToJArray(LevelUnlocked));
 		jobject.Add("TutorUINum", TutorUINum);
 		jobject.Add("TutorSoundNum", TutorSoundNum);
-		jobject.Add("LevelScoreArray", JsonUtil.ToJArray(LevelScoreArray));
+		var LevelScoreKey = LevelScoreDict.Keys.ToList();
+		jobject.Add("LevelScoreKey", JsonUtil.ToJArray(LevelScoreKey));
+		var LevelScoreValue = LevelScoreDict.Values.ToList();
+		jobject.Add("LevelScoreValue", JsonUtil.ToJArray(LevelScoreValue));
 		jobject.Add("UseTutorUI", UseTutorUI);
 		jobject.Add("UseTutorSound", UseTutorSound);
+		jobject.Add("GameTimes", GameTimes);
+		jobject.Add("NewItem", NewItem);
 	}
 	public void AddLevelUnlockedData(int data)
 	{
@@ -41,17 +57,19 @@ public class DataLevel : IData
 	{
 		return LevelUnlocked[dataIndex];
 	}
-	public void AddLevelScoreArrayData(int data)
+	public void AddLevelScoreDictData(int dataKey, int value)
 	{
-		LevelScoreArray.Add(data);
+		LevelScoreDict[dataKey] = GetLevelScoreDictData(dataKey) + value;
 	}
-	public void RemoveLevelScoreArrayData(int data)
+	public void RemoveLevelScoreDictData(int dataKey)
 	{
-		LevelScoreArray.Remove(data);
+		LevelScoreDict.Remove(dataKey);
 	}
-	public int GetLevelScoreArrayData(int dataIndex)
+	public int GetLevelScoreDictData(int dataKey)
 	{
-		return LevelScoreArray[dataIndex];
+		int result = 0;
+		LevelScoreDict.TryGetValue(dataKey, out result);
+		return result;
 	}
 }
 public partial class DataSystem
