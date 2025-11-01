@@ -12,6 +12,11 @@ public class UISelectView : YBaseView
 	public Animator Level3;
 	public Button BtnLevel4;
 	public Animator Level4;
+	public Button BtnSpace;
+	public RectTransform Lock1;
+	public RectTransform Lock2;
+	public RectTransform Lock3;
+	public RectTransform Lock4;
 	public override void OnInit(Transform holder)
 	{
 		var itemRef = holder.GetComponent<YViewReference>();
@@ -26,5 +31,10 @@ public class UISelectView : YBaseView
 		Level3 = viewItemList[2].Target.GetComponent<Animator>();
 		BtnLevel4 = viewItemList[3].Target.GetComponent<Button>();
 		Level4 = viewItemList[3].Target.GetComponent<Animator>();
+		BtnSpace = viewItemList[4].Target.GetComponent<Button>();
+		Lock1 = viewItemList[5].Target.GetComponent<RectTransform>();
+		Lock2 = viewItemList[6].Target.GetComponent<RectTransform>();
+		Lock3 = viewItemList[7].Target.GetComponent<RectTransform>();
+		Lock4 = viewItemList[8].Target.GetComponent<RectTransform>();
 	}
 }

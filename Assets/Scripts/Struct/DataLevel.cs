@@ -6,16 +6,22 @@ using Newtonsoft.Json.Linq;
 public class DataLevel : IData
 {
 	public List<int> LevelUnlocked = new List<int>();
-	public int TutorNum;
+	public int TutorUINum;
+	public int TutorSoundNum;
+	public List<int> LevelScoreArray = new List<int>();
 	public void LoadFromJson(JObject jobject)
 	{
 		JsonUtil.ToList(jobject, "LevelUnlocked", ref LevelUnlocked);
-		TutorNum = (int)jobject["TutorNum"];
+		TutorUINum = (int)jobject["TutorUINum"];
+		TutorSoundNum = (int)jobject["TutorSoundNum"];
+		JsonUtil.ToList(jobject, "LevelScoreArray", ref LevelScoreArray);
 	}
 	public void SaveToJson(JObject jobject)
 	{
 		jobject.Add("LevelUnlocked", JsonUtil.ToJArray(LevelUnlocked));
-		jobject.Add("TutorNum", TutorNum);
+		jobject.Add("TutorUINum", TutorUINum);
+		jobject.Add("TutorSoundNum", TutorSoundNum);
+		jobject.Add("LevelScoreArray", JsonUtil.ToJArray(LevelScoreArray));
 	}
 	public void AddLevelUnlockedData(int data)
 	{
@@ -28,6 +34,18 @@ public class DataLevel : IData
 	public int GetLevelUnlockedData(int dataIndex)
 	{
 		return LevelUnlocked[dataIndex];
+	}
+	public void AddLevelScoreArrayData(int data)
+	{
+		LevelScoreArray.Add(data);
+	}
+	public void RemoveLevelScoreArrayData(int data)
+	{
+		LevelScoreArray.Remove(data);
+	}
+	public int GetLevelScoreArrayData(int dataIndex)
+	{
+		return LevelScoreArray[dataIndex];
 	}
 }
 public partial class DataSystem

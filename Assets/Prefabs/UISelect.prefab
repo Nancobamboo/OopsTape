@@ -76,6 +76,26 @@ MonoBehaviour:
     VarNameArray:
     - BtnLevel4
     - 
+  - Target: {fileID: 1557411257239666366}
+    Components:
+    - {fileID: 7684887285590026550}
+    VarNameArray: []
+  - Target: {fileID: 4402220039859654640}
+    Components:
+    - {fileID: 4402220039859654640}
+    VarNameArray: []
+  - Target: {fileID: 8770297043833248932}
+    Components:
+    - {fileID: 8770297043833248932}
+    VarNameArray: []
+  - Target: {fileID: 410845860277760113}
+    Components:
+    - {fileID: 410845860277760113}
+    VarNameArray: []
+  - Target: {fileID: 5939843935802438097}
+    Components:
+    - {fileID: 5939843935802438097}
+    VarNameArray: []
 --- !u!114 &8994012331612134093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -767,12 +787,12 @@ GameObject:
   - component: {fileID: 679637135401650111}
   - component: {fileID: 7273070563204690145}
   m_Layer: 5
-  m_Name: Lock
+  m_Name: Lock2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8770297043833248932
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1017,6 +1037,7 @@ RectTransform:
   - {fileID: 5792177486066083026}
   - {fileID: 1502585646489222506}
   - {fileID: 5135128880825565140}
+  - {fileID: 1557411257239666366}
   m_Father: {fileID: 8771651922906332473}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1280,12 +1301,12 @@ GameObject:
   - component: {fileID: 4248189427843781822}
   - component: {fileID: 6501225263946479126}
   m_Layer: 5
-  m_Name: Lock
+  m_Name: Lock1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4402220039859654640
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1748,12 +1769,12 @@ GameObject:
   - component: {fileID: 3789426873666239125}
   - component: {fileID: 3890320928985301138}
   m_Layer: 5
-  m_Name: Lock
+  m_Name: Lock4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5939843935802438097
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2590,6 +2611,126 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!1 &4605458609919499975
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1557411257239666366}
+  - component: {fileID: 355318542104828968}
+  - component: {fileID: 2444911062608119845}
+  - component: {fileID: 7684887285590026550}
+  m_Layer: 5
+  m_Name: BtnSpace
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1557411257239666366
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4605458609919499975}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5536085081651204031}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.1531, y: -379}
+  m_SizeDelta: {x: 784.3062, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &355318542104828968
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4605458609919499975}
+  m_CullTransparentMesh: 1
+--- !u!114 &2444911062608119845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4605458609919499975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7684887285590026550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4605458609919499975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 2444911062608119845}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4657810783994455026
 GameObject:
   m_ObjectHideFlags: 0
@@ -3411,12 +3552,12 @@ GameObject:
   - component: {fileID: 7200473261976959164}
   - component: {fileID: 3138571654105171826}
   m_Layer: 5
-  m_Name: Lock
+  m_Name: Lock3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &410845860277760113
 RectTransform:
   m_ObjectHideFlags: 0
