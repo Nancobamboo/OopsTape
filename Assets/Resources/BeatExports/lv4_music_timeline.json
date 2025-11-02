@@ -1035,6 +1035,6 @@
             "TutorEndId": 0
         }
     ],
-    "ForceEndBeatId": 0,
-    "UseInputExtTime": false
+    "ForceEndBeatId": 10,
+    "UseInputExtTime": true
 }

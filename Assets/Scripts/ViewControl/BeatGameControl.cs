@@ -237,7 +237,7 @@ public class BeatGameControl : YViewControl
 			PlayNormalBeat(newBeatUnit);
 		}
 
-		if (press && (newBeatUnit == null || newBeatUnit.IsEmpty()))
+		if (press && (newBeatUnit == null || newBeatUnit.IsEmpty() || newBeatUnit.IsHit == false))
 		{
 			PlaySpaceAnimations();
 		}

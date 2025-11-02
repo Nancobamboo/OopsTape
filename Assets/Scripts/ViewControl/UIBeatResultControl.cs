@@ -27,6 +27,11 @@ public class UIBeatResultControl : YViewControl
 		{
 			m_CanClick = true;
 		}
+
+		if (m_CanClick && Input.GetKeyDown(KeyCode.Space))
+		{
+			OnBtnEscClick();
+		}
 	}
 
 	void OnBtnEscClick()
