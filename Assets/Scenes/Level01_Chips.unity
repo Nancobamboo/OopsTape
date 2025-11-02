@@ -461,7 +461,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
       propertyPath: SpaceAnimNames.Array.data[0]
-      value: Level1SeaGullFail
+      value: Level1SeaGullSuccess
       objectReference: {fileID: 0}
     - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
       propertyPath: PlayerAnimators.Array.data[0]

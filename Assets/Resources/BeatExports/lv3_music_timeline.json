@@ -513,7 +513,7 @@
             "IsHit": false,
             "SoundName": "",
             "IsTutor": true,
-            "TutorEndId": 43
+            "TutorEndId": 44
         },
         {
             "BeatId": 43,
@@ -1636,6 +1636,257 @@
                 "Level3FlyFail2"
             ],
             "IsHit": true,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 62,
+            "SceneObjects": [],
+            "AnimList": [],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 65,
+            "SceneObjects": [],
+            "AnimList": [],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 64,
+            "SceneObjects": [],
+            "AnimList": [],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 72,
+            "SceneObjects": [
+                "Flower"
+            ],
+            "AnimList": [
+                "Level3FlowerLove"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 71,
+            "SceneObjects": [
+                "Flower"
+            ],
+            "AnimList": [
+                "Level3FlowerCome"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 74,
+            "SceneObjects": [],
+            "AnimList": [],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 83,
+            "SceneObjects": [],
+            "AnimList": [],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 88,
+            "SceneObjects": [],
+            "AnimList": [],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 97,
+            "SceneObjects": [
+                "Flower"
+            ],
+            "AnimList": [
+                "Level3FlowerCome"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 100,
+            "SceneObjects": [
+                "Flower"
+            ],
+            "AnimList": [
+                "Level3FlowerCome"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 42,
+            "SceneObjects": [
+                "Fly_twobeats"
+            ],
+            "AnimList": [
+                "Level3FlyCome2"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 44,
+            "SceneObjects": [
+                "Canvas",
+                "Canvas",
+                "Fly_twobeats",
+                "Fly_twobeats"
+            ],
+            "AnimList": [
+                "Level3Success",
+                "Level3FlyMiss",
+                "Level3FlySuccess2",
+                "Level3FlyFail2"
+            ],
+            "IsHit": true,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 80,
+            "SceneObjects": [],
+            "AnimList": [],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 79,
+            "SceneObjects": [
+                "Flower"
+            ],
+            "AnimList": [
+                "Level3FlowerLove"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 78,
+            "SceneObjects": [
+                "Flower"
+            ],
+            "AnimList": [
+                "Level3FlowerCome"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 98,
+            "SceneObjects": [
+                "Flower"
+            ],
+            "AnimList": [
+                "Level3FlowerLove"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 101,
+            "SceneObjects": [
+                "Flower"
+            ],
+            "AnimList": [
+                "Level3FlowerLove"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 119,
+            "SceneObjects": [
+                "Flower"
+            ],
+            "AnimList": [
+                "Level3FlowerCome"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 120,
+            "SceneObjects": [
+                "Flower"
+            ],
+            "AnimList": [
+                "Level3FlowerLove"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 124,
+            "SceneObjects": [
+                "Flower"
+            ],
+            "AnimList": [
+                "Level3FlowerCome"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 125,
+            "SceneObjects": [
+                "Flower"
+            ],
+            "AnimList": [
+                "Level3FlowerLove"
+            ],
+            "IsHit": false,
             "SoundName": "",
             "IsTutor": false,
             "TutorEndId": 0
