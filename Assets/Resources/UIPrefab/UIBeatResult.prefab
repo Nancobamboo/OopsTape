@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8590737048740127961}
   - component: {fileID: 4099173884109425452}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TxtComment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -760,6 +760,10 @@ MonoBehaviour:
   - Target: {fileID: 8654029875795984790}
     Components:
     - {fileID: 5805156332868917720}
+    VarNameArray: []
+  - Target: {fileID: 9185208814738506542}
+    Components:
+    - {fileID: 4099173884109425452}
     VarNameArray: []
 --- !u!111 &5156817829796526691
 Animation:

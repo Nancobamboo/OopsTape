@@ -22,7 +22,7 @@ public partial class DataSystem
 		return BaseScore * (1f + comboBonus + ItemBonus) * DifficultyRate;
 	}
 
-	 private ERatingGrade GetRatingGrade(float accuracy)
+    public static ERatingGrade GetRatingGrade(float accuracy)
     {
         if (accuracy >= 0.8f)
         {
@@ -50,7 +50,7 @@ public partial class DataSystem
         }
     }
 
-		public static string GetSpriteNameByRating(ERatingGrade rating)
+	public static string GetSpriteNameByRating(ERatingGrade rating)
 	{
 		switch (rating)
 		{

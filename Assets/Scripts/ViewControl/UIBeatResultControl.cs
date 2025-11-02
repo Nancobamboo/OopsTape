@@ -50,6 +50,7 @@ public class UIBeatResultControl : YViewControl
 		{
 			m_View.ImgSocre.sprite = sprite;
 		}
+		m_View.TxtComment.text = DataSystem.GetRatingCommentText(ratingGrade);
 
 		DataLevel dataLevel = DataSystem.Instance.GetDataLevel();
 
