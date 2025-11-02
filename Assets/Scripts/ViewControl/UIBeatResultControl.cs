@@ -35,18 +35,22 @@ public class UIBeatResultControl : YViewControl
 		Asset.TryLoadScene(UISelectControl.ESceneName.GameEntry.ToString());
 	}
 
-	public void SetData(int score, float accuracy)
+	public void SetData(int score, float accuracyRate)
 	{
-		// 显示分数
 		m_View.TxtScore.text = score.ToString();
 
-		// 设置评级吐槽文字
-		ERatingGrade grade = DataSystem.GetRatingGrade(accuracy);
-		string commentText = DataSystem.GetRatingCommentText(grade);
-		if (m_View.TxtComment != null)
+		ERatingGrade ratingGrade = DataSystem.GetRatingGrade(accuracyRate);
+		string spriteName = DataSystem.GetSpriteNameByRating(ratingGrade);
+		Sprite sprite = Resources.Load<Sprite>("Arts/common/" + spriteName);
+		if (sprite == null)
 		{
-			m_View.TxtComment.text = commentText;
+			sprite = Asset.GetSprite(spriteName);
 		}
+		if (sprite != null)
+		{
+			m_View.ImgSocre.sprite = sprite;
+		}
+		m_View.TxtComment.text = DataSystem.GetRatingCommentText(ratingGrade);
 
 		DataLevel dataLevel = DataSystem.Instance.GetDataLevel();
 

@@ -22,17 +22,17 @@ public partial class DataSystem
 		return BaseScore * (1f + comboBonus + ItemBonus) * DifficultyRate;
 	}
 
-	public static ERatingGrade GetRatingGrade(float accuracy)
+    public static ERatingGrade GetRatingGrade(float accuracy)
     {
-        if (accuracy >= 0.8f)
+        if (accuracy >= 0.9f)
         {
             return ERatingGrade.S;
         }
-        else if (accuracy >= 0.7f)
+        else if (accuracy >= 0.8f)
         {
             return ERatingGrade.A;
         }
-        else if (accuracy >= 0.6f)
+        else if (accuracy >= 0.65f)
         {
             return ERatingGrade.B;
         }
@@ -50,22 +50,42 @@ public partial class DataSystem
         }
     }
 
+	public static string GetSpriteNameByRating(ERatingGrade rating)
+	{
+		switch (rating)
+		{
+			case ERatingGrade.S:
+				return "number_S";
+			case ERatingGrade.A:
+				return "number_A";
+			case ERatingGrade.B:
+				return "number_B";
+			case ERatingGrade.C:
+				return "number_C";
+			case ERatingGrade.D:
+				return "number_D";
+			default:
+				return "number_D";
+		}
+	}
+	
+	
 	public static string GetRatingCommentText(ERatingGrade grade)
 	{
 		switch (grade)
 		{
 			case ERatingGrade.S:
-				return "你才是真正的 KEY MASTER！";
+				return "你才是真正的 KEY MASTER！这门为你唱开！";
 			case ERatingGrade.A:
 				return "Almost in Key！节奏准得像开锁只差半圈～";
 			case ERatingGrade.B:
 				return "You found a key… 但不是正确那把。";
 			case ERatingGrade.C:
-				return "Key？在哪？节奏有点歪，不过门好像还开了一条缝。";
+				return "Key？在哪？节奏有点歪，幸好门好歹开了条缝。";
 			case ERatingGrade.D:
-				return "Out of Key！Out of Line！你和节奏完全没对上锁孔……";
+				return "OOut of Key！你这是在敲锁不是在开锁！";
 			case ERatingGrade.F:
-				return "Wrong key! 门都不给你进！重来吧，也许下一次能找到正确的Key～";
+				return "Wrong key! 节奏之门：访问被拒。重来吧，努力找到正确的Key～";
 			default:
 				return "";
 		}

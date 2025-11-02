@@ -5,8 +5,9 @@ using UnityEngine.UI;
 public class UIBeatResultView : YBaseView
 {
 	public Text TxtScore;
-	public Text TxtComment;
 	public Button BtnEsc;
+	public Image ImgSocre;
+	public Text TxtComment;
 	public override void OnInit(Transform holder)
 	{
 		var itemRef = holder.GetComponent<YViewReference>();
@@ -15,41 +16,7 @@ public class UIBeatResultView : YBaseView
 		if(viewItemList == null || viewItemList.Count == 0) return;
 		TxtScore = viewItemList[0].Target.GetComponent<Text>();
 		BtnEsc = viewItemList[1].Target.GetComponent<Button>();
-		
-		// 直接通过路径查找吐槽文字的Text组件
-		Transform textTransform = holder.Find("Canvas/Window/Text");
-		if(textTransform != null)
-		{
-			TxtComment = textTransform.GetComponent<Text>();
-			Debug.Log("找到TxtComment组件: " + textTransform.name);
-		}
-		else
-		{
-			Debug.LogWarning("未找到Canvas/Window/Text，尝试其他路径");
-			// 尝试直接在子对象中查找
-			Text[] allTexts = holder.GetComponentsInChildren<Text>(true);
-			Debug.Log("找到的所有Text组件数量: " + allTexts.Length);
-			foreach(var text in allTexts)
-			{
-				Debug.Log("Text路径: " + GetGameObjectPath(text.transform));
-				if(text.name == "Text" && text != TxtScore)
-				{
-					TxtComment = text;
-					Debug.Log("通过名称匹配找到TxtComment");
-					break;
-				}
-			}
-		}
-	}
-	
-	private string GetGameObjectPath(Transform transform)
-	{
-		string path = transform.name;
-		while (transform.parent != null)
-		{
-			transform = transform.parent;
-			path = transform.name + "/" + path;
-		}
-		return path;
+		ImgSocre = viewItemList[2].Target.GetComponent<Image>();
+		TxtComment = viewItemList[3].Target.GetComponent<Text>();
 	}
 }
