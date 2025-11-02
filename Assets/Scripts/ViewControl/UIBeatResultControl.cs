@@ -35,9 +35,21 @@ public class UIBeatResultControl : YViewControl
 		Asset.TryLoadScene(UISelectControl.ESceneName.GameEntry.ToString());
 	}
 
-	public void SetData(int score)
+	public void SetData(int score, float accuracyRate)
 	{
 		m_View.TxtScore.text = score.ToString();
+
+		ERatingGrade ratingGrade = DataSystem.GetRatingGrade(accuracyRate);
+		string spriteName = DataSystem.GetSpriteNameByRating(ratingGrade);
+		Sprite sprite = Resources.Load<Sprite>("Arts/common/" + spriteName);
+		if (sprite == null)
+		{
+			sprite = Asset.GetSprite(spriteName);
+		}
+		if (sprite != null)
+		{
+			m_View.ImgSocre.sprite = sprite;
+		}
 
 		DataLevel dataLevel = DataSystem.Instance.GetDataLevel();
 

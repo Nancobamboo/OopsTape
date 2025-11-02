@@ -45,18 +45,17 @@ public class BeatAnalyzerWindow : EditorWindow
             string audioName = m_Clip != null ? m_Clip.name : string.Empty;
             if (!string.IsNullOrEmpty(audioName))
             {
-                string folder = Path.Combine(Application.dataPath, "BeatExports");
-                string file = audioName + "_timeline.json";
-                string path = Path.Combine(folder, file);
-                if (File.Exists(path))
+                string resourcePath = "BeatExports/" + audioName + "_timeline";
+                TextAsset textAsset = Resources.Load<TextAsset>(resourcePath);
+                if (textAsset != null)
                 {
-                    string json = File.ReadAllText(path);
+                    string json = textAsset.text;
                     BeatTimelineJson dto = JsonUtility.FromJson<BeatTimelineJson>(json);
                     BeatLevelWindow.Open(dto, m_Clip);
                 }
                 else
                 {
-                    Debug.LogWarning("Beat json not found: " + path);
+                    Debug.LogWarning("Beat json not found: " + resourcePath);
                 }
             }
         }

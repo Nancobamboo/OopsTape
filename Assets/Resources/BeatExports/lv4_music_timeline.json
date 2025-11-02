@@ -419,8 +419,8 @@
             ],
             "IsHit": false,
             "SoundName": "lv4_sound_do",
-            "IsTutor": true,
-            "TutorEndId": 52
+            "IsTutor": false,
+            "TutorEndId": 46
         },
         {
             "BeatId": 44,
@@ -446,7 +446,7 @@
             "IsHit": false,
             "SoundName": "lv4_sound_mi",
             "IsTutor": false,
-            "TutorEndId": 0
+            "TutorEndId": 50
         },
         {
             "BeatId": 48,
@@ -542,7 +542,7 @@
             ],
             "IsHit": false,
             "SoundName": "lv4_sound_do",
-            "IsTutor": true,
+            "IsTutor": false,
             "TutorEndId": 69
         },
         {
@@ -564,8 +564,8 @@
             "AnimList": [],
             "IsHit": false,
             "SoundName": "",
-            "IsTutor": false,
-            "TutorEndId": 0
+            "IsTutor": true,
+            "TutorEndId": 64
         },
         {
             "BeatId": 59,
@@ -814,7 +814,7 @@
             ],
             "IsHit": false,
             "SoundName": "lv4_sound_do",
-            "IsTutor": true,
+            "IsTutor": false,
             "TutorEndId": 93
         },
         {
@@ -943,6 +943,98 @@
             "SoundName": "lv4_sound_so",
             "IsTutor": false,
             "TutorEndId": 0
+        },
+        {
+            "BeatId": 46,
+            "SceneObjects": [],
+            "AnimList": [],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 41,
+            "SceneObjects": [],
+            "AnimList": [],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 44
+        },
+        {
+            "BeatId": 45,
+            "SceneObjects": [],
+            "AnimList": [],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 48
+        },
+        {
+            "BeatId": 49,
+            "SceneObjects": [],
+            "AnimList": [],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 52
+        },
+        {
+            "BeatId": 55,
+            "SceneObjects": [],
+            "AnimList": [],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 59
+        },
+        {
+            "BeatId": 65,
+            "SceneObjects": [],
+            "AnimList": [],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 69
+        },
+        {
+            "BeatId": 83,
+            "SceneObjects": [],
+            "AnimList": [],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 84,
+            "SceneObjects": [],
+            "AnimList": [],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 93
+        },
+        {
+            "BeatId": 86,
+            "SceneObjects": [],
+            "AnimList": [],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 87
+        },
+        {
+            "BeatId": 88,
+            "SceneObjects": [],
+            "AnimList": [],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
         }
-    ]
+    ],
+    "ForceEndBeatId": 0,
+    "UseInputExtTime": false
 }

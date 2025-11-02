@@ -83,7 +83,7 @@ public class BeatLevelWindow : EditorWindow
     {
         if (m_Data == null) return;
         if (m_Data.BeatUnits == null) m_Data.BeatUnits = new List<BeatUnit>();
-        string folder = Path.Combine(Application.dataPath, "BeatExports");
+        string folder = Path.Combine(Application.dataPath, "Resources", "BeatExports");
         if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
         string file = (!string.IsNullOrEmpty(m_Data.AudioName) ? m_Data.AudioName : "Beat") + "_timeline.json";
         string path = Path.Combine(folder, file);
@@ -236,7 +236,16 @@ public class BeatLevelWindow : EditorWindow
 
         InitRowSecond();
 
+        EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("Audio", m_Data.AudioName);
+        EditorGUI.BeginChangeCheck();
+        bool newUseInputExtTime = EditorGUILayout.Toggle("Use Input Ext Time", m_Data.UseInputExtTime);
+        if (EditorGUI.EndChangeCheck())
+        {
+            m_Data.UseInputExtTime = newUseInputExtTime;
+            SaveJson();
+        }
+        EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("Beats", (m_Data.BeatTimes != null ? m_Data.BeatTimes.Count : 0).ToString());
         EditorGUI.BeginChangeCheck();

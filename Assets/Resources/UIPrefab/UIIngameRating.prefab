@@ -297,9 +297,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -50.00003}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4631605387631598151
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -328,7 +328,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 45187b075b4b33c4093483d28c068d17, type: 3}
+  m_Sprite: {fileID: 21300000, guid: af6315d15397d8242832f04c99a4c91d, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -397,7 +397,7 @@ GameObject:
   - component: {fileID: 1498803207300042795}
   - component: {fileID: 5620136593650741655}
   m_Layer: 5
-  m_Name: PointIcon
+  m_Name: ImgScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -470,6 +470,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5578979536008013757}
   - component: {fileID: 8334657087079840478}
+  - component: {fileID: 201351448080810305}
   m_Layer: 5
   m_Name: UIIngameRating
   m_TagString: Untagged
@@ -505,6 +506,43 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1991888344933957243}
   m_CullTransparentMesh: 1
+--- !u!114 &201351448080810305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991888344933957243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 637109d37df5caa4a8b283cb20fd9cb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ViewItemList:
+  - Target: {fileID: 3069387021819908539}
+    Components:
+    - {fileID: 9014168978600856811}
+    VarNameArray: []
+  - Target: {fileID: 4615982664839029511}
+    Components:
+    - {fileID: 1891406731724208600}
+    VarNameArray: []
+  - Target: {fileID: 6583099665426820236}
+    Components:
+    - {fileID: 6583099665426820236}
+    VarNameArray: []
+  - Target: {fileID: 478625944297117179}
+    Components:
+    - {fileID: 478625944297117179}
+    VarNameArray: []
+  - Target: {fileID: 3476897670419697404}
+    Components:
+    - {fileID: 3476897670419697404}
+    VarNameArray: []
+  - Target: {fileID: 6891198258100684278}
+    Components:
+    - {fileID: 6891198258100684278}
+    VarNameArray: []
 --- !u!1 &2227986321461514019
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,7 +630,7 @@ GameObject:
   - component: {fileID: 7108368004737352009}
   - component: {fileID: 1428563554548186882}
   m_Layer: 5
-  m_Name: Open1
+  m_Name: TutorUIOpen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -614,9 +652,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -45}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 90, y: 90}
-  m_Pivot: {x: 0.5, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7108368004737352009
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -667,7 +705,7 @@ GameObject:
   - component: {fileID: 5533853533306097743}
   - component: {fileID: 3323533991410100987}
   m_Layer: 5
-  m_Name: Open2
+  m_Name: TutorSoundOpen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -741,7 +779,7 @@ GameObject:
   - component: {fileID: 8412960255488624788}
   - component: {fileID: 6651502357759793860}
   m_Layer: 5
-  m_Name: Metronome1
+  m_Name: TutorUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -789,7 +827,7 @@ GameObject:
   - component: {fileID: 8624143857092571536}
   - component: {fileID: 490306686863412574}
   m_Layer: 5
-  m_Name: Close1
+  m_Name: TutorUIClose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -812,9 +850,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -45}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 90, y: 90}
-  m_Pivot: {x: 0.5, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8624143857092571536
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1028,9 +1066,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -50.00003}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4838971631760524010
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1059,7 +1097,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 45187b075b4b33c4093483d28c068d17, type: 3}
+  m_Sprite: {fileID: 21300000, guid: af6315d15397d8242832f04c99a4c91d, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1104,9 +1142,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -50.00003}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8830043850927837573
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1180,9 +1218,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -45}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 90, y: 90}
-  m_Pivot: {x: 0.5, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6079813064602170431
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1286,7 +1324,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6b3d2354466296f4da47203973f98e86, type: 3}
+  m_Sprite: {fileID: 21300000, guid: af6315d15397d8242832f04c99a4c91d, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1438,7 +1476,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6b3d2354466296f4da47203973f98e86, type: 3}
+  m_Sprite: {fileID: 21300000, guid: af6315d15397d8242832f04c99a4c91d, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1459,7 +1497,7 @@ GameObject:
   - component: {fileID: 3740153994950653291}
   - component: {fileID: 7286523485176335885}
   m_Layer: 5
-  m_Name: Metronome2
+  m_Name: TutorSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1733,7 +1771,7 @@ GameObject:
   - component: {fileID: 2284424299457322256}
   - component: {fileID: 54265328135381215}
   m_Layer: 5
-  m_Name: Close2
+  m_Name: TutorSoundClose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1809,7 +1847,7 @@ GameObject:
   - component: {fileID: 8451192437260598056}
   - component: {fileID: 9014168978600856811}
   m_Layer: 5
-  m_Name: PointNumber
+  m_Name: TxtScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

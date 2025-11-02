@@ -6,6 +6,7 @@ public class UIBeatResultView : YBaseView
 {
 	public Text TxtScore;
 	public Button BtnEsc;
+	public Image ImgSocre;
 	public override void OnInit(Transform holder)
 	{
 		var itemRef = holder.GetComponent<YViewReference>();
@@ -14,5 +15,6 @@ public class UIBeatResultView : YBaseView
 		if(viewItemList == null || viewItemList.Count == 0) return;
 		TxtScore = viewItemList[0].Target.GetComponent<Text>();
 		BtnEsc = viewItemList[1].Target.GetComponent<Button>();
+		ImgSocre = viewItemList[2].Target.GetComponent<Image>();
 	}
 }

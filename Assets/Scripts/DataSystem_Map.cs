@@ -1,10 +1,10 @@
 public enum ERatingGrade
 {
-    D = 0,
-    C = 1,
-    B = 2,
-    A = 3,
-    S = 4
+	D = 0,
+	C = 1,
+	B = 2,
+	A = 3,
+	S = 4
 }
 
 public partial class DataSystem
@@ -21,29 +21,48 @@ public partial class DataSystem
 		return BaseScore * (1f + comboBonus + ItemBonus) * DifficultyRate;
 	}
 
-	 private ERatingGrade GetRatingGrade(float accuracy)
-    {
-        if (accuracy >= 0.8f)
-        {
-            return ERatingGrade.S;
-        }
-        else if (accuracy >= 0.7f)
-        {
-            return ERatingGrade.A;
-        }
-        else if (accuracy >= 0.6f)
-        {
-            return ERatingGrade.B;
-        }
-        else if (accuracy >= 0.5f)
-        {
-            return ERatingGrade.C;
-        }
-        else
-        {
-            return ERatingGrade.D;
-        }
-    }
+	public static ERatingGrade GetRatingGrade(float accuracy)
+	{
+		if (accuracy >= 0.8f)
+		{
+			return ERatingGrade.S;
+		}
+		else if (accuracy >= 0.7f)
+		{
+			return ERatingGrade.A;
+		}
+		else if (accuracy >= 0.6f)
+		{
+			return ERatingGrade.B;
+		}
+		else if (accuracy >= 0.5f)
+		{
+			return ERatingGrade.C;
+		}
+		else
+		{
+			return ERatingGrade.D;
+		}
+	}
+
+	public static string GetSpriteNameByRating(ERatingGrade rating)
+	{
+		switch (rating)
+		{
+			case ERatingGrade.S:
+				return "number_S";
+			case ERatingGrade.A:
+				return "number_A";
+			case ERatingGrade.B:
+				return "number_B";
+			case ERatingGrade.C:
+				return "number_C";
+			case ERatingGrade.D:
+				return "number_D";
+			default:
+				return "number_D";
+		}
+	}
 
 	public void LoadGameData()
 	{
