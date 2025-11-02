@@ -5,7 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/Chips.unity
+  - enabled: 0
+    path: Assets/Scenes/Level01_Chips.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/GameFlash.unity
+    guid: 0deac9feceac40446bd5286d5834f23d
+  - enabled: 1
+    path: Assets/Scenes/GameEntry.unity
+    guid: 1229c92c1cf78014489f1f1536871663
+  - enabled: 1
+    path: Assets/Scenes/Level04_Sing.unity
+    guid: 0af7c58c507f06a4c8be1f7b5528e6f7
+  - enabled: 1
+    path: Assets/Scenes/Level03_Fly.unity
+    guid: d11548238d1038b418d3fdb73a38ab2c
   m_configObjects: {}
