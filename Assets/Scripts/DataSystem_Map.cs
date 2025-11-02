@@ -92,17 +92,17 @@ public partial class DataSystem
 				switch (grade)
 				{
 					case ERatingGrade.S:
-						return "KEY MASTER！\n节奏完美对上锁孔！节奏之门为你唱开～";
+						return "KEY LOVERS！\n你们的心跳对上拍，连苍蝇都嫉妒了！";
 					case ERatingGrade.A:
-						return "Almost in Key！\n只差半圈就能开锁啦～继续找找关键节拍！";
+						return "Almost in Key！\n差一拍，就能听见爱情的咔哒声~";
 					case ERatingGrade.B:
-						return "You found a key…\n但好像插错门了，拍子再准点！";
+						return "节奏对一半，心门开一缝\n苍蝇还在笑你俩笨～";
 					case ERatingGrade.C:
 						return "Key？Where？\n你的手指在找Key，但节奏在隔壁房间……";
 					case ERatingGrade.D:
-						return "Out of Key！\n节奏之门拒绝开启……你的钥匙掉地上了！";
+						return "Out of Key！\n你奏断线，恋爱信号消失……";
 					case ERatingGrade.F:
-						return "Key Lost! \n嘿bro~ 别睡了，起来嗨！";
+						return "Key Lost！\n爱情的锁打不开了……也许钥匙被苍蝇叼走了？";
 					default:
 						return "";
 				}
@@ -114,15 +114,15 @@ public partial class DataSystem
 					case ERatingGrade.S:
 						return "KEY MASTER！\n节奏完美对上锁孔！节奏之门为你唱开～";
 					case ERatingGrade.A:
-						return "Almost in Key！\n只差半圈就能开锁啦～继续找找关键节拍！";
+						return "Almost in Key！\n只有那只绿鹦鹉跑了个半调～";
 					case ERatingGrade.B:
 						return "You found a key…\n但好像插错门了，拍子再准点！";
 					case ERatingGrade.C:
 						return "Key？Where？\n你的手指在找Key，但节奏在隔壁房间……";
 					case ERatingGrade.D:
-						return "Out of Key！\n节奏之门拒绝开启……你的钥匙掉地上了！";
+						return "Out of Key！\n听起来像鹦鹉大战录音机！";
 					case ERatingGrade.F:
-						return "Key Lost! \n嘿bro~ 别睡了，起来嗨！";
+						return "Key Lost! \n音乐老师气到退团：‘这谁调的Key？！";
 					default:
 						return "";
 				}
