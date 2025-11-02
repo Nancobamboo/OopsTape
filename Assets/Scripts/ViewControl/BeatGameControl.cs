@@ -230,11 +230,7 @@ public class BeatGameControl : YViewControl
 						isTooQuick = true;
 					}
 				}
-				else
-				{
-					isTooQuick = true;
-				}
-
+	
 				if (isTooQuick)
 				{
 					Debug.Log("Pressed Too Quick: " + newBeatUnit.BeatId);
