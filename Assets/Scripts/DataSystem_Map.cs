@@ -20,7 +20,16 @@ public partial class DataSystem
 	public static float CalculateFinalScore(int combo)
 	{
 		float comboBonus = combo * 0.1f;
-		return BaseScore * (1f + comboBonus + ItemBonus) * DifficultyRate;
+		float itemBonus = ItemBonus;
+		if (Instance != null)
+		{
+			DataLevel dataLevel = Instance.GetDataLevel();
+			if (dataLevel != null && dataLevel.UseTutorUI)
+			{
+				itemBonus = 0f;
+			}
+		}
+		return BaseScore * (1f + comboBonus + itemBonus) * DifficultyRate;
 	}
 
 	public static ERatingGrade GetRatingGrade(float accuracy)
