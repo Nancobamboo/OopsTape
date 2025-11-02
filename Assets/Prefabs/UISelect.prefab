@@ -264,8 +264,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 275}
-  m_SizeDelta: {x: 350, y: 76.4}
+  m_AnchoredPosition: {x: 0, y: 291}
+  m_SizeDelta: {x: 350, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1764392701565427867
 CanvasRenderer:
@@ -307,8 +307,8 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: "\u6D77\u9E25\u85AF\u6761"
+    m_LineSpacing: 0.8
+  m_Text: Key Bite
 --- !u!1 &283286167717915503
 GameObject:
   m_ObjectHideFlags: 0
@@ -3514,8 +3514,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 275}
-  m_SizeDelta: {x: 350, y: 76.4}
+  m_AnchoredPosition: {x: 0, y: 291}
+  m_SizeDelta: {x: 350, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2523674261707465194
 CanvasRenderer:
@@ -3557,8 +3557,8 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: "\u9E66\u9E49\u5408\u5531\u56E2"
+    m_LineSpacing: 0.8
+  m_Text: Stay in Key
 --- !u!1 &5812291827834543665
 GameObject:
   m_ObjectHideFlags: 0
@@ -3593,8 +3593,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 275}
-  m_SizeDelta: {x: 350, y: 76.4}
+  m_AnchoredPosition: {x: 0, y: 291}
+  m_SizeDelta: {x: 350, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8664086943703324235
 CanvasRenderer:
@@ -3636,8 +3636,8 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: "\u82CD\u8747\u9986\u5B50"
+    m_LineSpacing: 0.8
+  m_Text: Key to My Heart
 --- !u!1 &5813353724990306393
 GameObject:
   m_ObjectHideFlags: 0
@@ -4846,8 +4846,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 275}
-  m_SizeDelta: {x: 350, y: 76.4}
+  m_AnchoredPosition: {x: 0, y: 291}
+  m_SizeDelta: {x: 350, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9103152114377944298
 CanvasRenderer:
@@ -4889,8 +4889,8 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: "\u8003\u62C9\u7167\u76F8\u9986"
+    m_LineSpacing: 0.8
+  m_Text: Catch the Key Shot
 --- !u!1 &8597950398499363177
 GameObject:
   m_ObjectHideFlags: 0
