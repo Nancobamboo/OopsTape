@@ -27,15 +27,15 @@ public class UIBeatTipControl : YViewControl
 	{
 		if (isHit)
 		{
-			m_View.ImgBeat.color = Color.red;
+			m_View.ImgBeat.color =new Color(0.929f, 0.267f, 0.518f);
 		}
 		else if (isTip)
 		{
-			m_View.ImgBeat.color = Color.yellow;
+			m_View.ImgBeat.color =new Color(0.980f, 0.949f, 0.435f);
 		}
 		else
 		{
-			m_View.ImgBeat.color = Color.clear;
+			m_View.ImgBeat.color = Color.white;
 		}
 	}
 
