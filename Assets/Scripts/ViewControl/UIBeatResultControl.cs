@@ -35,9 +35,18 @@ public class UIBeatResultControl : YViewControl
 		Asset.TryLoadScene(UISelectControl.ESceneName.GameEntry.ToString());
 	}
 
-	public void SetData(int score)
+	public void SetData(int score, float accuracy)
 	{
+		// 显示分数
 		m_View.TxtScore.text = score.ToString();
+
+		// 设置评级吐槽文字
+		ERatingGrade grade = DataSystem.GetRatingGrade(accuracy);
+		string commentText = DataSystem.GetRatingCommentText(grade);
+		if (m_View.TxtComment != null)
+		{
+			m_View.TxtComment.text = commentText;
+		}
 
 		DataLevel dataLevel = DataSystem.Instance.GetDataLevel();
 

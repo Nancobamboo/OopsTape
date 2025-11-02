@@ -38,6 +38,8 @@ public class BeatGameControl : YViewControl
 
 	public int TotalScore = 0;
 	public int ComboNum = 0;
+	public int HitCount = 0;
+	public int TotalHitCount = 0;
 
 	public static EResType GetResType()
 	{
@@ -110,6 +112,8 @@ public class BeatGameControl : YViewControl
 				string json = File.ReadAllText(path);
 				m_TimelineData = JsonUtility.FromJson<BeatTimelineJson>(json);
 				m_BeatUnitById.Clear();
+				HitCount = 0;
+				TotalHitCount = 0;
 				if (m_TimelineData != null && m_TimelineData.BeatUnits != null)
 				{
 					for (int i = 0; i < m_TimelineData.BeatUnits.Count; i++)
@@ -120,6 +124,7 @@ public class BeatGameControl : YViewControl
 						if (u.IsHit && m_TimelineData.BeatTimes != null && u.BeatId >= 0 && u.BeatId < m_TimelineData.BeatTimes.Count)
 						{
 							m_TimelineData.BeatTimes[u.BeatId] += DataSystem.InputExtraTime;
+							TotalHitCount++;
 						}
 					}
 				}
@@ -247,7 +252,8 @@ public class BeatGameControl : YViewControl
 		{
 			m_ResultShown = true;
 			UIBeatResultControl result = Asset.OpenUI<UIBeatResultControl>();
-			result.SetData(TotalScore);
+			float accuracy = TotalHitCount > 0 ? (float)HitCount / TotalHitCount : 0f;
+			result.SetData(TotalScore, accuracy);
 			return;
 		}
 
@@ -259,7 +265,8 @@ public class BeatGameControl : YViewControl
 		{
 			m_ResultShown = true;
 			UIBeatResultControl result = Asset.OpenUI<UIBeatResultControl>();
-			result.SetData(TotalScore);
+			float accuracy = TotalHitCount > 0 ? (float)HitCount / TotalHitCount : 0f;
+			result.SetData(TotalScore, accuracy);
 			return;
 		}
 
@@ -396,6 +403,7 @@ public class BeatGameControl : YViewControl
 		if (hit)
 		{
 			ComboNum++;
+			HitCount++;
 			float score = DataSystem.CalculateFinalScore(ComboNum);
 			TotalScore += (int)score;
 		}
