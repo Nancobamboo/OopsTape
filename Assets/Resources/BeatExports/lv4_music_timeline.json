@@ -104,8 +104,12 @@
     "BeatUnits": [
         {
             "BeatId": 10,
-            "SceneObjects": [],
-            "AnimList": [],
+            "SceneObjects": [
+                "music"
+            ],
+            "AnimList": [
+                "UI_level4_music"
+            ],
             "IsHit": false,
             "SoundName": "",
             "IsTutor": false,
@@ -1198,6 +1202,45 @@
             ],
             "IsHit": true,
             "SoundName": "lv4_sound_so",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 8,
+            "SceneObjects": [
+                "music"
+            ],
+            "AnimList": [
+                "UI_level4_music"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 12,
+            "SceneObjects": [
+                "music"
+            ],
+            "AnimList": [
+                "UI_level4_music"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 14,
+            "SceneObjects": [
+                "music"
+            ],
+            "AnimList": [
+                "UI_level4_music"
+            ],
+            "IsHit": false,
+            "SoundName": "",
             "IsTutor": false,
             "TutorEndId": 0
         }
