@@ -14,6 +14,7 @@ public enum EResType
     UIUpper,
     LevelEnemy,
     SoundEffect,
+    UIIngameRating,
     Upper,
 
 }

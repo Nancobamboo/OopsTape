@@ -35,17 +35,66 @@ public class UIBeatResultControl : YViewControl
 		Asset.TryLoadScene(UISelectControl.ESceneName.GameEntry.ToString());
 	}
 
-	public void SetData(int score)
+	public void SetData(int score, float accuracyRate)
 	{
 		m_View.TxtScore.text = score.ToString();
+
+		ERatingGrade ratingGrade = DataSystem.GetRatingGrade(accuracyRate);
+		string spriteName = DataSystem.GetSpriteNameByRating(ratingGrade);
+		Sprite sprite = Resources.Load<Sprite>("Arts/common/" + spriteName);
+		if (sprite == null)
+		{
+			sprite = Asset.GetSprite(spriteName);
+		}
+		if (sprite != null)
+		{
+			m_View.ImgSocre.sprite = sprite;
+		}
+		m_View.TxtComment.text = DataSystem.GetRatingCommentText(ratingGrade);
+
+		DataLevel dataLevel = DataSystem.Instance.GetDataLevel();
 
 		string sceneName = SceneManager.GetActiveScene().name;
 		if (System.Enum.TryParse<UISelectControl.ESceneName>(sceneName, out UISelectControl.ESceneName sceneEnum))
 		{
-			DataLevel dataLevel = DataSystem.Instance.GetDataLevel();
-			dataLevel.LevelScoreDict[(int)sceneEnum] = score;
-			DataSystem.Instance.SaveDataLevel();
+			int sceneEnumValue = (int)sceneEnum;
+			if (dataLevel.LevelScoreDict.ContainsKey(sceneEnumValue))
+			{
+				if (score > dataLevel.LevelScoreDict[sceneEnumValue])
+				{
+					dataLevel.LevelScoreDict[sceneEnumValue] = score;
+				}
+			}
+			else
+			{
+				dataLevel.LevelScoreDict[sceneEnumValue] = score;
+			}
 		}
+
+		int level03FlyValue = (int)UISelectControl.ESceneName.Level03_Fly;
+		if (!dataLevel.LevelUnlocked.Contains(level03FlyValue))
+		{
+			dataLevel.AddLevelUnlockedData(level03FlyValue);
+		}
+
+		if (dataLevel.LevelScoreDict.Count >= 2)
+		{
+			dataLevel.TutorUINum++;
+			dataLevel.TutorSoundNum++;
+		}
+		else
+		{
+			if (Random.Range(0, 2) == 0)
+			{
+				dataLevel.TutorUINum++;
+			}
+			else
+			{
+				dataLevel.TutorSoundNum++;
+			}
+		}
+
+		DataSystem.Instance.SaveDataLevel();
 	}
 
 	protected override void OnReturn()

@@ -243,6 +243,8 @@ public class BeatTimelineJson
     public List<float> BeatTimes;
     public string AudioName;
     public List<BeatUnit> BeatUnits;
+    public int ForceEndBeatId;
+    public bool UseInputExtTime = true;
 
     public double GetTimeOfBeat(double beatIndex)
     {

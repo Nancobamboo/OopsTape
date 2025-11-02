@@ -23,6 +23,8 @@ public class BeatGameControl : YViewControl
 	private UIBeatGuideControl m_BeatGuide;
 	public bool IsCurBeatPressed = false;
 	private SoundEffectControl m_SoundEffectControl;
+	private SoundEffectControl m_TutorSoundEffectControl;
+	private BeatUnit m_LastUnitBeat;
 
 	public AudioSource m_BeatSource;
 	public List<string> SpaceAnimNames = new List<string>();
@@ -38,6 +40,9 @@ public class BeatGameControl : YViewControl
 
 	public int TotalScore = 0;
 	public int ComboNum = 0;
+	private int m_CorrectHitCount = 0;
+	private int m_WrongHitCount = 0;
+	private UIIngameRatingControl m_IngameRatingControl;
 
 	public static EResType GetResType()
 	{
@@ -83,12 +88,29 @@ public class BeatGameControl : YViewControl
 		m_SoundEffectControl = Asset.CreateLevelObject<SoundEffectControl>(Vector3.zero);
 		m_SoundEffectControl.SetData();
 
+		m_TutorSoundEffectControl = Asset.CreateLevelObject<SoundEffectControl>(Vector3.zero);
+		m_TutorSoundEffectControl.SetData();
+
+		m_IngameRatingControl = Asset.OpenUI<UIIngameRatingControl>();
+		m_IngameRatingControl.SetData();
+
 		UICounterControl counter = Asset.OpenUI<UICounterControl>();
 		counter.SetData(StartGame, m_SoundEffectControl);
+
+		m_IngameRatingControl.SetScore(0);
+		m_IngameRatingControl.SetImgScore(1);
+
 	}
 
 	private void StartGame()
 	{
+		m_CorrectHitCount = 0;
+		m_WrongHitCount = 0;
+		TotalScore = 0;
+		ComboNum = 0;
+
+
+
 		Animator[] animators = GameObject.FindObjectsByType<Animator>(FindObjectsSortMode.None);
 		for (int i = 0; i < animators.Length; i++)
 		{
@@ -102,12 +124,11 @@ public class BeatGameControl : YViewControl
 		if (m_BeatSource != null && m_BeatSource.clip != null)
 		{
 			string audioName = m_BeatSource.clip.name;
-			string folder = Path.Combine(Application.dataPath, "BeatExports");
-			string file = audioName + "_timeline.json";
-			string path = Path.Combine(folder, file);
-			if (File.Exists(path))
+			string resourcePath = "BeatExports/" + audioName + "_timeline";
+			TextAsset textAsset = Resources.Load<TextAsset>(resourcePath);
+			if (textAsset != null)
 			{
-				string json = File.ReadAllText(path);
+				string json = textAsset.text;
 				m_TimelineData = JsonUtility.FromJson<BeatTimelineJson>(json);
 				m_BeatUnitById.Clear();
 				if (m_TimelineData != null && m_TimelineData.BeatUnits != null)
@@ -119,7 +140,10 @@ public class BeatGameControl : YViewControl
 
 						if (u.IsHit && m_TimelineData.BeatTimes != null && u.BeatId >= 0 && u.BeatId < m_TimelineData.BeatTimes.Count)
 						{
-							m_TimelineData.BeatTimes[u.BeatId] += DataSystem.InputExtraTime;
+							if (m_TimelineData.UseInputExtTime)
+							{
+								m_TimelineData.BeatTimes[u.BeatId] += DataSystem.InputExtraTime;
+							}
 						}
 					}
 				}
@@ -142,7 +166,7 @@ public class BeatGameControl : YViewControl
 			}
 			else
 			{
-				Debug.LogWarning("BeatExports json not found: " + path);
+				Debug.LogWarning("BeatExports json not found: " + resourcePath);
 			}
 		}
 	}
@@ -155,16 +179,16 @@ public class BeatGameControl : YViewControl
 			IsCurBeatPressed = true;
 		}
 
-		var curBeatUnit = GetBeatUnit(CurrentBeat);
+		m_LastUnitBeat = GetBeatUnit(CurrentBeat);
+		var newBeatUnit = GetBeatUnit(newBeat);
 		if (newBeat != CurrentBeat)
 		{
 			IsPlayedHit = false;
-			var newBeatUnit = GetBeatUnit(newBeat);
 			CurrentBeat = newBeat;
 
 			if (newBeatUnit != null && newBeatUnit.IsTutor && m_BeatGuide != null)
 			{
-				m_BeatGuide?.SetData(m_BeatUnitById, newBeatUnit.BeatId, newBeatUnit.TutorEndId);
+				m_BeatGuide?.SetData(m_BeatUnitById, newBeatUnit.BeatId, newBeatUnit.TutorEndId, m_TutorSoundEffectControl);
 			}
 			m_BeatGuide?.UpdateBeatTip(CurrentBeat);
 
@@ -185,32 +209,40 @@ public class BeatGameControl : YViewControl
 			}
 
 			// Pressed Too Late
-			if (curBeatUnit != null && curBeatUnit.IsHit && IsCurBeatPressed == false)
+			if (m_LastUnitBeat != null && m_LastUnitBeat.IsHit && IsCurBeatPressed == false)
 			{
-				PlayHitCheckBeat(curBeatUnit, false);
+				Debug.Log("Pressed Too Late: " + m_LastUnitBeat.BeatId);
+				PlayHitCheckBeat(m_LastUnitBeat, false);
 			}
 
-			// Pressed Too Quick
+			// Pressed Too Quick: only if last unit is not hit and current unit is hit
 			if (newBeatUnit != null && newBeatUnit.IsHit && IsCurBeatPressed == true)
 			{
-				IsPlayedHit = true;
-				PlayHitCheckBeat(newBeatUnit, false);
+				Debug.Log("Pressed Too Quick: " + newBeatUnit.BeatId);
+				if (this.m_LastUnitBeat == null || this.m_LastUnitBeat.IsHit == false)
+				{
+					IsPlayedHit = true;
+					PlayHitCheckBeat(newBeatUnit, false);
+				}
+				else if (this.m_LastUnitBeat != null && this.m_LastUnitBeat.IsHit == true)
+				{
+					IsCurBeatPressed = false;
+				}
 			}
 			else
 			{
 				IsCurBeatPressed = false;
 			}
 
-			curBeatUnit = newBeatUnit;
-			PlayNormalBeat(curBeatUnit);
+			PlayNormalBeat(newBeatUnit);
 		}
 
-		if (press && (curBeatUnit == null || curBeatUnit.IsEmpty()))
+		if (press && (newBeatUnit == null || newBeatUnit.IsEmpty()))
 		{
 			PlaySpaceAnimations();
 		}
 
-		if (curBeatUnit != null && curBeatUnit.IsHit)
+		if (newBeatUnit != null && newBeatUnit.IsHit)
 		{
 			if (IsCurBeatPressed)
 			{
@@ -220,8 +252,8 @@ public class BeatGameControl : YViewControl
 					double clipTime = AudioSettings.dspTime - m_SongStartDsp - m_PausedDspDuration;
 					double beatTime = m_TimelineData.GetTimeOfBeat(CurrentBeat);
 					bool hit = clipTime < beatTime;
-					PlayHitCheckBeat(curBeatUnit, true);
-					PlaySound(curBeatUnit.SoundName);
+					PlayHitCheckBeat(newBeatUnit, true);
+					PlaySound(newBeatUnit.SoundName);
 				}
 			}
 		}
@@ -229,6 +261,11 @@ public class BeatGameControl : YViewControl
 
 	private void Update()
 	{
+		if (m_ResultShown)
+		{
+			return;
+		}
+
 		if (m_BeatSource == null || m_TimelineData == null || !m_IsScheduled)
 		{
 			return;
@@ -241,13 +278,24 @@ public class BeatGameControl : YViewControl
 		if (!m_ResultShown && Time.time >= ShowResultMoment)
 		{
 			m_ResultShown = true;
+			float accuracyRate = GetAccuracyRate();
 			UIBeatResultControl result = Asset.OpenUI<UIBeatResultControl>();
-			result.SetData(TotalScore);
+			result.SetData(TotalScore, accuracyRate);
+			return;
 		}
 
 		double dsp = AudioSettings.dspTime;
 		double playerBeat = (dsp - m_SongStartDsp - m_PausedDspDuration - m_SongOffsetSeconds) / m_SecondsPerBeat;
 		int newBeat = (int)System.Math.Round(playerBeat);
+
+		if (!m_ResultShown && m_TimelineData.ForceEndBeatId != 0 && newBeat >= m_TimelineData.ForceEndBeatId)
+		{
+			m_ResultShown = true;
+			float accuracyRate = GetAccuracyRate();
+			UIBeatResultControl result = Asset.OpenUI<UIBeatResultControl>();
+			result.SetData(TotalScore, accuracyRate);
+			return;
+		}
 
 		if (IsKeepPressGame == false)
 		{
@@ -291,7 +339,7 @@ public class BeatGameControl : YViewControl
 
 		if (curBeatUnit != null && curBeatUnit.IsTutor)
 		{
-			m_BeatGuide.SetData(m_BeatUnitById, curBeatUnit.BeatId, curBeatUnit.TutorEndId);
+			m_BeatGuide.SetData(m_BeatUnitById, curBeatUnit.BeatId, curBeatUnit.TutorEndId, m_TutorSoundEffectControl);
 		}
 
 		if (IsSoundStart && curBeatUnit != null && !string.IsNullOrEmpty(curBeatUnit.SoundName) && curBeatUnit.IsHit == false)
@@ -379,6 +427,8 @@ public class BeatGameControl : YViewControl
 	{
 		if (unit == null) return;
 
+		int oldScore = TotalScore;
+
 		if (hit)
 		{
 			ComboNum++;
@@ -392,6 +442,21 @@ public class BeatGameControl : YViewControl
 
 		if (unit.IsHit)
 		{
+			if (hit)
+			{
+				m_CorrectHitCount++;
+			}
+			else
+			{
+				m_WrongHitCount++;
+			}
+
+			float accuracyRate = GetAccuracyRate();
+			if (m_IngameRatingControl != null)
+			{
+				m_IngameRatingControl.SetImgScore(accuracyRate);
+			}
+
 			for (int i = 0; i < unit.SceneObjects.Count; i++)
 			{
 				bool play = hit ? (i % 2 == 0) : (i % 2 == 1);
@@ -407,6 +472,21 @@ public class BeatGameControl : YViewControl
 				}
 			}
 		}
+
+		if (TotalScore != oldScore && m_IngameRatingControl != null)
+		{
+			m_IngameRatingControl.SetScore(TotalScore);
+		}
+	}
+
+	private float GetAccuracyRate()
+	{
+		int totalHits = m_CorrectHitCount + m_WrongHitCount;
+		if (totalHits == 0)
+		{
+			return 0f;
+		}
+		return (float)m_CorrectHitCount / totalHits;
 	}
 
 	public Animator GetAnimator(string name)

@@ -565,7 +565,7 @@ public class YProcessViewEditor : EditorWindow
     }
 
     string[] UITypeNames = new string[] {
-         "Button",
+          "Button",
           "Image",
           "Text",
           "RectTransform",

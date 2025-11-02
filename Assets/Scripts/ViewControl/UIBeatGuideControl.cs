@@ -9,6 +9,11 @@ public class UIBeatGuideControl : YViewControl
 	private Dictionary<int, UIBeatTipControl> m_Tips = new Dictionary<int, UIBeatTipControl>();
 	private List<UIBeatTipControl> m_PoolTips = new List<UIBeatTipControl>();
 	private int m_EndTutorId;
+	private int m_StartTutorId;
+	private SoundEffectControl m_SoundEffectControl;
+	private int m_LastPlayedIndex = -1;
+	private bool m_UseUITutor;
+	private bool m_UseSoundTutor;
 
 	public static EResType GetResType()
 	{
@@ -38,11 +43,25 @@ public class UIBeatGuideControl : YViewControl
 		return tip;
 	}
 
-	public void SetData(Dictionary<int, BeatUnit> units, int startTutorId, int endTutorId)
+	public void SetData(Dictionary<int, BeatUnit> units, int startTutorId, int endTutorId, SoundEffectControl soundEffectControl)
 	{
 		m_Units = units;
 		m_EndTutorId = endTutorId;
+		m_StartTutorId = startTutorId;
+		m_SoundEffectControl = soundEffectControl;
+		m_LastPlayedIndex = -1;
 
+		if (BeatGameControl.Instance != null && BeatGameControl.Instance.IsDedugMode)
+		{
+			m_UseUITutor = true;
+			m_UseSoundTutor = true;
+		}
+		else
+		{
+			DataLevel dataLevel = DataSystem.Instance.GetDataLevel();
+			m_UseUITutor = dataLevel.UseTutorUI;
+			m_UseSoundTutor = dataLevel.UseTutorSound;
+		}
 
 		foreach (var kvp in m_Tips)
 		{
@@ -50,28 +69,31 @@ public class UIBeatGuideControl : YViewControl
 		}
 		m_Tips.Clear();
 
-		int count = endTutorId - startTutorId + 1;
-		for (int i = 0; i < count; i++)
+		if (m_UseUITutor)
 		{
-			int tutorId = startTutorId + i;
-			BeatUnit beatUnit = null;
-			if (m_Units != null)
+			int count = endTutorId - startTutorId + 1;
+			for (int i = 0; i < count; i++)
 			{
-				m_Units.TryGetValue(tutorId, out beatUnit);
-			}
+				int tutorId = startTutorId + i;
+				BeatUnit beatUnit = null;
+				if (m_Units != null)
+				{
+					m_Units.TryGetValue(tutorId, out beatUnit);
+				}
 
-			var tip = GetOrCreateTip();
-			m_Tips[tutorId] = tip;
-			bool isTip = false;
-			bool isHit = false;
-			if (beatUnit != null)
-			{
-				isHit = beatUnit.IsHit;
-				isTip = beatUnit != null && beatUnit.IsEmpty() == false;
+				var tip = GetOrCreateTip();
+				m_Tips[tutorId] = tip;
+				bool isTip = false;
+				bool isHit = false;
+				if (beatUnit != null)
+				{
+					isHit = beatUnit.IsHit;
+					isTip = beatUnit != null && beatUnit.IsEmpty() == false;
+				}
+				tip.SetData(isHit, isTip);
+				tip.SetData(tutorId);
+				tip.ShowBg(false);
 			}
-			tip.SetData(isHit, isTip);
-			tip.SetData(tutorId);
-			tip.ShowBg(false);
 		}
 	}
 
@@ -81,18 +103,44 @@ public class UIBeatGuideControl : YViewControl
 
 		if (curBeatIndex > m_EndTutorId)
 		{
-			foreach (var kvp in m_Tips)
+			if (m_UseUITutor)
 			{
-				kvp.Value.gameObject.SetActive(false);
+				foreach (var kvp in m_Tips)
+				{
+					kvp.Value.gameObject.SetActive(false);
+				}
 			}
 			return;
 		}
 
-		foreach (var kvp in m_Tips)
+		if (m_UseSoundTutor && curBeatIndex >= m_StartTutorId && curBeatIndex <= m_EndTutorId)
 		{
-			int tutorId = kvp.Key;
-			UIBeatTipControl tip = kvp.Value;
-			tip.ShowBg(tutorId == curBeatIndex);
+			BeatUnit beatUnit = null;
+			if (m_Units != null)
+			{
+				m_Units.TryGetValue(curBeatIndex, out beatUnit);
+			}
+
+			if (beatUnit == null || !beatUnit.IsHit)
+			{
+				int audioIndex = curBeatIndex - m_StartTutorId + 1;
+				if (audioIndex != m_LastPlayedIndex && m_SoundEffectControl != null)
+				{
+					string audioName = "Voice_girl_0" + audioIndex;
+					m_SoundEffectControl.PlayOneShot(audioName);
+					m_LastPlayedIndex = audioIndex;
+				}
+			}
+		}
+
+		if (m_UseUITutor)
+		{
+			foreach (var kvp in m_Tips)
+			{
+				int tutorId = kvp.Key;
+				UIBeatTipControl tip = kvp.Value;
+				tip.ShowBg(tutorId == curBeatIndex);
+			}
 		}
 	}
 
