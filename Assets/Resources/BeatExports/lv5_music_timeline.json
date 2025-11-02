@@ -63,8 +63,12 @@
     "BeatUnits": [
         {
             "BeatId": 1,
-            "SceneObjects": [],
-            "AnimList": [],
+            "SceneObjects": [
+                "music"
+            ],
+            "AnimList": [
+                "UI_level4_music"
+            ],
             "IsHit": false,
             "SoundName": "lv4_sound_do",
             "IsTutor": true,
@@ -85,8 +89,12 @@
         },
         {
             "BeatId": 4,
-            "SceneObjects": [],
-            "AnimList": [],
+            "SceneObjects": [
+                "music"
+            ],
+            "AnimList": [
+                "UI_level4_music"
+            ],
             "IsHit": false,
             "SoundName": "",
             "IsTutor": true,
@@ -94,8 +102,12 @@
         },
         {
             "BeatId": 5,
-            "SceneObjects": [],
-            "AnimList": [],
+            "SceneObjects": [
+                "music"
+            ],
+            "AnimList": [
+                "UI_level4_music"
+            ],
             "IsHit": false,
             "SoundName": "",
             "IsTutor": false,
@@ -139,12 +151,44 @@
         },
         {
             "BeatId": 7,
-            "SceneObjects": [],
-            "AnimList": [],
+            "SceneObjects": [
+                "music"
+            ],
+            "AnimList": [
+                "UI_level4_music"
+            ],
             "IsHit": false,
             "SoundName": "",
             "IsTutor": true,
             "TutorEndId": 9
+        },
+        {
+            "BeatId": 2,
+            "SceneObjects": [
+                "music"
+            ],
+            "AnimList": [
+                "UI_level4_music"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 8,
+            "SceneObjects": [
+                "music",
+                "music"
+            ],
+            "AnimList": [
+                "UI_level4_music",
+                "UI_level4_music"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
         }
     ],
     "ForceEndBeatId": 11,
