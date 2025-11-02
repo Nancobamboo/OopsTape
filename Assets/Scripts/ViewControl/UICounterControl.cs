@@ -28,11 +28,9 @@ public class UICounterControl : YViewControl
 		m_Callback = callback;
 		m_SoundEffectControl = soundEffectControl;
 		m_Images = new Image[]
-		{
-			m_View.One,
+		{   m_View.Three,
 			m_View.Two,
-			m_View.Three,
-
+			m_View.One,
 		};
 
 		m_View.Five.gameObject.SetActive(false);

@@ -26,6 +26,10 @@ public class UISelectTutorControl : YViewControl
 
 	public void OnBtnTutorUIClick()
 	{
+		if (m_DataLevel.TutorUINum <= 0)
+		{
+			return;
+		}
 		Debug.Log("OnBtnTutorUIClick");
 		m_DataLevel.UseTutorUI = !m_DataLevel.UseTutorUI;
 		ShowTutorUISwitch(m_DataLevel.UseTutorUI);
@@ -35,6 +39,10 @@ public class UISelectTutorControl : YViewControl
 	public
 	 void OnBtnTutorSoundClick()
 	{
+		if (m_DataLevel.TutorSoundNum <= 0)
+		{
+			return;
+		}
 		Debug.Log("OnBtnTutorSoundClick");
 		m_DataLevel.UseTutorSound = !m_DataLevel.UseTutorSound;
 		ShowTutorSoundSwitch(m_DataLevel.UseTutorSound);
@@ -55,8 +63,25 @@ public class UISelectTutorControl : YViewControl
 
 	public void SetData()
 	{
-		ShowTutorUISwitch(m_DataLevel.UseTutorUI);
-		ShowTutorSoundSwitch(m_DataLevel.UseTutorSound);
+		if (m_DataLevel.TutorUINum > 0)
+		{
+			ShowTutorUISwitch(m_DataLevel.UseTutorUI);
+		}
+		else
+		{
+			m_View.TutorUIOpen.gameObject.SetActive(false);
+			m_View.TutorUIOff.gameObject.SetActive(false);
+		}
+
+		if (m_DataLevel.TutorSoundNum > 0)
+		{
+			ShowTutorSoundSwitch(m_DataLevel.UseTutorSound);
+		}
+		else
+		{
+			m_View.TutorSoundOpen.gameObject.SetActive(false);
+			m_View.TutorSoundOff.gameObject.SetActive(false);
+		}
 	}
 
 	protected override void OnReturn()
