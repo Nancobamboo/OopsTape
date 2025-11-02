@@ -18,6 +18,7 @@ public class BeatGameControl : YViewControl
 	private float m_AudioClipLength;
 	private float ShowResultMoment;
 	private bool m_ResultShown = false;
+	private double SpaceClickMoment;
 	public static BeatGameControl Instance { get; private set; }
 	public int CurrentBeat = -1;
 	private UIBeatGuideControl m_BeatGuide;
@@ -142,7 +143,7 @@ public class BeatGameControl : YViewControl
 						{
 							if (m_TimelineData.UseInputExtTime)
 							{
-								m_TimelineData.BeatTimes[u.BeatId] += DataSystem.InputExtraTime;
+								m_TimelineData.BeatTimes[u.BeatId + 1] += DataSystem.InputExtraTime;
 							}
 						}
 					}
@@ -177,6 +178,7 @@ public class BeatGameControl : YViewControl
 		if (press)
 		{
 			IsCurBeatPressed = true;
+			SpaceClickMoment = AudioSettings.dspTime - m_SongStartDsp - m_PausedDspDuration;
 		}
 
 		m_LastUnitBeat = GetBeatUnit(CurrentBeat);
@@ -218,13 +220,29 @@ public class BeatGameControl : YViewControl
 			// Pressed Too Quick: only if last unit is not hit and current unit is hit
 			if (newBeatUnit != null && newBeatUnit.IsHit && IsCurBeatPressed == true)
 			{
-				Debug.Log("Pressed Too Quick: " + newBeatUnit.BeatId);
+				bool isTooQuick = false;
 				if (this.m_LastUnitBeat == null || this.m_LastUnitBeat.IsHit == false)
 				{
+					double currentTime = AudioSettings.dspTime - m_SongStartDsp - m_PausedDspDuration;
+					double timeSinceClick = currentTime - SpaceClickMoment;
+					if (timeSinceClick >= DataSystem.InputForwardTime)
+					{
+						isTooQuick = true;
+					}
+				}
+				else
+				{
+					isTooQuick = true;
+				}
+
+				if (isTooQuick)
+				{
+					Debug.Log("Pressed Too Quick: " + newBeatUnit.BeatId);
 					IsPlayedHit = true;
 					PlayHitCheckBeat(newBeatUnit, false);
 				}
-				else if (this.m_LastUnitBeat != null && this.m_LastUnitBeat.IsHit == true)
+
+				if (this.m_LastUnitBeat != null && this.m_LastUnitBeat.IsHit == true)
 				{
 					IsCurBeatPressed = false;
 				}
@@ -249,9 +267,8 @@ public class BeatGameControl : YViewControl
 				if (IsPlayedHit == false)
 				{
 					IsPlayedHit = true;
-					double clipTime = AudioSettings.dspTime - m_SongStartDsp - m_PausedDspDuration;
-					double beatTime = m_TimelineData.GetTimeOfBeat(CurrentBeat);
-					bool hit = clipTime < beatTime;
+
+
 					PlayHitCheckBeat(newBeatUnit, true);
 					PlaySound(newBeatUnit.SoundName);
 				}
