@@ -7,8 +7,8 @@ public class UICounterView : YBaseView
 	public Image One;
 	public Image Two;
 	public Image Three;
-	public Image Four;
 	public Image Five;
+	public Image Four;
 	public override void OnInit(Transform holder)
 	{
 		var itemRef = holder.GetComponent<YViewReference>();
@@ -18,7 +18,7 @@ public class UICounterView : YBaseView
 		One = viewItemList[0].Target.GetComponent<Image>();
 		Two = viewItemList[1].Target.GetComponent<Image>();
 		Three = viewItemList[2].Target.GetComponent<Image>();
-		Four = viewItemList[3].Target.GetComponent<Image>();
-		Five = viewItemList[4].Target.GetComponent<Image>();
+		Five = viewItemList[3].Target.GetComponent<Image>();
+		Four = viewItemList[4].Target.GetComponent<Image>();
 	}
 }
