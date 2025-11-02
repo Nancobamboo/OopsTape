@@ -10,7 +10,7 @@ public enum ERatingGrade
 
 public partial class DataSystem
 {
-	public static float InputExtraTime = 0.3f;
+	public static float InputExtraTime = 0.6f;
 	public static float InputForwardTime = 0.3f;
 
 	public static float BaseScore = 5000f;
