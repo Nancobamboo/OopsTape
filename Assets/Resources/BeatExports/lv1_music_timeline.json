@@ -1,146 +1,68 @@
 {
-    "Bpm": 60.09265899658203,
-    "SecondsPerBeat": 0.9984580278396606,
-    "OffsetSeconds": 0.21966077387332917,
-    "LengthSeconds": 131.2391815185547,
+    "Bpm": 49.21875,
+    "SecondsPerBeat": 1.2190476655960084,
+    "OffsetSeconds": 0.7862856984138489,
+    "LengthSeconds": 55.17061233520508,
     "BeatTimes": [
-        0.21966077387332917,
-        1.2181187868118287,
-        2.2165768146514894,
-        3.2150349617004396,
-        4.2134928703308109,
-        5.21195125579834,
-        6.210409164428711,
-        7.208867073059082,
-        8.207324981689454,
-        9.205782890319825,
-        10.204240798950196,
-        11.202699661254883,
-        12.201157569885254,
-        13.199615478515625,
-        14.198073387145996,
-        15.196531295776368,
-        16.194990158081056,
-        17.19344711303711,
-        18.191905975341798,
-        19.19036293029785,
-        20.18882179260254,
-        21.187280654907228,
-        22.18573760986328,
-        23.18419647216797,
-        24.182653427124025,
-        25.18111228942871,
-        26.179569244384767,
-        27.178028106689454,
-        28.17648696899414,
-        29.174943923950197,
-        30.173402786254884,
-        31.171859741210939,
-        32.170318603515628,
-        33.16877746582031,
-        34.167236328125,
-        35.16569137573242,
-        36.16415023803711,
-        37.1626091003418,
-        38.161067962646487,
-        39.159523010253909,
-        40.157981872558597,
-        41.15644073486328,
-        42.15489959716797,
-        43.153358459472659,
-        44.15181350708008,
-        45.150272369384769,
-        46.14873123168945,
-        47.14719009399414,
-        48.14564895629883,
-        49.14410400390625,
-        50.14256286621094,
-        51.141021728515628,
-        52.13948059082031,
-        53.137935638427737,
-        54.13639450073242,
-        55.13485336303711,
-        56.1333122253418,
-        57.131771087646487,
-        58.130226135253909,
-        59.128684997558597,
-        60.12714385986328,
-        61.12560272216797,
-        62.124061584472659,
-        63.12251663208008,
-        64.12097930908203,
-        65.11943054199219,
-        66.11788940429688,
-        67.11634826660156,
-        68.11480712890625,
-        69.11326599121094,
-        70.11172485351563,
-        71.11018371582031,
-        72.108642578125,
-        73.10710144042969,
-        74.10555267333985,
-        75.10401153564453,
-        76.10247039794922,
-        77.1009292602539,
-        78.0993881225586,
-        79.09784698486328,
-        80.09630584716797,
-        81.09476470947266,
-        82.09322357177735,
-        83.09168243408203,
-        84.09013366699219,
-        85.08859252929688,
-        86.08705139160156,
-        87.08551025390625,
-        88.08396911621094,
-        89.08242797851563,
-        90.08088684082031,
-        91.079345703125,
-        92.07780456542969,
-        93.07625579833985,
-        94.07471466064453,
-        95.07317352294922,
-        96.0716323852539,
-        97.0700912475586,
-        98.06855010986328,
-        99.06700897216797,
-        100.06546783447266,
-        101.06392669677735,
-        102.06238555908203,
-        103.06083679199219,
-        104.05929565429688,
-        105.05775451660156,
-        106.05621337890625,
-        107.05467224121094,
-        108.05313110351563,
-        109.05158996582031,
-        110.050048828125,
-        111.04850769042969,
-        112.04695892333985,
-        113.04541778564453,
-        114.04387664794922,
-        115.0423355102539,
-        116.0407943725586,
-        117.03925323486328,
-        118.03771209716797,
-        119.03617095947266,
-        120.03462982177735,
-        121.0330810546875,
-        122.03153991699219,
-        123.02999877929688,
-        124.02845764160156,
-        125.02691650390625,
-        126.02537536621094,
-        127.02383422851563,
-        128.0222930908203,
-        129.020751953125,
-        130.0192108154297,
-        131.01766967773438
+        0.7862856984138489,
+        2.005333423614502,
+        3.2243809700012209,
+        4.4434285163879398,
+        5.662476062774658,
+        6.881523609161377,
+        8.100571632385254,
+        9.319619178771973,
+        10.538666725158692,
+        11.75771427154541,
+        12.976761817932129,
+        14.195809364318848,
+        15.414856910705567,
+        16.6339054107666,
+        17.85295295715332,
+        19.07200050354004,
+        20.291048049926759,
+        21.510095596313478,
+        22.729143142700197,
+        23.948190689086915,
+        25.167238235473634,
+        26.38628578186035,
+        27.60533332824707,
+        28.82438087463379,
+        30.043428421020509,
+        31.262475967407228,
+        32.48152542114258,
+        33.7005729675293,
+        34.919620513916019,
+        36.138668060302737,
+        37.35771560668945,
+        38.57676315307617,
+        39.79581069946289,
+        41.01485824584961,
+        42.23390579223633,
+        43.45295333862305,
+        44.672000885009769,
+        45.891048431396487,
+        47.1100959777832,
+        48.32914352416992,
+        49.54819107055664,
+        50.76723861694336,
+        51.98628616333008,
+        53.2053337097168,
+        54.424381256103519
     ],
     "AudioName": "lv1_music",
     "BeatUnits": [
         {
-            "BeatId": 3,
+            "BeatId": 0,
+            "SceneObjects": [],
+            "AnimList": [],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 1
+        },
+        {
+            "BeatId": 1,
             "SceneObjects": [
                 "Canvas",
                 "SeaGull"
@@ -150,10 +72,12 @@
                 "Level1SeaGullTurn"
             ],
             "IsHit": false,
-            "SoundName": ""
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 0
         },
         {
-            "BeatId": 4,
+            "BeatId": 2,
             "SceneObjects": [
                 "Canvas",
                 "Canvas",
@@ -167,10 +91,12 @@
                 "Level1SeaGullFail"
             ],
             "IsHit": true,
-            "SoundName": ""
+            "SoundName": "StartMetronome",
+            "IsTutor": false,
+            "TutorEndId": 0
         },
         {
-            "BeatId": 10,
+            "BeatId": 5,
             "SceneObjects": [
                 "Canvas",
                 "SeaGull"
@@ -180,12 +106,93 @@
                 "Level1SeaGullTurn"
             ],
             "IsHit": false,
-            "SoundName": ""
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 6,
+            "SceneObjects": [
+                "Canvas",
+                "Canvas",
+                "SeaGull",
+                "SeaGull"
+            ],
+            "AnimList": [
+                "Level1Success",
+                "Level1Fail",
+                "Level1SeaGullSuccess",
+                "Level1SeaGullFail"
+            ],
+            "IsHit": true,
+            "SoundName": "StartMetronome",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 7,
+            "SceneObjects": [
+                "Canvas",
+                "SeaGull"
+            ],
+            "AnimList": [
+                "Level1Turn",
+                "Level1SeaGullTurn"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 9,
+            "SceneObjects": [
+                "Canvas",
+                "SeaGull"
+            ],
+            "AnimList": [
+                "Level1Turn",
+                "Level1SeaGullTurn"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 0
         },
         {
             "BeatId": 11,
             "SceneObjects": [
                 "Canvas",
+                "SeaGull"
+            ],
+            "AnimList": [
+                "Level1Turn",
+                "Level1SeaGullTurn"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 13,
+            "SceneObjects": [
+                "Canvas",
+                "SeaGull"
+            ],
+            "AnimList": [
+                "Level1Turn",
+                "Level1SeaGullTurn"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 8,
+            "SceneObjects": [
+                "Canvas",
                 "Canvas",
                 "SeaGull",
                 "SeaGull"
@@ -197,7 +204,303 @@
                 "Level1SeaGullFail"
             ],
             "IsHit": true,
-            "SoundName": ""
+            "SoundName": "StartMetronome",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 10,
+            "SceneObjects": [
+                "Canvas",
+                "Canvas",
+                "SeaGull",
+                "SeaGull"
+            ],
+            "AnimList": [
+                "Level1Success",
+                "Level1Fail",
+                "Level1SeaGullSuccess",
+                "Level1SeaGullFail"
+            ],
+            "IsHit": true,
+            "SoundName": "StartMetronome",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 12,
+            "SceneObjects": [
+                "Canvas",
+                "Canvas",
+                "SeaGull"
+            ],
+            "AnimList": [
+                "Level1Success",
+                "Level1Fail",
+                "Level1SeaGullFail"
+            ],
+            "IsHit": true,
+            "SoundName": "StartMetronome",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 14,
+            "SceneObjects": [
+                "Canvas",
+                "Canvas",
+                "SeaGull",
+                "SeaGull"
+            ],
+            "AnimList": [
+                "Level1Success",
+                "Level1Fail",
+                "Level1SeaGullSuccess",
+                "Level1SeaGullFail"
+            ],
+            "IsHit": true,
+            "SoundName": "StartMetronome",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 17,
+            "SceneObjects": [
+                "Canvas",
+                "Canvas",
+                "SeaGull",
+                "SeaGull"
+            ],
+            "AnimList": [
+                "Level1Success",
+                "Level1Fail",
+                "Level1SeaGullSuccess",
+                "Level1SeaGullFail"
+            ],
+            "IsHit": true,
+            "SoundName": "StartMetronome",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 16,
+            "SceneObjects": [
+                "Canvas",
+                "SeaGull"
+            ],
+            "AnimList": [
+                "Level1Turn",
+                "Level1SeaGullTurn"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 20,
+            "SceneObjects": [
+                "Canvas",
+                "SeaGull"
+            ],
+            "AnimList": [
+                "Level1Turn",
+                "Level1SeaGullTurn"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 25,
+            "SceneObjects": [
+                "Canvas",
+                "SeaGull"
+            ],
+            "AnimList": [
+                "Level1Turn",
+                "Level1SeaGullTurn"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 43,
+            "SceneObjects": [
+                "Canvas",
+                "SeaGull"
+            ],
+            "AnimList": [
+                "Level1Turn",
+                "Level1SeaGullTurn"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 36,
+            "SceneObjects": [
+                "Canvas",
+                "SeaGull"
+            ],
+            "AnimList": [
+                "Level1Turn",
+                "Level1SeaGullTurn"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 31,
+            "SceneObjects": [
+                "Canvas",
+                "SeaGull"
+            ],
+            "AnimList": [
+                "Level1Turn",
+                "Level1SeaGullTurn"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 29,
+            "SceneObjects": [
+                "Canvas",
+                "SeaGull"
+            ],
+            "AnimList": [
+                "Level1Turn",
+                "Level1SeaGullTurn"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 21,
+            "SceneObjects": [
+                "Canvas",
+                "Canvas",
+                "SeaGull",
+                "SeaGull"
+            ],
+            "AnimList": [
+                "Level1Success",
+                "Level1Fail",
+                "Level1SeaGullSuccess",
+                "Level1SeaGullFail"
+            ],
+            "IsHit": true,
+            "SoundName": "StartMetronome",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 26,
+            "SceneObjects": [
+                "Canvas",
+                "Canvas",
+                "SeaGull",
+                "SeaGull"
+            ],
+            "AnimList": [
+                "Level1Success",
+                "Level1Fail",
+                "Level1SeaGullSuccess",
+                "Level1SeaGullFail"
+            ],
+            "IsHit": true,
+            "SoundName": "StartMetronome",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 30,
+            "SceneObjects": [
+                "Canvas",
+                "Canvas",
+                "SeaGull",
+                "SeaGull"
+            ],
+            "AnimList": [
+                "Level1Success",
+                "Level1Fail",
+                "Level1SeaGullSuccess",
+                "Level1SeaGullFail"
+            ],
+            "IsHit": true,
+            "SoundName": "StartMetronome",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 32,
+            "SceneObjects": [
+                "Canvas",
+                "Canvas",
+                "SeaGull",
+                "SeaGull"
+            ],
+            "AnimList": [
+                "Level1Success",
+                "Level1Fail",
+                "Level1SeaGullSuccess",
+                "Level1SeaGullFail"
+            ],
+            "IsHit": true,
+            "SoundName": "StartMetronome",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 37,
+            "SceneObjects": [
+                "Canvas",
+                "Canvas",
+                "SeaGull",
+                "SeaGull"
+            ],
+            "AnimList": [
+                "Level1Success",
+                "Level1Fail",
+                "Level1SeaGullSuccess",
+                "Level1SeaGullFail"
+            ],
+            "IsHit": true,
+            "SoundName": "StartMetronome",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 44,
+            "SceneObjects": [
+                "Canvas",
+                "Canvas",
+                "SeaGull",
+                "SeaGull"
+            ],
+            "AnimList": [
+                "Level1Success",
+                "Level1Fail",
+                "Level1SeaGullSuccess",
+                "Level1SeaGullFail"
+            ],
+            "IsHit": true,
+            "SoundName": "StartMetronome",
+            "IsTutor": false,
+            "TutorEndId": 0
         }
-    ]
+    ],
+    "ForceEndBeatId": 0
 }
