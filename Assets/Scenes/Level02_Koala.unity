@@ -38,6 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -454,6 +455,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
+      propertyPath: SpaceAudioClips.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
       propertyPath: SpaceAnimNames.Array.data[0]
       value: Level2Fall
       objectReference: {fileID: 0}
@@ -461,6 +466,10 @@ PrefabInstance:
       propertyPath: PlayerAnimators.Array.data[0]
       value: 
       objectReference: {fileID: 1095033168}
+    - target: {fileID: 8676277321384582894, guid: 3a9f3246bb99a914ea0a5a637b1594a7, type: 3}
+      propertyPath: SpaceAudioClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: f11a7fc547b70be4fb0c01c4f2abde43, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

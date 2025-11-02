@@ -1,135 +1,105 @@
 {
-    "Bpm": 60.09265899658203,
-    "SecondsPerBeat": 0.9984580278396606,
-    "OffsetSeconds": 0.9036045074462891,
-    "LengthSeconds": 126.53713989257813,
+    "Bpm": 93.96306610107422,
+    "SecondsPerBeat": 0.638548731803894,
+    "OffsetSeconds": 0.26180499792099,
+    "LengthSeconds": 61.25714111328125,
     "BeatTimes": [
-        0.9036045074462891,
-        1.9020625352859498,
-        2.9005205631256105,
-        3.8989787101745607,
-        4.897436618804932,
-        5.895895004272461,
-        6.894352912902832,
-        7.892810821533203,
-        8.891268730163575,
-        9.889726638793946,
-        10.888185501098633,
-        11.886643409729004,
-        12.885101318359375,
-        13.883559226989746,
-        14.882017135620118,
-        15.880475044250489,
-        16.87893295288086,
-        17.877391815185548,
-        18.8758487701416,
-        19.87430763244629,
-        20.872764587402345,
-        21.87122344970703,
-        22.86968231201172,
-        23.868139266967775,
-        24.86659812927246,
-        25.865055084228517,
-        26.863513946533204,
-        27.86197280883789,
-        28.860429763793947,
-        29.858888626098634,
-        30.857345581054689,
-        31.855804443359376,
-        32.85426330566406,
-        33.852718353271487,
-        34.85117721557617,
-        35.84963607788086,
-        36.84809494018555,
-        37.846553802490237,
-        38.845008850097659,
-        39.843467712402347,
-        40.84192657470703,
-        41.84038543701172,
-        42.838844299316409,
-        43.83729934692383,
-        44.835758209228519,
-        45.8342170715332,
-        46.83267593383789,
-        47.83113098144531,
-        48.82958984375,
-        49.82804870605469,
-        50.826507568359378,
-        51.82496643066406,
-        52.823421478271487,
-        53.82188034057617,
-        54.82033920288086,
-        55.81879806518555,
-        56.817256927490237,
-        57.815711975097659,
-        58.814170837402347,
-        59.81262969970703,
-        60.81108856201172,
-        61.809547424316409,
-        62.80800247192383,
-        63.806461334228519,
-        64.80491638183594,
-        65.80337524414063,
-        66.80183410644531,
-        67.80029296875,
-        68.79875183105469,
-        69.79721069335938,
-        70.79566955566406,
-        71.79412841796875,
-        72.79258728027344,
-        73.7910385131836,
-        74.78949737548828,
-        75.78795623779297,
-        76.78641510009766,
-        77.78487396240235,
-        78.78333282470703,
-        79.78179168701172,
-        80.7802505493164,
-        81.7787094116211,
-        82.77716827392578,
-        83.77561950683594,
-        84.77407836914063,
-        85.77253723144531,
-        86.77099609375,
-        87.76945495605469,
-        88.76791381835938,
-        89.76637268066406,
-        90.76483154296875,
-        91.76329040527344,
-        92.7617416381836,
-        93.76020050048828,
-        94.75865936279297,
-        95.75711822509766,
-        96.75557708740235,
-        97.75403594970703,
-        98.75249481201172,
-        99.7509536743164,
-        100.7494125366211,
-        101.74786376953125,
-        102.74632263183594,
-        103.74478149414063,
-        104.74324035644531,
-        105.74169921875,
-        106.74015808105469,
-        107.73861694335938,
-        108.73707580566406,
-        109.73553466796875,
-        110.73399353027344,
-        111.7324447631836,
-        112.73090362548828,
-        113.72936248779297,
-        114.72782135009766,
-        115.72628021240235,
-        116.72473907470703,
-        117.72319793701172,
-        118.7216567993164,
-        119.7201156616211,
-        120.71856689453125,
-        121.71702575683594,
-        122.71548461914063,
-        123.71394348144531,
-        124.71240234375,
-        125.71086120605469
+        0.26180499792099,
+        0.900353729724884,
+        1.5389025211334229,
+        2.1774511337280275,
+        2.815999984741211,
+        3.4545488357543947,
+        4.093097686767578,
+        4.7316460609436039,
+        5.370194911956787,
+        6.008743762969971,
+        6.647292613983154,
+        7.285841464996338,
+        7.924389839172363,
+        8.562938690185547,
+        9.20148754119873,
+        9.840036392211914,
+        10.478585243225098,
+        11.117134094238282,
+        11.755682945251465,
+        12.394230842590332,
+        13.032779693603516,
+        13.6713285446167,
+        14.309877395629883,
+        14.948426246643067,
+        15.58697509765625,
+        16.225522994995118,
+        16.864072799682618,
+        17.502620697021486,
+        18.141170501708986,
+        18.77971839904785,
+        19.41826820373535,
+        20.05681610107422,
+        20.69536590576172,
+        21.333913803100587,
+        21.972461700439454,
+        22.611011505126954,
+        23.24955940246582,
+        23.88810920715332,
+        24.526657104492189,
+        25.165206909179689,
+        25.803754806518556,
+        26.442304611206056,
+        27.080852508544923,
+        27.719402313232423,
+        28.35795021057129,
+        28.996498107910158,
+        29.635047912597658,
+        30.273595809936525,
+        30.912145614624025,
+        31.55069351196289,
+        32.18924331665039,
+        32.82779312133789,
+        33.466339111328128,
+        34.104888916015628,
+        34.743438720703128,
+        35.38198471069336,
+        36.02053451538086,
+        36.65908432006836,
+        37.29763412475586,
+        37.936180114746097,
+        38.574729919433597,
+        39.213279724121097,
+        39.851829528808597,
+        40.49037551879883,
+        41.12892532348633,
+        41.76747512817383,
+        42.40602111816406,
+        43.04457092285156,
+        43.68312072753906,
+        44.32167053222656,
+        44.9602165222168,
+        45.5987663269043,
+        46.2373161315918,
+        46.87586212158203,
+        47.51441192626953,
+        48.15296173095703,
+        48.79151153564453,
+        49.430057525634769,
+        50.068607330322269,
+        50.707157135009769,
+        51.345706939697269,
+        51.9842529296875,
+        52.622802734375,
+        53.2613525390625,
+        53.899898529052737,
+        54.538448333740237,
+        55.176998138427737,
+        55.815547943115237,
+        56.45409393310547,
+        57.09264373779297,
+        57.73119354248047,
+        58.36974334716797,
+        59.0082893371582,
+        59.6468391418457,
+        60.2853889465332,
+        60.92393493652344
     ],
     "AudioName": "lv2_music",
     "BeatUnits": [
@@ -141,65 +111,509 @@
             "AnimList": [
                 "Level2Turn"
             ],
-            "IsHit": false
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 45
+        },
+        {
+            "BeatId": 10,
+            "SceneObjects": [
+                "Canvas"
+            ],
+            "AnimList": [
+                "Level2Turn"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 45
+        },
+        {
+            "BeatId": 13,
+            "SceneObjects": [
+                "Canvas"
+            ],
+            "AnimList": [
+                "Level2Turn"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 45
+        },
+        {
+            "BeatId": 17,
+            "SceneObjects": [
+                "Canvas"
+            ],
+            "AnimList": [
+                "Level2Turn"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 45
+        },
+        {
+            "BeatId": 20,
+            "SceneObjects": [
+                "Canvas"
+            ],
+            "AnimList": [
+                "Level2Turn"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 45
+        },
+        {
+            "BeatId": 24,
+            "SceneObjects": [
+                "Canvas"
+            ],
+            "AnimList": [
+                "Level2Turn"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 45
         },
         {
             "BeatId": 4,
             "SceneObjects": [
                 "Canvas",
                 "Canvas",
-                "Canvas"
+                "Canvas",
+                "Photo1",
+                "Photo1"
             ],
             "AnimList": [
                 "Level2Success",
                 "Level2Fall",
-                "Level2Turn"
+                "Level2Turn",
+                "Level2PhotoSuccess",
+                "Level2PhotoFail"
             ],
-            "IsHit": true
+            "IsHit": true,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
         },
         {
-            "BeatId": 10,
+            "BeatId": 11,
             "SceneObjects": [
                 "Canvas",
-                "Canvas"
+                "Canvas",
+                "Canvas",
+                "Photo1",
+                "Photo1"
             ],
             "AnimList": [
                 "Level2Success",
-                "Level2Fall"
+                "Level2Fall",
+                "Level2Turn",
+                "Level2PhotoSuccess",
+                "Level2PhotoFail"
             ],
-            "IsHit": true
-        },
-        {
-            "BeatId": 9,
-            "SceneObjects": [
-                "Canvas"
-            ],
-            "AnimList": [
-                "Level2Turn"
-            ],
-            "IsHit": false
+            "IsHit": true,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
         },
         {
             "BeatId": 14,
             "SceneObjects": [
+                "Canvas",
+                "Canvas",
+                "Canvas",
+                "Photo1",
+                "Photo1"
+            ],
+            "AnimList": [
+                "Level2Success",
+                "Level2Fall",
+                "Level2Turn",
+                "Level2PhotoSuccess",
+                "Level2PhotoFail"
+            ],
+            "IsHit": true,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 18,
+            "SceneObjects": [
+                "Canvas",
+                "Canvas",
+                "Canvas",
+                "Photo1",
+                "Photo1"
+            ],
+            "AnimList": [
+                "Level2Success",
+                "Level2Fall",
+                "Level2Turn",
+                "Level2PhotoSuccess",
+                "Level2PhotoFail"
+            ],
+            "IsHit": true,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 21,
+            "SceneObjects": [
+                "Canvas",
+                "Canvas",
+                "Canvas",
+                "Photo1",
+                "Photo1"
+            ],
+            "AnimList": [
+                "Level2Success",
+                "Level2Fall",
+                "Level2Turn",
+                "Level2PhotoSuccess",
+                "Level2PhotoFail"
+            ],
+            "IsHit": true,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 25,
+            "SceneObjects": [
+                "Canvas",
+                "Canvas",
+                "Canvas",
+                "Photo1",
+                "Photo1"
+            ],
+            "AnimList": [
+                "Level2Success",
+                "Level2Fall",
+                "Level2Turn",
+                "Level2PhotoSuccess",
+                "Level2PhotoFail"
+            ],
+            "IsHit": true,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 30,
+            "SceneObjects": [
+                "Canvas",
+                "Canvas",
+                "Canvas",
+                "Photo1",
+                "Photo1"
+            ],
+            "AnimList": [
+                "Level2Success",
+                "Level2Fall",
+                "Level2Turn",
+                "Level2PhotoSuccess",
+                "Level2PhotoFail"
+            ],
+            "IsHit": true,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 29,
+            "SceneObjects": [
                 "Canvas"
             ],
             "AnimList": [
                 "Level2Turn"
             ],
-            "IsHit": false
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 45
         },
         {
-            "BeatId": 15,
+            "BeatId": 32,
             "SceneObjects": [
-                "Canvas",
                 "Canvas"
             ],
             "AnimList": [
-                "Level2Success",
-                "Level2Fall"
+                "Level2Turn"
             ],
-            "IsHit": true
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 45
+        },
+        {
+            "BeatId": 33,
+            "SceneObjects": [
+                "Canvas",
+                "Canvas",
+                "Canvas",
+                "Photo1",
+                "Photo1"
+            ],
+            "AnimList": [
+                "Level2Success",
+                "Level2Fall",
+                "Level2Turn",
+                "Level2PhotoSuccess",
+                "Level2PhotoFail"
+            ],
+            "IsHit": true,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 37,
+            "SceneObjects": [
+                "Canvas"
+            ],
+            "AnimList": [
+                "Level2Turn"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 45
+        },
+        {
+            "BeatId": 39,
+            "SceneObjects": [
+                "Canvas"
+            ],
+            "AnimList": [
+                "Level2Turn"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 45
+        },
+        {
+            "BeatId": 38,
+            "SceneObjects": [
+                "Canvas",
+                "Canvas",
+                "Canvas",
+                "Photo1",
+                "Photo1"
+            ],
+            "AnimList": [
+                "Level2Success",
+                "Level2Fall",
+                "Level2Turn",
+                "Level2PhotoSuccess",
+                "Level2PhotoFail"
+            ],
+            "IsHit": true,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 40,
+            "SceneObjects": [
+                "Canvas",
+                "Canvas",
+                "Canvas",
+                "Photo1",
+                "Photo1"
+            ],
+            "AnimList": [
+                "Level2Success",
+                "Level2Fall",
+                "Level2Turn",
+                "Level2PhotoSuccess",
+                "Level2PhotoFail"
+            ],
+            "IsHit": true,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 45,
+            "SceneObjects": [
+                "Canvas"
+            ],
+            "AnimList": [
+                "Level2Turn"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 45
+        },
+        {
+            "BeatId": 49,
+            "SceneObjects": [
+                "Canvas"
+            ],
+            "AnimList": [
+                "Level2Turn"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 45
+        },
+        {
+            "BeatId": 55,
+            "SceneObjects": [
+                "Canvas"
+            ],
+            "AnimList": [
+                "Level2Turn"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 45
+        },
+        {
+            "BeatId": 46,
+            "SceneObjects": [
+                "Canvas",
+                "Canvas",
+                "Canvas",
+                "Photo1",
+                "Photo1"
+            ],
+            "AnimList": [
+                "Level2Success",
+                "Level2Fall",
+                "Level2Turn",
+                "Level2PhotoSuccess",
+                "Level2PhotoFail"
+            ],
+            "IsHit": true,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 50,
+            "SceneObjects": [
+                "Canvas",
+                "Canvas",
+                "Canvas",
+                "Photo1",
+                "Photo1"
+            ],
+            "AnimList": [
+                "Level2Success",
+                "Level2Fall",
+                "Level2Turn",
+                "Level2PhotoSuccess",
+                "Level2PhotoFail"
+            ],
+            "IsHit": true,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 56,
+            "SceneObjects": [
+                "Canvas",
+                "Canvas",
+                "Canvas",
+                "Photo1",
+                "Photo1"
+            ],
+            "AnimList": [
+                "Level2Success",
+                "Level2Fall",
+                "Level2Turn",
+                "Level2PhotoSuccess",
+                "Level2PhotoFail"
+            ],
+            "IsHit": true,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 61,
+            "SceneObjects": [
+                "Canvas"
+            ],
+            "AnimList": [
+                "Level2Turn"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 45
+        },
+        {
+            "BeatId": 65,
+            "SceneObjects": [
+                "Canvas"
+            ],
+            "AnimList": [
+                "Level2Turn"
+            ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 45
+        },
+        {
+            "BeatId": 62,
+            "SceneObjects": [
+                "Canvas",
+                "Canvas",
+                "Canvas",
+                "Photo1",
+                "Photo1"
+            ],
+            "AnimList": [
+                "Level2Success",
+                "Level2Fall",
+                "Level2Turn",
+                "Level2PhotoSuccess",
+                "Level2PhotoFail"
+            ],
+            "IsHit": true,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 66,
+            "SceneObjects": [
+                "Canvas",
+                "Canvas",
+                "Canvas",
+                "Photo1",
+                "Photo1"
+            ],
+            "AnimList": [
+                "Level2Success",
+                "Level2Fall",
+                "Level2Turn",
+                "Level2PhotoSuccess",
+                "Level2PhotoFail"
+            ],
+            "IsHit": true,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
         }
-    ]
+    ],
+    "ForceEndBeatId": 0,
+    "UseInputExtTime": true
 }
