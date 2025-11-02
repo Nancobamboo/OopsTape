@@ -82,22 +82,22 @@ public class UIBeatResultControl : YViewControl
 			dataLevel.AddLevelUnlockedData(level03FlyValue);
 		}
 
-		if (dataLevel.LevelScoreDict.Count >= 2)
+		//if (dataLevel.LevelScoreDict.Count >= 2)
 		{
 			dataLevel.TutorUINum++;
 			dataLevel.TutorSoundNum++;
 		}
-		else
-		{
-			if (Random.Range(0, 2) == 0)
-			{
-				dataLevel.TutorUINum++;
-			}
-			else
-			{
-				dataLevel.TutorSoundNum++;
-			}
-		}
+		// else
+		// {
+		// 	if (Random.Range(0, 2) == 0)
+		// 	{
+		// 		dataLevel.TutorUINum++;
+		// 	}
+		// 	else
+		// 	{
+		// 		dataLevel.TutorSoundNum++;
+		// 	}
+		// }
 
 		DataSystem.Instance.SaveDataLevel();
 	}
