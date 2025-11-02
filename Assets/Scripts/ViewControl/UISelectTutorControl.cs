@@ -53,6 +53,11 @@ public class UISelectTutorControl : YViewControl
 	{
 		m_View.TutorUIOpen.gameObject.SetActive(isOn);
 		m_View.TutorUIOff.gameObject.SetActive(!isOn);
+		if (!isOn && m_View.TutorUIOff.gameObject.activeSelf)
+		{
+			m_View.CloseBonus.SetActive(false);
+			m_View.CloseBonus.SetActive(true);
+		}
 	}
 
 	void ShowTutorSoundSwitch(bool isOn)
