@@ -70,7 +70,7 @@
                 "UI_level4_music"
             ],
             "IsHit": false,
-            "SoundName": "lv4_sound_do",
+            "SoundName": "",
             "IsTutor": true,
             "TutorEndId": 3
         },
@@ -178,13 +178,20 @@
         {
             "BeatId": 8,
             "SceneObjects": [
-                "music",
                 "music"
             ],
             "AnimList": [
-                "UI_level4_music",
                 "UI_level4_music"
             ],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": false,
+            "TutorEndId": 0
+        },
+        {
+            "BeatId": 0,
+            "SceneObjects": [],
+            "AnimList": [],
             "IsHit": false,
             "SoundName": "",
             "IsTutor": false,
