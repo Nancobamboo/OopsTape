@@ -70,26 +70,28 @@ public partial class DataSystem
 	}
 	
 	
-	public static string GetRatingCommentText(ERatingGrade grade)
-	{
-		switch (grade)
-		{
-			case ERatingGrade.S:
-				return "你才是真正的 KEY MASTER！这门为你唱开！";
-			case ERatingGrade.A:
-				return "Almost in Key！节奏准得像开锁只差半圈～";
-			case ERatingGrade.B:
-				return "You found a key… 但不是正确那把。";
-			case ERatingGrade.C:
-				return "Key？在哪？节奏有点歪，幸好门好歹开了条缝。";
-			case ERatingGrade.D:
-				return "OOut of Key！你这是在敲锁不是在开锁！";
-			case ERatingGrade.F:
-				return "Wrong key! 节奏之门：访问被拒。重来吧，努力找到正确的Key～";
-			default:
-				return "";
-		}
-	}
+public static string GetRatingCommentText(ERatingGrade grade)
+{
+    switch (grade)
+    {
+        case ERatingGrade.S:
+            return "KEY MASTER！\n节奏完美对上锁孔！节奏之门为你唱开～";
+        case ERatingGrade.A:
+            return "Almost in Key！\n只差半圈就能开锁啦～继续找找关键节拍！";
+        case ERatingGrade.B:
+            return "You found a key…\n但好像插错门了，拍子再准点！";
+        case ERatingGrade.C:
+            return "Key？Where？\n你的手指在找Key，但节奏在隔壁房间……";
+        case ERatingGrade.D:
+            return "Out of Key！\n节奏之门拒绝开启……你的钥匙掉地上了！";
+        case ERatingGrade.F:
+            return "Key Lost! \n嘿bro~ 别睡了，起来嗨！";
+        default:
+            return "";
+    }
+}
+
+
 
 	public void LoadGameData()
 	{
