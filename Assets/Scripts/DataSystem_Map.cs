@@ -10,7 +10,7 @@ public enum ERatingGrade
 
 public partial class DataSystem
 {
-	public static float InputExtraTime = 0.3f;
+	public static float InputExtraTime = 0.6f;
 	public static float InputForwardTime = 0.3f;
 
 	public static float BaseScore = 5000f;
@@ -25,23 +25,23 @@ public partial class DataSystem
 
 	public static ERatingGrade GetRatingGrade(float accuracy)
 	{
-		if (accuracy >= 0.9f)
+		if (accuracy >= 0.92f)
 		{
 			return ERatingGrade.S;
 		}
-		else if (accuracy >= 0.8f)
+		else if (accuracy >= 0.85f)
 		{
 			return ERatingGrade.A;
 		}
-		else if (accuracy >= 0.65f)
+		else if (accuracy >= 0.7f)
 		{
 			return ERatingGrade.B;
 		}
-		else if (accuracy >= 0.5f)
+		else if (accuracy >= 0.65f)
 		{
 			return ERatingGrade.C;
 		}
-		else if (accuracy >= 0.4f)
+		else if (accuracy >= 0.55f)
 		{
 			return ERatingGrade.D;
 		}
