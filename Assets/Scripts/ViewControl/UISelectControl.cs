@@ -20,12 +20,14 @@ public class UISelectControl : YViewControl
 		Level02_Koala,
 		Level03_Fly,
 		Level04_Sing,
+		Level05_Guide,
 		Upper
 	}
 	private UISelectView m_View;
 	private int m_SelectedLevel = -1;
 	private DataLevel m_DataLevel;
 	private ESceneName m_SelectedSceneName;
+	private UISelectTutorControl m_TutorControl;
 
 	private ESceneName[] m_ButtonSceneMap = new ESceneName[]
 	{
@@ -68,13 +70,18 @@ public class UISelectControl : YViewControl
 
 	private void Start()
 	{
-		var tutorControl = Asset.OpenUI<UISelectTutorControl>();
-		tutorControl.SetData();
+		m_TutorControl = Asset.OpenUI<UISelectTutorControl>();
+		m_TutorControl.SetData();
+		m_TutorControl.gameObject.SetActive(false);
 		UpdateLevelStates();
 	}
 
 	public void OnLevelConfirm()
 	{
+		if (m_TutorControl == null || !m_TutorControl.gameObject.activeSelf)
+		{
+			return;
+		}
 		Debug.Log("OnLevelConfirm: " + m_SelectedSceneName);
 		string sceneNameStr = m_SelectedSceneName.ToString();
 		Asset.TryLoadScene(sceneNameStr);
@@ -145,6 +152,11 @@ public class UISelectControl : YViewControl
 			{
 				animators[i].CrossFade(UISelectAnimState.Idel.ToString(), 0, 0);
 			}
+		}
+
+		if (m_TutorControl != null)
+		{
+			m_TutorControl.gameObject.SetActive(true);
 		}
 	}
 

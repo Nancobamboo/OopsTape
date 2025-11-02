@@ -25,6 +25,7 @@ public class SceneUtil : EditorWindow
         Level02_Koala,
         Level03_Fly,
         Level04_Sing,
+        Level05_Guide,
         Upper
     }
 
