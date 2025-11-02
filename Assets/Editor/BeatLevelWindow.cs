@@ -237,7 +237,16 @@ public class BeatLevelWindow : EditorWindow
         InitRowSecond();
 
         EditorGUILayout.LabelField("Audio", m_Data.AudioName);
+        EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("Beats", (m_Data.BeatTimes != null ? m_Data.BeatTimes.Count : 0).ToString());
+        EditorGUI.BeginChangeCheck();
+        int newForceEndBeatId = EditorGUILayout.IntField("Force End Beat Id", m_Data.ForceEndBeatId);
+        if (EditorGUI.EndChangeCheck())
+        {
+            m_Data.ForceEndBeatId = newForceEndBeatId;
+            SaveJson();
+        }
+        EditorGUILayout.EndHorizontal();
 
         // Playback controls row: Play/Pause + progress slider
         AudioClip topClip = FindClip();

@@ -229,6 +229,11 @@ public class BeatGameControl : YViewControl
 
 	private void Update()
 	{
+		if (m_ResultShown)
+		{
+			return;
+		}
+
 		if (m_BeatSource == null || m_TimelineData == null || !m_IsScheduled)
 		{
 			return;
@@ -243,11 +248,20 @@ public class BeatGameControl : YViewControl
 			m_ResultShown = true;
 			UIBeatResultControl result = Asset.OpenUI<UIBeatResultControl>();
 			result.SetData(TotalScore);
+			return;
 		}
 
 		double dsp = AudioSettings.dspTime;
 		double playerBeat = (dsp - m_SongStartDsp - m_PausedDspDuration - m_SongOffsetSeconds) / m_SecondsPerBeat;
 		int newBeat = (int)System.Math.Round(playerBeat);
+
+		if (!m_ResultShown && m_TimelineData.ForceEndBeatId != 0 && newBeat >= m_TimelineData.ForceEndBeatId)
+		{
+			m_ResultShown = true;
+			UIBeatResultControl result = Asset.OpenUI<UIBeatResultControl>();
+			result.SetData(TotalScore);
+			return;
+		}
 
 		if (IsKeepPressGame == false)
 		{
