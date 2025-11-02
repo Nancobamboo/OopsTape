@@ -46,7 +46,7 @@ public class UIStartControl : YViewControl
 			}
 			else
 			{
-				Asset.TryLoadScene(UISelectControl.ESceneName.Level04_Sing.ToString());
+				Asset.TryLoadScene(UISelectControl.ESceneName.Level05_Guide.ToString());
 
 			}
 		}

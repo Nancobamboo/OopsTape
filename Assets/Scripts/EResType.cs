@@ -10,6 +10,7 @@ public enum EResType
     UICounter,
     UISelect,
     UIBeatResult,
+    UISucceedCounter,
     UIStart,
     UIUpper,
     LevelEnemy,

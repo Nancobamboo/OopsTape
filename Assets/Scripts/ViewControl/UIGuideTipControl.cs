@@ -20,16 +20,16 @@ public class UIGuideTipControl : YViewControl
 	{
 		float halfSize = size / 2;
 		m_View.Pos.position = m_View.CacheTrans.position;
-		if (txt == null) 
+		if (txt == null)
 		{
 			m_View.TxtTip.gameObject.SetActive(false);
 		}
 		else
 		{
-            m_View.TxtTip.text = txt;
-        }
+			m_View.TxtTip.text = txt;
+		}
 		m_View.Mask.SetActive(useMask);
-		if(useMask) 
+		if (useMask)
 		{
 			var pos = m_View.CacheTrans.position;
 			m_View.CacheTrans.SetParent(Asset.UIRoot);
@@ -37,30 +37,30 @@ public class UIGuideTipControl : YViewControl
 			m_View.CacheTrans.offsetMax = Vector2.zero;
 			m_View.CacheTrans.offsetMin = Vector2.zero;
 			m_View.CacheTrans.localScale = Vector3.one;
-            m_View.Pos.position = pos;
+			m_View.Pos.position = pos;
 
 			var halfWidth = Screen.width / 2;
 
-            m_View.Left.localPosition = new Vector2(m_View.Pos.localPosition.x - halfSize, 0);
-            m_View.Right.localPosition = new Vector2(m_View.Pos.localPosition.x + halfSize, 0);
-			m_View.Left.sizeDelta = new Vector2 (halfWidth + m_View.Left.localPosition.x, Screen.height);
-            m_View.Right.sizeDelta = new Vector2(Screen.width - m_View.Left.sizeDelta.x - size, Screen.height);
+			m_View.Left.localPosition = new Vector2(m_View.Pos.localPosition.x - halfSize, 0);
+			m_View.Right.localPosition = new Vector2(m_View.Pos.localPosition.x + halfSize, 0);
+			m_View.Left.sizeDelta = new Vector2(halfWidth + m_View.Left.localPosition.x, Screen.height);
+			m_View.Right.sizeDelta = new Vector2(Screen.width - m_View.Left.sizeDelta.x - size, Screen.height);
 
-            var halfHeight = Screen.height / 2;
+			var halfHeight = Screen.height / 2;
 
 
-            m_View.Top.localPosition = new Vector2(m_View.Pos.localPosition.x , halfHeight);
+			m_View.Top.localPosition = new Vector2(m_View.Pos.localPosition.x, halfHeight);
 			m_View.Down.localPosition = new Vector2(m_View.Pos.localPosition.x, -halfHeight);
 
-            m_View.Top.sizeDelta = new Vector2(size, halfHeight - m_View.Pos.localPosition.y - halfSize);
-            m_View.Down.sizeDelta = new Vector2(size, halfHeight + m_View.Pos.localPosition.y - halfSize);
-        }
+			m_View.Top.sizeDelta = new Vector2(size, halfHeight - m_View.Pos.localPosition.y - halfSize);
+			m_View.Down.sizeDelta = new Vector2(size, halfHeight + m_View.Pos.localPosition.y - halfSize);
+		}
 
 		if (m_View.Pos.localPosition.y > 0)
 		{
 			m_View.TipTrans.localPosition = new Vector3(0, -m_View.TipTrans.localPosition.y, 0);
 		}
-    }
+	}
 
 	protected override void OnReturn()
 	{

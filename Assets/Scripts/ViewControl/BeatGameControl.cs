@@ -14,7 +14,6 @@ public class BeatGameControl : YViewControl
 	private double m_SecondsPerBeat;
 	private double m_SongOffsetSeconds;
 	private bool m_IsScheduled;
-	private float m_GoodWindowBeats = 1f / 6f;
 	private float m_AudioClipLength;
 	private float ShowResultMoment;
 	private bool m_ResultShown = false;
@@ -39,11 +38,14 @@ public class BeatGameControl : YViewControl
 
 	public bool IsKeepPressGame = false;
 
+	public bool IsGuideLevel = false;
+
 	public int TotalScore = 0;
 	public int ComboNum = 0;
 	private int m_CorrectHitCount = 0;
 	private int m_WrongHitCount = 0;
 	private UIIngameRatingControl m_IngameRatingControl;
+	private UISucceedCounterControl m_SucceedCounterControl;
 
 	public static EResType GetResType()
 	{
@@ -99,7 +101,13 @@ public class BeatGameControl : YViewControl
 		counter.SetData(StartGame, m_SoundEffectControl);
 
 		m_IngameRatingControl.SetScore(0);
-		m_IngameRatingControl.SetImgScore(1);
+		m_IngameRatingControl.SetImgScore(0);
+
+		if (IsGuideLevel)
+		{
+			m_SucceedCounterControl = Asset.OpenUI<UISucceedCounterControl>();
+			m_SucceedCounterControl.SetData();
+		}
 
 	}
 
@@ -159,7 +167,7 @@ public class BeatGameControl : YViewControl
 				CurrentBeat = -1;
 				ShowResultMoment = Time.time + m_AudioClipLength;
 
-				if (IsDedugMode && m_BeatGuide == null)
+				if (m_BeatGuide == null)
 				{
 					m_BeatGuide = Asset.OpenUI<UIBeatGuideControl>();
 				}
@@ -230,7 +238,7 @@ public class BeatGameControl : YViewControl
 						isTooQuick = true;
 					}
 				}
-	
+
 				if (isTooQuick)
 				{
 					Debug.Log("Pressed Too Quick: " + newBeatUnit.BeatId);
@@ -291,6 +299,12 @@ public class BeatGameControl : YViewControl
 		if (!m_ResultShown && Time.time >= ShowResultMoment)
 		{
 			m_ResultShown = true;
+			if (IsGuideLevel)
+			{
+				m_ResultShown = false;
+				StartGame();
+				return;
+			}
 			float accuracyRate = GetAccuracyRate();
 			UIBeatResultControl result = Asset.OpenUI<UIBeatResultControl>();
 			result.SetData(TotalScore, accuracyRate);
@@ -304,6 +318,12 @@ public class BeatGameControl : YViewControl
 		if (!m_ResultShown && m_TimelineData.ForceEndBeatId != 0 && newBeat >= m_TimelineData.ForceEndBeatId)
 		{
 			m_ResultShown = true;
+			if (IsGuideLevel)
+			{
+				m_ResultShown = false;
+				StartGame();
+				return;
+			}
 			float accuracyRate = GetAccuracyRate();
 			UIBeatResultControl result = Asset.OpenUI<UIBeatResultControl>();
 			result.SetData(TotalScore, accuracyRate);
@@ -447,6 +467,11 @@ public class BeatGameControl : YViewControl
 			ComboNum++;
 			float score = DataSystem.CalculateFinalScore(ComboNum);
 			TotalScore += (int)score;
+
+			if (IsGuideLevel && m_SucceedCounterControl != null)
+			{
+				m_SucceedCounterControl.DecreaseSucceedNum();
+			}
 		}
 		else
 		{
@@ -524,6 +549,38 @@ public class BeatGameControl : YViewControl
 	}
 
 	private void PlaySpaceAnimations()
+	{
+		if (ShouldPlaySpaceAnimations())
+		{
+			PlaySpaceAnimationsInternal();
+		}
+	}
+
+	private bool ShouldPlaySpaceAnimations()
+	{
+		if (m_TimelineData == null || m_TimelineData.BeatTimes == null)
+		{
+			return true;
+		}
+
+		int nextBeatId = CurrentBeat + 1;
+		var nextBeatUnit = GetBeatUnit(nextBeatId);
+		if (nextBeatUnit != null && nextBeatUnit.IsHit)
+		{
+			if (nextBeatId >= 0 && nextBeatId < m_TimelineData.BeatTimes.Count)
+			{
+				double nextBeatTime = m_TimelineData.BeatTimes[nextBeatId];
+				double timeDiff = nextBeatTime - SpaceClickMoment;
+				if (timeDiff <= DataSystem.InputForwardTime)
+				{
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
+	private void PlaySpaceAnimationsInternal()
 	{
 		if (PlayerAnimators != null && SpaceAnimNames != null)
 		{

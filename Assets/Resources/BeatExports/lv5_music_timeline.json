@@ -62,7 +62,16 @@
     "AudioName": "lv5_music",
     "BeatUnits": [
         {
-            "BeatId": 2,
+            "BeatId": 1,
+            "SceneObjects": [],
+            "AnimList": [],
+            "IsHit": false,
+            "SoundName": "lv4_sound_do",
+            "IsTutor": true,
+            "TutorEndId": 3
+        },
+        {
+            "BeatId": 3,
             "SceneObjects": [
                 "Bird1"
             ],
@@ -80,11 +89,20 @@
             "AnimList": [],
             "IsHit": false,
             "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 6
+        },
+        {
+            "BeatId": 5,
+            "SceneObjects": [],
+            "AnimList": [],
+            "IsHit": false,
+            "SoundName": "",
             "IsTutor": false,
             "TutorEndId": 0
         },
         {
-            "BeatId": 5,
+            "BeatId": 6,
             "SceneObjects": [
                 "Bird3"
             ],
@@ -97,7 +115,7 @@
             "TutorEndId": 0
         },
         {
-            "BeatId": 8,
+            "BeatId": 9,
             "SceneObjects": [
                 "Bird1",
                 "Bird1",
@@ -118,6 +136,15 @@
             "SoundName": "lv4_sound_so",
             "IsTutor": false,
             "TutorEndId": 0
+        },
+        {
+            "BeatId": 7,
+            "SceneObjects": [],
+            "AnimList": [],
+            "IsHit": false,
+            "SoundName": "",
+            "IsTutor": true,
+            "TutorEndId": 9
         }
     ],
     "ForceEndBeatId": 11,

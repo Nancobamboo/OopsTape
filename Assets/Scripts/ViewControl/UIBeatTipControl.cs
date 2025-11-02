@@ -27,11 +27,11 @@ public class UIBeatTipControl : YViewControl
 	{
 		if (isHit)
 		{
-			m_View.ImgBeat.color =new Color(0.929f, 0.267f, 0.518f);
+			m_View.ImgBeat.color = new Color(0.929f, 0.267f, 0.518f);
 		}
 		else if (isTip)
 		{
-			m_View.ImgBeat.color =new Color(0.980f, 0.949f, 0.435f);
+			m_View.ImgBeat.color = new Color(0.980f, 0.949f, 0.435f);
 		}
 		else
 		{
@@ -41,7 +41,20 @@ public class UIBeatTipControl : YViewControl
 
 	public void SetData(int beatIndex)
 	{
-		m_View.TxtTip.text = beatIndex.ToString();
+		bool isDebugMode = false;
+		if (BeatGameControl.Instance != null)
+		{
+			isDebugMode = BeatGameControl.Instance.IsDedugMode;
+		}
+		if (isDebugMode)
+		{
+			m_View.TxtTip.text = beatIndex.ToString();
+			m_View.TxtTip.gameObject.SetActive(true);
+		}
+		else
+		{
+			m_View.TxtTip.gameObject.SetActive(false);
+		}
 	}
 
 	protected override void OnReturn()
