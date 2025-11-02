@@ -1,3 +1,5 @@
+using UnityEngine.SceneManagement;
+
 public enum ERatingGrade
 {
 	F = 0,
@@ -10,7 +12,7 @@ public enum ERatingGrade
 
 public partial class DataSystem
 {
-	public static float InputExtraTime = 0.6f;
+	public static float InputExtraTime = 0.3f;
 	public static float InputForwardTime = 0.3f;
 
 	public static float BaseScore = 5000f;
@@ -82,24 +84,58 @@ public partial class DataSystem
 
 	public static string GetRatingCommentText(ERatingGrade grade)
 	{
-		switch (grade)
+		string sceneName = SceneManager.GetActiveScene().name;
+		if (System.Enum.TryParse<UISelectControl.ESceneName>(sceneName, out UISelectControl.ESceneName sceneEnum))
 		{
-			case ERatingGrade.S:
-				return "KEY MASTER！\n节奏完美对上锁孔！节奏之门为你唱开～";
-			case ERatingGrade.A:
-				return "Almost in Key！\n只差半圈就能开锁啦～继续找找关键节拍！";
-			case ERatingGrade.B:
-				return "You found a key…\n但好像插错门了，拍子再准点！";
-			case ERatingGrade.C:
-				return "Key？Where？\n你的手指在找Key，但节奏在隔壁房间……";
-			case ERatingGrade.D:
-				return "Out of Key！\n节奏之门拒绝开启……你的钥匙掉地上了！";
-			case ERatingGrade.F:
-				return "Key Lost! \n嘿bro~ 别睡了，起来嗨！";
-			default:
-				return "";
+			if (sceneEnum == UISelectControl.ESceneName.Level03_Fly)
+			{
+				switch (grade)
+				{
+					case ERatingGrade.S:
+						return "KEY MASTER！\n节奏完美对上锁孔！节奏之门为你唱开～";
+					case ERatingGrade.A:
+						return "Almost in Key！\n只差半圈就能开锁啦～继续找找关键节拍！";
+					case ERatingGrade.B:
+						return "You found a key…\n但好像插错门了，拍子再准点！";
+					case ERatingGrade.C:
+						return "Key？Where？\n你的手指在找Key，但节奏在隔壁房间……";
+					case ERatingGrade.D:
+						return "Out of Key！\n节奏之门拒绝开启……你的钥匙掉地上了！";
+					case ERatingGrade.F:
+						return "Key Lost! \n嘿bro~ 别睡了，起来嗨！";
+					default:
+						return "";
+				}
+			}
+			else if (sceneEnum == UISelectControl.ESceneName.Level04_Sing)
+			{
+				switch (grade)
+				{
+					case ERatingGrade.S:
+						return "KEY MASTER！\n节奏完美对上锁孔！节奏之门为你唱开～";
+					case ERatingGrade.A:
+						return "Almost in Key！\n只差半圈就能开锁啦～继续找找关键节拍！";
+					case ERatingGrade.B:
+						return "You found a key…\n但好像插错门了，拍子再准点！";
+					case ERatingGrade.C:
+						return "Key？Where？\n你的手指在找Key，但节奏在隔壁房间……";
+					case ERatingGrade.D:
+						return "Out of Key！\n节奏之门拒绝开启……你的钥匙掉地上了！";
+					case ERatingGrade.F:
+						return "Key Lost! \n嘿bro~ 别睡了，起来嗨！";
+					default:
+						return "";
+				}
+			}
 		}
+		return "";
 	}
+
+
+
+
+
+
 
 
 

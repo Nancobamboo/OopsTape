@@ -243,7 +243,7 @@ public class BeatGameControl : YViewControl
 				{
 					Debug.Log("Pressed Too Quick: " + newBeatUnit.BeatId);
 					IsPlayedHit = true;
-					PlayHitCheckBeat(newBeatUnit, false);
+					PlayHitCheckBeat(newBeatUnit, true, true);
 				}
 
 				if (this.m_LastUnitBeat != null && this.m_LastUnitBeat.IsHit == true)
@@ -456,7 +456,7 @@ public class BeatGameControl : YViewControl
 		}
 	}
 
-	private void PlayHitCheckBeat(BeatUnit unit, bool hit)
+	private void PlayHitCheckBeat(BeatUnit unit, bool hit, bool isTooQuick = false)
 	{
 		if (unit == null) return;
 
@@ -466,7 +466,14 @@ public class BeatGameControl : YViewControl
 		{
 			ComboNum++;
 			float score = DataSystem.CalculateFinalScore(ComboNum);
-			TotalScore += (int)score;
+			if (isTooQuick)
+			{
+				TotalScore += (int)(score * 0.5f);
+			}
+			else
+			{
+				TotalScore += (int)score;
+			}
 
 			if (IsGuideLevel && m_SucceedCounterControl != null)
 			{
@@ -482,7 +489,14 @@ public class BeatGameControl : YViewControl
 		{
 			if (hit)
 			{
-				m_CorrectHitCount++;
+				if (isTooQuick)
+				{
+					m_WrongHitCount++;
+				}
+				else
+				{
+					m_CorrectHitCount++;
+				}
 			}
 			else
 			{
