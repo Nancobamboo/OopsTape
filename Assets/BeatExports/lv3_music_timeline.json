@@ -1153,7 +1153,7 @@
             "IsHit": false,
             "SoundName": "",
             "IsTutor": true,
-            "TutorEndId": 144
+            "TutorEndId": 145
         },
         {
             "BeatId": 145,
@@ -1533,16 +1533,13 @@
         },
         {
             "BeatId": 219,
-            "SceneObjects": [
-                "Fly"
-            ],
-            "AnimList": [
-                "Level3FlyCome2"
-            ],
+            "SceneObjects": [],
+            "AnimList": [],
             "IsHit": false,
             "SoundName": "",
-            "IsTutor": true,
+            "IsTutor": false,
             "TutorEndId": 138
         }
-    ]
+    ],
+    "ForceEndBeatId": 225
 }
