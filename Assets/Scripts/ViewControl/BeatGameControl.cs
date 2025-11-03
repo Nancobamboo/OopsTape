@@ -151,7 +151,7 @@ public class BeatGameControl : YViewControl
 						{
 							if (m_TimelineData.UseInputExtTime)
 							{
-								m_TimelineData.BeatTimes[u.BeatId + 1] += DataSystem.InputExtraTime;
+								m_TimelineData.BeatTimes[u.BeatId] += DataSystem.InputExtraTime;
 							}
 						}
 					}
@@ -314,6 +314,7 @@ public class BeatGameControl : YViewControl
 		double dsp = AudioSettings.dspTime;
 		double playerBeat = (dsp - m_SongStartDsp - m_PausedDspDuration - m_SongOffsetSeconds) / m_SecondsPerBeat;
 		int newBeat = (int)System.Math.Round(playerBeat);
+		Debug.Log("newBeat: " + newBeat);
 
 		if (!m_ResultShown && m_TimelineData.ForceEndBeatId != 0 && newBeat >= m_TimelineData.ForceEndBeatId)
 		{
@@ -581,14 +582,11 @@ public class BeatGameControl : YViewControl
 		var nextBeatUnit = GetBeatUnit(nextBeatId);
 		if (nextBeatUnit != null && nextBeatUnit.IsHit)
 		{
-			if (nextBeatId >= 0 && nextBeatId < m_TimelineData.BeatTimes.Count)
+			double nextBeatStartTime = m_TimelineData.BeatTimes[CurrentBeat];
+			double timeDiff = nextBeatStartTime - SpaceClickMoment;
+			if (timeDiff <= DataSystem.InputForwardTime)
 			{
-				double nextBeatTime = m_TimelineData.BeatTimes[nextBeatId];
-				double timeDiff = nextBeatTime - SpaceClickMoment;
-				if (timeDiff <= DataSystem.InputForwardTime)
-				{
-					return false;
-				}
+				return false;
 			}
 		}
 		return true;

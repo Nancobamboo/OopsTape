@@ -4,7 +4,7 @@ using UnityEngine;
 public class UISucceedCounterControl : YViewControl
 {
 	private UISucceedCounterView m_View;
-	public int LeftSucceedNum = 5;
+	public int LeftSucceedNum = 3;
 
 	public static EResType GetResType()
 	{

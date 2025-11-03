@@ -50,13 +50,7 @@ public partial class YViewControl : MonoBehaviour
 
     public virtual void OnLoadAsset()
 	{
-#if UNITY_WEBGL && !UNITY_EDITOR
-        var textArray = GetComponentsInChildren<Text>(true);
-        foreach (var text in textArray)
-        {
-            text.font = Asset.GameDefaultFont;
-        }
-#endif
+
     }
 
     protected virtual void OnClose()

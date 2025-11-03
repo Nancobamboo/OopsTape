@@ -22,8 +22,9 @@ public class BeatAnalyzerWindow : EditorWindow
 
         GUILayout.Space(6);
         EditorGUILayout.LabelField("Settings", EditorStyles.boldLabel);
-        m_Settings.BpmMin = EditorGUILayout.FloatField("BPM", m_Settings.BpmMin);
-        m_Settings.BpmMax = m_Settings.BpmMin;
+        m_Settings.BpmMin = EditorGUILayout.FloatField("BPM Min", m_Settings.BpmMin);
+        m_Settings.BpmMax = EditorGUILayout.FloatField("BPM Max", m_Settings.BpmMax);
+
         m_Settings.WindowSize = EditorGUILayout.IntField("Window Size", m_Settings.WindowSize);
         m_Settings.HopSize = EditorGUILayout.IntField("Hop Size", m_Settings.HopSize);
         m_Settings.PhaseSearchSteps = EditorGUILayout.IntSlider("Phase Steps", m_Settings.PhaseSearchSteps, 16, 400);
