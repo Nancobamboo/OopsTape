@@ -157,6 +157,265 @@ public static class BeatUtility
         };
     }
 
+    /// <summary>
+    /// Analyzes beats with dynamic BPM detection - detects tempo changes throughout the song
+    /// </summary>
+    public static BeatTimeline AnalyzeBeatsDynamicBpm(AudioClip clip, Settings settings = default)
+    {
+        if (clip == null) throw new ArgumentNullException(nameof(clip));
+        if (settings.WindowSize == 0) settings = Settings.Default;
+
+        // First, get onset detection (same as static method)
+        int channels = clip.channels;
+        int totalSamples = clip.samples * channels;
+        float[] interleaved = new float[totalSamples];
+        clip.GetData(interleaved, 0);
+
+        float[] mono = new float[clip.samples];
+        for (int i = 0, si = 0; i < clip.samples; i++)
+        {
+            float sum = 0f;
+            for (int c = 0; c < channels; c++) sum += interleaved[si++];
+            mono[i] = sum / channels;
+        }
+
+        int win = settings.WindowSize;
+        int hop = settings.HopSize;
+        int frames = 1 + Math.Max(0, (mono.Length - win) / hop);
+        float[] energy = new float[frames];
+        for (int f = 0; f < frames; f++)
+        {
+            int start = f * hop;
+            double acc = 0.0;
+            for (int s = 0; s < win; s++)
+            {
+                float v = mono[start + s];
+                acc += v * v;
+            }
+            energy[f] = (float)Math.Sqrt(acc / win);
+        }
+
+        float[] onset = new float[frames];
+        float prev = 0f;
+        for (int i = 0; i < frames; i++)
+        {
+            float diff = energy[i] - prev;
+            prev = energy[i];
+            onset[i] = diff > 0 ? diff : 0f;
+        }
+
+        if (settings.SmoothSize > 1)
+        {
+            int k = settings.SmoothSize;
+            float[] tmp = new float[frames];
+            for (int i = 0; i < frames; i++)
+            {
+                double sum = 0.0; int cnt = 0;
+                for (int j = -k; j <= k; j++)
+                {
+                    int t = i + j;
+                    if (t < 0 || t >= frames) continue;
+                    sum += onset[t]; cnt++;
+                }
+                tmp[i] = (float)(sum / Math.Max(1, cnt));
+            }
+            onset = tmp;
+        }
+
+        double envRate = (double)clip.frequency / hop;
+
+        // Dynamic BPM detection using sliding window
+        List<double> beatTimes = new List<double>();
+        List<double> localBpms = new List<double>();
+
+        // Window size for local BPM analysis (in seconds)
+        double analysisWindowSeconds = 3.0; // Analyze BPM every 3 seconds
+        int analysisWindowFrames = (int)Math.Round(analysisWindowSeconds * envRate);
+        analysisWindowFrames = Math.Max(analysisWindowFrames, hop * 2); // Ensure minimum size
+
+        // Step size for sliding window (in frames)
+        int stepSize = analysisWindowFrames / 4; // Overlap windows by 75%
+        stepSize = Math.Max(stepSize, hop);
+
+        // First pass: detect local BPMs in sliding windows
+        for (int startFrame = 0; startFrame < frames - analysisWindowFrames; startFrame += stepSize)
+        {
+            int endFrame = Math.Min(startFrame + analysisWindowFrames, frames);
+            int windowSize = endFrame - startFrame;
+
+            // Calculate autocorrelation for this window
+            int minLag = (int)Math.Round(envRate * 60.0 / settings.BpmMax);
+            int maxLag = (int)Math.Round(envRate * 60.0 / settings.BpmMin);
+            minLag = Math.Max(1, minLag);
+            maxLag = Math.Min(windowSize - 1, Math.Max(minLag + 1, maxLag));
+
+            int bestLag = minLag;
+            double bestScore = double.NegativeInfinity;
+
+            for (int lag = minLag; lag <= maxLag; lag++)
+            {
+                double sum = 0.0;
+                int count = 0;
+                for (int i = startFrame + lag; i < endFrame; i++)
+                {
+                    sum += onset[i] * onset[i - lag];
+                    count++;
+                }
+                if (count > 0)
+                {
+                    double score = sum / count;
+                    if (score > bestScore)
+                    {
+                        bestScore = score;
+                        bestLag = lag;
+                    }
+                }
+            }
+
+            if (bestLag > 0 && bestScore > 0)
+            {
+                double localSecondsPerBeat = bestLag / envRate;
+                double localBpm = 60.0 / localSecondsPerBeat;
+                double windowCenterTime = (startFrame + windowSize / 2) / envRate;
+
+                localBpms.Add(windowCenterTime);
+                localBpms.Add(localBpm);
+            }
+        }
+
+        // Second pass: track beats using dynamic BPM
+        // Start with initial BPM detection from beginning
+        int initialWindow = Math.Min(analysisWindowFrames, frames / 2);
+        int initialMinLag = (int)Math.Round(envRate * 60.0 / settings.BpmMax);
+        int initialMaxLag = (int)Math.Round(envRate * 60.0 / settings.BpmMin);
+        initialMinLag = Math.Max(1, initialMinLag);
+        initialMaxLag = Math.Min(initialWindow - 1, Math.Max(initialMinLag + 1, initialMaxLag));
+
+        int initialBestLag = initialMinLag;
+        double initialBestScore = double.NegativeInfinity;
+        for (int lag = initialMinLag; lag <= initialMaxLag; lag++)
+        {
+            double sum = 0.0;
+            for (int i = lag; i < initialWindow; i++)
+            {
+                sum += onset[i] * onset[i - lag];
+            }
+            if (sum > initialBestScore)
+            {
+                initialBestScore = sum;
+                initialBestLag = lag;
+            }
+        }
+
+        double currentSecondsPerBeat = initialBestLag / envRate;
+        double currentBpm = 60.0 / currentSecondsPerBeat;
+
+        // Find initial phase
+        int phaseSteps = Math.Max(8, settings.PhaseSearchSteps);
+        double bestPhase = 0.0;
+        double bestPhaseScore = double.NegativeInfinity;
+
+        for (int s = 0; s < phaseSteps; s++)
+        {
+            double phase = s / (double)phaseSteps * currentSecondsPerBeat;
+            double score = 0.0;
+            for (double t = phase; t < Math.Min(initialWindow / envRate, clip.length); t += currentSecondsPerBeat)
+            {
+                int idx = (int)Math.Round(t * envRate);
+                if (idx >= 0 && idx < onset.Length) score += onset[idx];
+            }
+            if (score > bestPhaseScore)
+            {
+                bestPhaseScore = score;
+                bestPhase = phase;
+            }
+        }
+
+        // Generate beats with dynamic tempo tracking
+        double currentTime = bestPhase;
+        double expectedNextBeat = currentTime + currentSecondsPerBeat;
+
+        while (currentTime <= clip.length + 1e-6)
+        {
+            beatTimes.Add(currentTime);
+
+            // Update tempo based on local BPM analysis
+            if (localBpms.Count >= 2)
+            {
+                // Find closest BPM measurement
+                int bestIdx = -1;
+                double minDist = double.MaxValue;
+                for (int i = 0; i < localBpms.Count; i += 2)
+                {
+                    double dist = Math.Abs(localBpms[i] - currentTime);
+                    if (dist < minDist)
+                    {
+                        minDist = dist;
+                        bestIdx = i;
+                    }
+                }
+
+                if (bestIdx >= 0 && minDist < analysisWindowSeconds * 2.0)
+                {
+                    double localBpm = localBpms[bestIdx + 1];
+                    // Smooth transition between BPMs
+                    double alpha = 0.3; // Smoothing factor
+                    currentBpm = currentBpm * (1.0 - alpha) + localBpm * alpha;
+                    currentSecondsPerBeat = 60.0 / currentBpm;
+                }
+            }
+
+            // Predict next beat time
+            expectedNextBeat = currentTime + currentSecondsPerBeat;
+
+            // Refine beat position using onset peaks near expected time
+            int searchStartFrame = (int)Math.Round((expectedNextBeat - currentSecondsPerBeat * 0.3) * envRate);
+            int searchEndFrame = (int)Math.Round((expectedNextBeat + currentSecondsPerBeat * 0.3) * envRate);
+            searchStartFrame = Math.Max(0, searchStartFrame);
+            searchEndFrame = Math.Min(frames - 1, searchEndFrame);
+
+            int bestBeatFrame = (int)Math.Round(expectedNextBeat * envRate);
+            double bestBeatScore = 0.0;
+
+            for (int f = searchStartFrame; f <= searchEndFrame; f++)
+            {
+                if (f >= 0 && f < onset.Length && onset[f] > bestBeatScore)
+                {
+                    bestBeatScore = onset[f];
+                    bestBeatFrame = f;
+                }
+            }
+
+            double refinedBeatTime = bestBeatFrame / envRate;
+            currentTime = refinedBeatTime;
+        }
+
+        // Calculate average BPM for display
+        double avgBpm = 120.0; // Default
+        if (beatTimes.Count > 1)
+        {
+            double totalDuration = beatTimes[beatTimes.Count - 1] - beatTimes[0];
+            avgBpm = (beatTimes.Count - 1) * 60.0 / totalDuration;
+        }
+
+        // Calculate average seconds per beat
+        double avgSecondsPerBeat = 60.0 / avgBpm;
+        if (beatTimes.Count > 1)
+        {
+            double totalBeatDuration = beatTimes[beatTimes.Count - 1] - beatTimes[0];
+            avgSecondsPerBeat = totalBeatDuration / (beatTimes.Count - 1);
+        }
+
+        return new BeatTimeline
+        {
+            Bpm = (float)avgBpm,
+            SecondsPerBeat = avgSecondsPerBeat,
+            OffsetSeconds = beatTimes.Count > 0 ? beatTimes[0] : 0.0,
+            LengthSeconds = clip.length,
+            BeatTimes = beatTimes
+        };
+    }
+
     public static double QuantizeTimeToDivision(BeatTimeline t, double timeSeconds, int division)
     {
         if (division <= 0) division = 1;
