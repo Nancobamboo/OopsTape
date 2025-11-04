@@ -198,6 +198,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5678984409948298709, guid: e0e0714f0410dde4ab4f830fad23b011, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5678984409948298709, guid: e0e0714f0410dde4ab4f830fad23b011, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 5678984409948298709, guid: e0e0714f0410dde4ab4f830fad23b011, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 6092978807944803187, guid: e0e0714f0410dde4ab4f830fad23b011, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -452,6 +452,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 955157075923004881, guid: e76f188a29e1f104ba39d595d4b141f4, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 955157075923004881, guid: e76f188a29e1f104ba39d595d4b141f4, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 955157075923004881, guid: e76f188a29e1f104ba39d595d4b141f4, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 1148053537967129476, guid: e76f188a29e1f104ba39d595d4b141f4, type: 3}
       propertyPath: m_Name
       value: Level5Template

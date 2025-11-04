@@ -737,6 +737,18 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 366f8997775a3964f82cf485cacfa286, type: 3}
+    - target: {fileID: 2320957524965168847, guid: 5c1cb8ece528a374194bd792ee10618d, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2320957524965168847, guid: 5c1cb8ece528a374194bd792ee10618d, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 2320957524965168847, guid: 5c1cb8ece528a374194bd792ee10618d, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 3281056196611662196, guid: 5c1cb8ece528a374194bd792ee10618d, type: 3}
       propertyPath: m_Name
       value: Level3Template
